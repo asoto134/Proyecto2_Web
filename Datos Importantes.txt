@@ -1,0 +1,22 @@
+phpmyadmin para manejo de la base de datos
+
+link: http://phpmyadmin.webcindario.com/
+usuario: proyecto2web
+contraseña: proyecto2web
+
+
+
+Datos ftp del dominio para subir los archivos que hagamos 
+
+servidor: 	ftp.webcindario.com
+Nombre Usuario:	proyecto2web
+password:	adrian230189
+
+
+link de la pagina:
+
+http://proyecto2web.webcindario.com/
+
+cpanel link
+http://hosting.miarroba.es/cpanel.php
+
