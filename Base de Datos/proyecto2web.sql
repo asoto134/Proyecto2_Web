@@ -136,19 +136,19 @@ COMMENT = 'Tabla donde se guardan las especies de aves.';
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `Tipo de Pico`
+-- Table `Tipo_de_Pico`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Tipo de Pico` ;
+DROP TABLE IF EXISTS `Tipo_de_Pico` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Tipo de Pico` (
-  `idTipo de Pico` INT NOT NULL AUTO_INCREMENT COMMENT 'Id que se asigna automaticamente por la base de datos a cada tipo de pico.',
-  `Tipo de Pico` VARCHAR(45) NULL COMMENT 'Nombre del tipo de pico.',
+CREATE TABLE IF NOT EXISTS `Tipo_de_Pico` (
+  `idTipo_de_Pico` INT NOT NULL AUTO_INCREMENT COMMENT 'Id que se asigna automaticamente por la base de datos a cada tipo de pico.',
+  `Tipo_de_Pico` VARCHAR(45) NULL COMMENT 'Nombre del tipo de pico.',
   `fechaCreacion` DATE NULL COMMENT 'Fecha de creacion de la tupla.',
   `usuarioCreacion` VARCHAR(20) NULL COMMENT 'Usuario de creacion de la tupla.',
   `fechaUltimaModificacion` DATE NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
   `usuarioUltimaModificacion` VARCHAR(20) NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
-  PRIMARY KEY (`idTipo de Pico`))
+  PRIMARY KEY (`idTipo_de_Pico`))
 ENGINE = InnoDB
 COMMENT = 'Tabla donde se guardan los tipos de pico de cada ave.';
 
@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `Pajaro` (
   `Nombre Común` VARCHAR(45) NULL COMMENT 'Nombre común del ave.',
   `Nombre en Ingles` VARCHAR(45) NULL COMMENT 'Nombre en inglés del ave.',
   `Nombre Cientifico` VARCHAR(45) NULL COMMENT 'Nombre cientifico del ave.',
-  `Tipo de Pico_idTipo de Pico` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos del tipo de pico.',
+  `Tipo_de_Pico_idTipo de Pico` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos del tipo de pico.',
   `Cantidad de Huevos` INT NULL COMMENT 'Cantidad de huevos que puede poner el ave.',
   `fechaCreacion` DATE NULL COMMENT 'Fecha de creacion de la tupla.',
   `usuarioCreacion` VARCHAR(20) NULL COMMENT 'Usuario de creacion de la tupla.',
@@ -187,7 +187,7 @@ SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `Usuario` (
   `idUsuario` INT NOT NULL AUTO_INCREMENT COMMENT 'Id que se asigna automaticamente por la base de datos a cada Usuario.',
   `NomUsuario` VARCHAR(45) NOT NULL COMMENT 'Nombe de usuario elegido por la persona.',
-  `Contraseña` VARCHAR(45) NOT NULL COMMENT 'contraseña elegida por la persona.',
+  `Contrasenia` VARCHAR(45) NOT NULL COMMENT 'contraseña elegida por la persona.',
   `permisos` INT NOT NULL DEFAULT 2 COMMENT 'Nos indica si el usuario normal o Administrador.',
   `tokenFacebook` VARCHAR(100) NULL COMMENT 'Token que permite acceder a los datos de facebook del usuario, si el lo permitio previamente. ',
   `fechaCreacion` DATE NULL COMMENT 'Fecha de creacion de la tupla.',
@@ -201,19 +201,19 @@ COMMENT = 'Tabla donde se guardan los datos de usuario de la persona.';
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `Tipo de Persona`
+-- Table `Tipo_de_Persona`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Tipo de Persona` ;
+DROP TABLE IF EXISTS `Tipo_de_Persona` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Tipo de Persona` (
-  `idTipo de Persona` INT NOT NULL AUTO_INCREMENT COMMENT 'Id que se asigna automaticamente por la base de datos a cada tipo de persona.',
-  `Tipo de Persona` VARCHAR(45) NOT NULL COMMENT 'Nombre del tipo de persona.',
+CREATE TABLE IF NOT EXISTS `Tipo_de_Persona` (
+  `idTipo_de_Persona` INT NOT NULL AUTO_INCREMENT COMMENT 'Id que se asigna automaticamente por la base de datos a cada tipo de persona.',
+  `Tipo_de_Persona` VARCHAR(45) NOT NULL COMMENT 'Nombre del tipo de persona.',
   `fechaCreacion` DATE NULL COMMENT 'Fecha de creacion de la tupla.',
   `usuarioCreacion` VARCHAR(20) NULL COMMENT 'Usuario de creacion de la tupla.',
   `fechaUltimaModificacion` DATE NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
   `usuarioUltimaModificacion` VARCHAR(20) NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
-  PRIMARY KEY (`idTipo de Persona`))
+  PRIMARY KEY (`idTipo_de_Persona`))
 ENGINE = InnoDB
 COMMENT = 'Tabla donde se guardan los tipos de persona';
 
@@ -228,7 +228,7 @@ SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `Persona` (
   `idPersona` INT NOT NULL COMMENT 'Identificador de la persona, en nuestro caso el numero de cédula de la persona.',
   `Usuario_idUsuario` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla en la tabla de usuario, que nos da los datos de usuario de la persona.',
-  `Tipo de Persona_idTiipo de Persona` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla en la tabla de tipo de persona, que nos indica que tipo de persona es.',
+  `Tipo_de_Persona_idTipo_de_Persona` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla en la tabla de tipo de persona, que nos indica que tipo de persona es.',
   `Nombre` VARCHAR(45) NOT NULL COMMENT 'Nombre de la persona.',
   `Apellido` VARCHAR(45) NOT NULL COMMENT 'Apellido de la persona.',
   `fechaCreacion` DATE NULL COMMENT 'Fecha de creacion de la tupla.',
@@ -284,19 +284,19 @@ COMMENT = 'Tabla donde se guardan las imagenes de cada usuario.';
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `Zona de Vida`
+-- Table `Zona_de_Vida`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Zona de Vida` ;
+DROP TABLE IF EXISTS `Zona_de_Vida` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Zona de Vida` (
-  `idZona de Vida` INT NOT NULL AUTO_INCREMENT COMMENT 'Id que se asigna automaticamente por la base de datos a cada zona de vida.',
-  `Zona de Vida` VARCHAR(45) NULL COMMENT 'Nombre de la zona de vida.',
+CREATE TABLE IF NOT EXISTS `Zona_de_Vida` (
+  `idZona_de_Vida` INT NOT NULL AUTO_INCREMENT COMMENT 'Id que se asigna automaticamente por la base de datos a cada zona de vida.',
+  `Zona_de_Vida` VARCHAR(45) NULL COMMENT 'Nombre de la zona de vida.',
   `fechaCreacion` DATE NULL COMMENT 'Fecha de creacion de la tupla.',
   `usuarioCreacion` VARCHAR(20) NULL COMMENT 'Usuario de creacion de la tupla.',
   `fechaUltimaModificacion` DATE NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
   `usuarioUltimaModificacion` VARCHAR(20) NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
-  PRIMARY KEY (`idZona de Vida`))
+  PRIMARY KEY (`idZona_de_Vida`))
 ENGINE = InnoDB
 COMMENT = 'Tabla que se utiliza para guardar datos de la zona de vida de cada ave.';
 
@@ -313,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `Pajaros_X_Persona` (
   `Persona_idPersona` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de la persona.',
   `Color_idColor` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos del color.',
   `Fotografia_idFotografia` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de la fotografia.',
-  `Zona de Vida_idZona de Vida` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de la zona de vida.',
+  `Zona_de_Vida_idZona de Vida` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de la zona de vida.',
   `fechaCreacion` DATE NULL COMMENT 'Fecha de creacion de la tupla.',
   `usuarioCreacion` VARCHAR(20) NULL COMMENT 'Usuario de creacion de la tupla.',
   `fechaUltimaModificacion` DATE NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
@@ -362,12 +362,12 @@ COMMENT = 'Tabla donde se guardan los telefonos de cada usuario. ';
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `BitacoraContrasenias`
+-- Table `Bitacora_Contrasenias`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `BitacoraContrasenias` ;
+DROP TABLE IF EXISTS `Bitacora_Contrasenias` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `BitacoraContrasenias` (
+CREATE TABLE IF NOT EXISTS `Bitacora_Contrasenias` (
   `Usuario_idUsuario` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de usuario.',
   `contraseña` VARCHAR(45) NOT NULL COMMENT 'La contraseña actual.',
   `contraseñaAnterior` VARCHAR(45) NOT NULL COMMENT 'La contraseña anterior.',
@@ -519,10 +519,10 @@ NEW.usuarioUltimaModificacion = current_user(); $$
 SHOW WARNINGS$$
 
 USE `proyecto2web`$$
-DROP TRIGGER IF EXISTS `Tipo de Pico_BEFORE_INSERT` $$
+DROP TRIGGER IF EXISTS `Tipo_de_Pico_BEFORE_INSERT` $$
 SHOW WARNINGS$$
 USE `proyecto2web`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Tipo de Pico_BEFORE_INSERT` BEFORE INSERT ON `Tipo de Pico` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Tipo_de_Pico_BEFORE_INSERT` BEFORE INSERT ON `Tipo_de_Pico` FOR EACH ROW
 SET    
 NEW.fechaCreacion = sysdate(),
 NEW.usuarioCreacion = current_user();$$
@@ -530,10 +530,10 @@ NEW.usuarioCreacion = current_user();$$
 SHOW WARNINGS$$
 
 USE `proyecto2web`$$
-DROP TRIGGER IF EXISTS `Tipo de Pico_BEFORE_UPDATE` $$
+DROP TRIGGER IF EXISTS `Tipo_de_Pico_BEFORE_UPDATE` $$
 SHOW WARNINGS$$
 USE `proyecto2web`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Tipo de Pico_BEFORE_UPDATE` BEFORE UPDATE ON `Tipo de Pico` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Tipo_de_Pico_BEFORE_UPDATE` BEFORE UPDATE ON `Tipo_de_Pico` FOR EACH ROW
 SET    
 NEW.fechaUltimaModificacion = sysdate(),
 NEW.usuarioUltimaModificacion = current_user(); $$
@@ -587,10 +587,10 @@ $$
 SHOW WARNINGS$$
 
 USE `proyecto2web`$$
-DROP TRIGGER IF EXISTS `Tipo de Persona_BEFORE_INSERT` $$
+DROP TRIGGER IF EXISTS `Tipo_de_Persona_BEFORE_INSERT` $$
 SHOW WARNINGS$$
 USE `proyecto2web`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Tipo de Persona_BEFORE_INSERT` BEFORE INSERT ON `Tipo de Persona` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Tipo_de_Persona_BEFORE_INSERT` BEFORE INSERT ON `Tipo_de_Persona` FOR EACH ROW
 SET    
 NEW.fechaCreacion = sysdate(),
 NEW.usuarioCreacion = current_user();
@@ -599,10 +599,10 @@ $$
 SHOW WARNINGS$$
 
 USE `proyecto2web`$$
-DROP TRIGGER IF EXISTS `Tipo de Persona_BEFORE_UPDATE` $$
+DROP TRIGGER IF EXISTS `Tipo_de_Persona_BEFORE_UPDATE` $$
 SHOW WARNINGS$$
 USE `proyecto2web`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Tipo de Persona_BEFORE_UPDATE` BEFORE UPDATE ON `Tipo de Persona` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Tipo_de_Persona_BEFORE_UPDATE` BEFORE UPDATE ON `Tipo_de_Persona` FOR EACH ROW
 SET    
 NEW.fechaUltimaModificacion = sysdate(),
 NEW.usuarioUltimaModificacion = current_user(); $$
@@ -679,10 +679,10 @@ $$
 SHOW WARNINGS$$
 
 USE `proyecto2web`$$
-DROP TRIGGER IF EXISTS `Zona de Vida_BEFORE_INSERT` $$
+DROP TRIGGER IF EXISTS `Zona_de_Vida_BEFORE_INSERT` $$
 SHOW WARNINGS$$
 USE `proyecto2web`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Zona de Vida_BEFORE_INSERT` BEFORE INSERT ON `Zona de Vida` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Zona_de_Vida_BEFORE_INSERT` BEFORE INSERT ON `Zona_de_Vida` FOR EACH ROW
 SET    
 NEW.fechaCreacion = sysdate(),
 NEW.usuarioCreacion = current_user();
@@ -691,10 +691,10 @@ $$
 SHOW WARNINGS$$
 
 USE `proyecto2web`$$
-DROP TRIGGER IF EXISTS `Zona de Vida_BEFORE_UPDATE` $$
+DROP TRIGGER IF EXISTS `Zona_de_Vida_BEFORE_UPDATE` $$
 SHOW WARNINGS$$
 USE `proyecto2web`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Zona de Vida_BEFORE_UPDATE` BEFORE UPDATE ON `Zona de Vida` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Zona_de_Vida_BEFORE_UPDATE` BEFORE UPDATE ON `Zona_de_Vida` FOR EACH ROW
 SET    
 NEW.fechaUltimaModificacion = sysdate(),
 NEW.usuarioUltimaModificacion = current_user(); $$

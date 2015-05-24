@@ -1,3 +1,73 @@
+<?php
+include ("settings.php");
+include ("common.php");
+//error_reporting(0);
+//Al presionar el boton de login
+if (isset($_POST['entrar']))
+{ // if form has been submitted
+   if(!$_POST['logNomusuario'] | !$_POST['logContrasenia'])
+   {//Verificar que las casillas no esten en blanco
+      die('Es necesario escribir un Usuario y una contraseÃ±a <a href=index.php>Intente de nuevo</a>');
+      
+   }
+   $usuario = $_POST['logNomusuario'];
+
+    $conexionConBaseDeDatos=mysql_connect(HOST, USER, PASS);
+
+    @mysql_select_db(DB, $conexionConBaseDeDatos) or die("Error en la seleccion, '$php_errormsg'");
+
+    $consultaSql = "SELECT NomUsuario, Contrasenia, permisos FROM usuario WHERE NomUsuario = '" . $usuario . "'";
+
+    $resultadoConsulta = mysql_query($consultaSql);   
+   
+   if (mysql_num_rows($resultadoConsulta) == 0) 
+   {
+       echo "<script>alert(\"El usuario no existe en la base de datos.\");</script>";
+       echo "<script>javascript:history.back();</script>";
+   }
+   
+   
+   while ($row = mysql_fetch_array($resultadoConsulta))
+   {
+      if (md5($_POST['logContrasenia']) != $row['Contrasenia']) 
+      {
+          echo "<script>alert(\"Password incorrecto.\");</script>";
+          echo "<script>javascript:history.back();</script>";
+      }
+      else
+      {
+
+            $nom_Usuario = $_POST['logNomusuario'];
+            $Ornitologo = FALSE;
+
+            $consultaSql2 = "SELECT Tipo_de_Persona_idTipo_de_Persona FROM persona INNER JOIN usuario 
+                      ON persona.Usuario_idUsuario = usuario.idUsuario
+                      WHERE usuario.NomUsuario = '$nom_Usuario'";
+            
+            $resultadoConsulta2 = mysql_query($consultaSql2);
+            While ($row2 = mysql_fetch_array($resultadoConsulta2))
+            {
+                if($row2['Tipo_de_Persona_idTipo_de_Persona'] == 1)
+                {
+                    $Ornitologo = TRUE;
+                }
+            }
+            
+            if($Ornitologo){header("Location: index.html");}
+            else{header("Location: index.php");}
+            actualizar_cookie($_POST['logNomusuario'],md5($_POST['logContrasenia']),$row['permisos']);
+      }
+   }
+    mysql_close($conexionConBaseDeDatos);
+}
+ 
+  
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -93,6 +163,7 @@
 
         <form action="registro.php" method="post" >
             <legend>Formulario de Registro</legend>
+                <br/><br/>
                 <table style="float: left;" >
                   <tr>
                     <td width="500">
@@ -103,7 +174,7 @@
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Apellidos:</label>
+                        <label style="width: 200px; display: block; float: left;" >Apellido:</label>
                         <input id="campo2" name="apellidos" type="text" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
@@ -118,12 +189,6 @@
 
                   <tr><td>&nbsp; </td></tr>
 -->
-                  <tr>
-                    <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Email:</label>
-                        <input id="campo4" name="email" type="text" onchange="verificarCorreo(this.value)" style="width: 200px; display: block; float: left;" />
-                    </td>
-                  </tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >&nbsp;</label>
                         <label style="width: 200px; display: block; float: left;" >ejemplo: 123456789</label>
@@ -149,15 +214,15 @@
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
-                        <label for="rescatista" style="width: 200px; display: block; float: left;" >Rescatista:</label>
-                        <input type="radio" name="tipoPersona" id="rescatista" value="Rescatista" />
+                        <label for="ornitologo" style="width: 200px; display: block; float: left;" >Ornitologo:</label>
+                        <input type="radio" name="tipoPersona" id="rescatista" value="Ornitologo" />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
-                        <label for="adoptante" style="width: 200px; display: block; float: left;" >Adoptante:</label>
-                        <input type="radio" name="tipoPersona" id="adoptante" value="Adoptante" checked  />
+                        <label for="aficionado" style="width: 200px; display: block; float: left;" >Aficionado:</label>
+                        <input type="radio" name="tipoPersona" id="adoptante" value="Aficionado" checked  />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
@@ -178,6 +243,12 @@
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
+                  <tr>
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Email:</label>
+                        <input id="campo4" name="email" type="text" onchange="verificarCorreo(this.value)" style="width: 200px; display: block; float: left;" />
+                    </td>
+                  </tr>
 
 
 
@@ -205,7 +276,7 @@
         </div>
 
         <form id="loggin" action="index.php" method="post">
-                <legend>Loggin</legend>
+                <legend>Entrar al Sistema</legend>
                 <table style="float: left;">
                   <tr>
                     <td width="500">
@@ -222,19 +293,20 @@
                   </tr>
                 </table>
                    <div style="clear: both;"></div>
+                   <br/><br/>
                    <input id="campo3" name="entrar" type="submit" value="Entrar" />       
         </form>
 
 
     </section>
 
-<!-- About Section 
+ 
     <section id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading">Nosotros</h2>
+                    <h3 class="section-subheading text-muted">Pagina desarrollada por estudiantes para el curso de Bases de Datos I.</h3>
                 </div>
             </div>
             <div class="row">
@@ -246,11 +318,11 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>2009-2011</h4>
-                                    <h4 class="subheading">Our Humble Beginnings</h4>
+                                    <h4>I Semestre 2015</h4>
+                                    <h4 class="subheading">Aprendiendo sobre bases de Datos Relacionales</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Al principio del curso se aprendio historia de las bases de  datos, ademas de que se entendio como es su funcionamiento. Se puso mucho enfasis en aprender bien el sql para realizar bien las consultas a la base de datos, tambien se aprendio como crear tablas, columnas, indices, procedimientos y funciones. </p>
                                 </div>
                             </div>
                         </li>
@@ -260,11 +332,11 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>March 2011</h4>
-                                    <h4 class="subheading">An Agency is Born</h4>
+                                    <h4>I Semestre 2015</h4>
+                                    <h4 class="subheading">I Proyecto Programado</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Para el primer proyecto programado se utilizo una base de datos oracle, el proposito del sistema era dar una herramienta para el rescate animal.</p>
                                 </div>
                             </div>
                         </li>
@@ -274,11 +346,11 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>December 2012</h4>
-                                    <h4 class="subheading">Transition to Full Service</h4>
+                                    <h4>I Semestre 2015</h4>
+                                    <h4 class="subheading">Mas Aprendizaje</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Al terminar el primer proyecto y recibir las criticas contructivas de la profesora, empezamos a ver en el curso los temas que nos hacian flata sobre bases de datos relacionales. Se aprendio como usar jobs y mucho sobre la seguridad en una base de datos ademas de analizar un poco el trabajo que desempeña un Data Base Manager.</p>
                                 </div>
                             </div>
                         </li>
@@ -288,30 +360,31 @@
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>July 2014</h4>
-                                    <h4 class="subheading">Phase Two Expansion</h4>
+                                    <h4>I Semestre 2015</h4>
+                                    <h4 class="subheading">II Proyecto Programado</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Con este sistema, se desea dar una herramienta, con la cual todos los amantes de la ornitologia, ya sean Ornitologos o Aficionados puedan tener un sitio donde guardar y compartir sus avistamientos.</p>
                                 </div>
                             </div>
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <h4>Be Part
-                                    <br>Of Our
-                                    <br>Story!</h4>
+                                <h4>Se Parte
+                                    <br>De Nuestra
+                                    <br>Historia!</h4>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section>-->
+    </section>
 
 
 
-
+    <!-- Validaciones -->
+    <script src="js/misFunciones.js"></script>
     
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
