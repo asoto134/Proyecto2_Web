@@ -1,7 +1,8 @@
 DELIMITER //
-CREATE PROCEDURE add_tipo_pico (IN tipo_pico varchar(50))
+CREATE PROCEDURE tipo_pico ()
 BEGIN
-    insert into tipo_de_pico (Tipo_de_Pico) 
+    insert into pajaro (idPajaro, Especie_idEspecie, Nombre_Comun, Nombre_en_Ingles, Nombre_Cientifico,
+						Tipo_de_Pico_idTipo_de_Pico, Cantidad_de_Huevos) 
 	
-    values (tipo_pico);
+    values (id_Pajaro , idEspecie, nombre_comun, nombre_ingles, nombre_cientifico, id_Tipo_Pico, cantidad_huevos);
 END //
