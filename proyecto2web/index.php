@@ -306,7 +306,7 @@ if (isset($_POST['entrar']))
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Nosotros</h2>
-                    <h3 class="section-subheading text-muted">Pagina desarrollada por estudiantes para el curso de Bases de Datos I.</h3>
+                    <h3 class="section-subheading text-muted">Página desarrollada por estudiantes para el curso de Bases de Datos I.</h3>
                 </div>
             </div>
             <div class="row">
@@ -322,7 +322,7 @@ if (isset($_POST['entrar']))
                                     <h4 class="subheading">Aprendiendo sobre bases de Datos Relacionales</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Al principio del curso se aprendio historia de las bases de  datos, ademas de que se entendio como es su funcionamiento. Se puso mucho enfasis en aprender bien el sql para realizar bien las consultas a la base de datos, tambien se aprendio como crear tablas, columnas, indices, procedimientos y funciones. </p>
+                                    <p class="text-muted">Al inicio del curso, las bases del conocimiento comenzaron por la historia en el tiempo sobre las bases de datos, siguiendo con el aprendizaje del idioma principal para entenderlas, el SQL. Se reforzaron los conocimientos para poder hacer todos los procedimientos correctamente y que el aprendizaje fuera enriquecedor.</p>
                                 </div>
                             </div>
                         </li>
@@ -336,7 +336,7 @@ if (isset($_POST['entrar']))
                                     <h4 class="subheading">I Proyecto Programado</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Para el primer proyecto programado se utilizo una base de datos oracle, el proposito del sistema era dar una herramienta para el rescate animal.</p>
+                                    <p class="text-muted">El primer proyecto fue retador, donde se puso en práctica lo aprendido, y donde se quería plasmar las ideas innovadoras del grupo de trabajo, creando así un sistema para facilitar la adopción de mascotas en el país.</p>
                                 </div>
                             </div>
                         </li>
@@ -347,10 +347,10 @@ if (isset($_POST['entrar']))
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>I Semestre 2015</h4>
-                                    <h4 class="subheading">Mas Aprendizaje</h4>
+                                    <h4 class="subheading">Más Aprendizaje</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Al terminar el primer proyecto y recibir las criticas contructivas de la profesora, empezamos a ver en el curso los temas que nos hacian flata sobre bases de datos relacionales. Se aprendio como usar jobs y mucho sobre la seguridad en una base de datos ademas de analizar un poco el trabajo que desempeña un Data Base Manager.</p>
+                                    <p class="text-muted">Las críticas constructivas por parte de la evaluadora fueron bien recibidas, haciendo que el rendimiento del grupo mejorara. Los temas que prosiguieron fueron claves para poder llevar a cabo el segundo proyecto programado, por ejemplo: jobs, seguridad de DBMS y el trabajo que desempeña un Administrador de Bases de Datos.</p>
                                 </div>
                             </div>
                         </li>
@@ -364,13 +364,13 @@ if (isset($_POST['entrar']))
                                     <h4 class="subheading">II Proyecto Programado</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Con este sistema, se desea dar una herramienta, con la cual todos los amantes de la ornitologia, ya sean Ornitologos o Aficionados puedan tener un sitio donde guardar y compartir sus avistamientos.</p>
+                                    <p class="text-muted">En desarrollo actualmente, el segundo proyecto está dirigido hacia los amantes de la ornitología, ciencia que estudia y analiza las aves. El objetivo principal es que los ornitólogos y aficionados de esta disciplina puedan compartir todos sus hallazgos y fotografías de sus aves preferidas.</p>
                                 </div>
                             </div>
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <h4>Se Parte
+                                <h4>¡Se Parte
                                     <br>De Nuestra
                                     <br>Historia!</h4>
                             </div>
