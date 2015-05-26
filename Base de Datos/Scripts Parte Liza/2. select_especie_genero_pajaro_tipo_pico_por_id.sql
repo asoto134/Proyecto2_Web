@@ -1,3 +1,5 @@
+-- Autor del archivo y scripts: Liza Chaves Carranza
+
 -- BÚSQUEDAS PARA TABLA ESPECIE
 
 -- Búsqueda del idEspecie por especie

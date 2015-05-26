@@ -1,3 +1,5 @@
+-- Autor del archivo y los scripts: Liza Chaves Carranza
+
 -- Insert de Especie
 
 DELIMITER //
