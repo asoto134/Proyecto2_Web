@@ -26,8 +26,8 @@ DROP TABLE IF EXISTS `bitacora_contrasenias`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bitacora_contrasenias` (
   `Usuario_idUsuario` int(11) NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de usuario.',
-  `contraseña` varchar(45) NOT NULL COMMENT 'La contraseña actual.',
-  `contraseñaAnterior` varchar(45) NOT NULL COMMENT 'La contraseña anterior.',
+  `contrasenia` varchar(45) NOT NULL COMMENT 'La contraseña actual.',
+  `contraseniaAnterior` varchar(45) NOT NULL COMMENT 'La contraseña anterior.',
   `fechaModificacion` date NOT NULL COMMENT 'Fecha en la que se modifico la contraseña.',
   PRIMARY KEY (`Usuario_idUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla donde se lleva un control de los cambios en la contraseña de cada usuario.';
@@ -41,6 +41,69 @@ LOCK TABLES `bitacora_contrasenias` WRITE;
 /*!40000 ALTER TABLE `bitacora_contrasenias` DISABLE KEYS */;
 /*!40000 ALTER TABLE `bitacora_contrasenias` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `cantidad_huevos`
+--
+
+DROP TABLE IF EXISTS `cantidad_huevos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cantidad_huevos` (
+  `idcantidad_Huevos` int(11) NOT NULL AUTO_INCREMENT,
+  `Cantidad` varchar(45) DEFAULT NULL,
+  `fechaCreacion` date DEFAULT NULL COMMENT 'Fecha de creacion de la tupla.',
+  `usuarioCreacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de creacion de la tupla.',
+  `fechaUltimaModificacion` date DEFAULT NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
+  `usuarioUltimaModificacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
+  PRIMARY KEY (`idcantidad_Huevos`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cantidad_huevos`
+--
+
+LOCK TABLES `cantidad_huevos` WRITE;
+/*!40000 ALTER TABLE `cantidad_huevos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cantidad_huevos` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ALLOW_INVALID_DATES,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `proyecto2web`.`cantidad_Huevos_BEFORE_INSERT` BEFORE INSERT ON `cantidad_Huevos` FOR EACH ROW
+SET    
+NEW.fechaCreacion = sysdate(),
+NEW.usuarioCreacion = current_user() */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ALLOW_INVALID_DATES,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `proyecto2web`.`cantidad_Huevos_BEFORE_UPDATE` BEFORE UPDATE ON `cantidad_Huevos` FOR EACH ROW
+SET    
+NEW.fechaUltimaModificacion = sysdate(),
+NEW.usuarioUltimaModificacion = current_user() */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `clase`
@@ -192,7 +255,7 @@ CREATE TABLE `correo` (
 
 LOCK TABLES `correo` WRITE;
 /*!40000 ALTER TABLE `correo` DISABLE KEYS */;
-INSERT INTO `correo` VALUES (113790395,'sotoadrian4@gmail.com','2015-05-23','root@localhost',NULL,NULL);
+INSERT INTO `correo` VALUES (113790395,'sotoadrian4@gmail.com','2015-05-30','root@localhost',NULL,NULL);
 /*!40000 ALTER TABLE `correo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -243,10 +306,14 @@ CREATE TABLE `especie` (
   `idEspecie` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id que se asigna automaticamente por la base de datos a cada especie.',
   `Genero_idGenero` int(11) NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos del genero del ave.',
   `Especie` varchar(45) DEFAULT NULL COMMENT 'Nombre de la especie del ave.',
+  `Nombre Común` varchar(45) DEFAULT NULL COMMENT 'Nombre común del ave.',
+  `Nombre en Ingles` varchar(45) DEFAULT NULL COMMENT 'Nombre en inglés del ave.',
+  `Nombre Cientifico` varchar(45) DEFAULT NULL COMMENT 'Nombre cientifico del ave.',
   `fechaCreacion` date DEFAULT NULL COMMENT 'Fecha de creacion de la tupla.',
   `usuarioCreacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de creacion de la tupla.',
   `fechaUltimaModificacion` date DEFAULT NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
   `usuarioUltimaModificacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
+  `cantidad_Huevos_idcantidad_Huevos` int(11) NOT NULL,
   PRIMARY KEY (`idEspecie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla donde se guardan las especies de aves.';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -373,7 +440,7 @@ CREATE TABLE `fotografia` (
   `descripcion` varchar(100) DEFAULT NULL COMMENT 'Una breve descripcion de la fotografia.',
   `formato` varchar(45) DEFAULT NULL COMMENT 'Tipo de formato de la imagen.',
   `tamanio` int(11) DEFAULT NULL COMMENT 'tamaño en bytes de la imagen.',
-  `Fotografiacol` blob COMMENT 'Codificacion de la imagen en la base de datos.',
+  `URL` varchar(100) DEFAULT NULL COMMENT 'Codificacion de la imagen en la base de datos.',
   `fechaCreacion` date DEFAULT NULL COMMENT 'Fecha de creacion de la tupla.',
   `usuarioCreacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de creacion de la tupla.',
   `fechaUltimaModificacion` date DEFAULT NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
@@ -556,74 +623,6 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
--- Table structure for table `pajaro`
---
-
-DROP TABLE IF EXISTS `pajaro`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pajaro` (
-  `idPajaro` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id que se asigna automaticamente por la base de datos a cada pajaro.',
-  `Especie_idEspecie` int(11) NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de la especie.',
-  `Nombre Común` varchar(45) DEFAULT NULL COMMENT 'Nombre común del ave.',
-  `Nombre en Ingles` varchar(45) DEFAULT NULL COMMENT 'Nombre en inglés del ave.',
-  `Nombre Cientifico` varchar(45) DEFAULT NULL COMMENT 'Nombre cientifico del ave.',
-  `Tipo_de_Pico_idTipo de Pico` int(11) NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos del tipo de pico.',
-  `Cantidad de Huevos` int(11) DEFAULT NULL COMMENT 'Cantidad de huevos que puede poner el ave.',
-  `fechaCreacion` date DEFAULT NULL COMMENT 'Fecha de creacion de la tupla.',
-  `usuarioCreacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de creacion de la tupla.',
-  `fechaUltimaModificacion` date DEFAULT NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
-  `usuarioUltimaModificacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
-  PRIMARY KEY (`idPajaro`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla donde se guardan los datos de las aves conocidas.';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pajaro`
---
-
-LOCK TABLES `pajaro` WRITE;
-/*!40000 ALTER TABLE `pajaro` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pajaro` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ALLOW_INVALID_DATES,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `proyecto2web`.`Pajaro_BEFORE_INSERT` BEFORE INSERT ON `Pajaro` FOR EACH ROW
-SET    
-NEW.fechaCreacion = sysdate(),
-NEW.usuarioCreacion = current_user() */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ALLOW_INVALID_DATES,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `proyecto2web`.`Pajaro_BEFORE_UPDATE` BEFORE UPDATE ON `Pajaro` FOR EACH ROW
-SET    
-NEW.fechaUltimaModificacion = sysdate(),
-NEW.usuarioUltimaModificacion = current_user() */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-
---
 -- Table structure for table `pajaros_x_persona`
 --
 
@@ -639,7 +638,8 @@ CREATE TABLE `pajaros_x_persona` (
   `fechaCreacion` date DEFAULT NULL COMMENT 'Fecha de creacion de la tupla.',
   `usuarioCreacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de creacion de la tupla.',
   `fechaUltimaModificacion` date DEFAULT NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
-  `usuarioUltimaModificacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de la ultima modificacion de la tupla.'
+  `usuarioUltimaModificacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
+  `Especie_idEspecie` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla donde se guardan los datos de las aves que ha visto cada persona.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -715,7 +715,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (113790395,1,1,'Adrián','Soto','2015-05-23','root@localhost',NULL,NULL);
+INSERT INTO `persona` VALUES (113790395,1,1,'Adrián','Soto','2015-05-30','root@localhost',NULL,NULL);
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -843,7 +843,7 @@ CREATE TABLE `telefono` (
 
 LOCK TABLES `telefono` WRITE;
 /*!40000 ALTER TABLE `telefono` DISABLE KEYS */;
-INSERT INTO `telefono` VALUES (113790395,'83262011','2015-05-23','root@localhost',NULL,NULL);
+INSERT INTO `telefono` VALUES (113790395,'83262011','2015-05-30','root@localhost',NULL,NULL);
 /*!40000 ALTER TABLE `telefono` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -907,7 +907,7 @@ CREATE TABLE `tipo_de_persona` (
 
 LOCK TABLES `tipo_de_persona` WRITE;
 /*!40000 ALTER TABLE `tipo_de_persona` DISABLE KEYS */;
-INSERT INTO `tipo_de_persona` VALUES (1,'Ornitologo','2015-05-23','root@localhost',NULL,NULL),(2,'Aficionado','2015-05-23','root@localhost',NULL,NULL);
+INSERT INTO `tipo_de_persona` VALUES (1,'Ornitologo','2015-05-30','root@localhost',NULL,NULL),(2,'Aficionado','2015-05-30','root@localhost',NULL,NULL);
 /*!40000 ALTER TABLE `tipo_de_persona` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -957,6 +957,7 @@ DROP TABLE IF EXISTS `tipo_de_pico`;
 CREATE TABLE `tipo_de_pico` (
   `idTipo_de_Pico` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id que se asigna automaticamente por la base de datos a cada tipo de pico.',
   `Tipo_de_Pico` varchar(45) DEFAULT NULL COMMENT 'Nombre del tipo de pico.',
+  `Especie_idEspecie` int(11) NOT NULL,
   `fechaCreacion` date DEFAULT NULL COMMENT 'Fecha de creacion de la tupla.',
   `usuarioCreacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de creacion de la tupla.',
   `fechaUltimaModificacion` date DEFAULT NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
@@ -1028,7 +1029,7 @@ CREATE TABLE `usuario` (
   `fechaUltimaModificacion` date DEFAULT NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
   `usuarioUltimaModificacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Tabla donde se guardan los datos de usuario de la persona.';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Tabla donde se guardan los datos de usuario de la persona.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1037,7 +1038,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'asoto','81dc9bdb52d04dc20036dbd8313ed055',2,NULL,'2015-05-23','root@localhost',NULL,NULL);
+INSERT INTO `usuario` VALUES (1,'asoto','81dc9bdb52d04dc20036dbd8313ed055',2,NULL,'2015-05-30','root@localhost',NULL,NULL),(2,'asoto','81dc9bdb52d04dc20036dbd8313ed055',2,NULL,'2015-05-30','root@localhost',NULL,NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1186,4 +1187,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-23 19:52:21
+-- Dump completed on 2015-05-30 15:59:03

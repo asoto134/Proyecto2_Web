@@ -17,5 +17,3 @@ END //
 
 
 CALL REGISTRO (113790395,'Adrián','Soto','asoto','1234','83262011','sotoadrian4@gmail.com',1);
-
-
