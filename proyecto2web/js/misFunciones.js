@@ -22,7 +22,7 @@ function stateChangedCedula()
 {
 	if (xmlhttp.readyState == 4)
 	{
-		if(xmlhttp.responseText == 1)
+		if(xmlhttp.responseText.charAt(0) == '1')
 		{
                     alert ("El numero de cedula ya existe en la base de datos.");
                     document.getElementById("campo5").value = '';
@@ -52,7 +52,7 @@ function stateChangedUsuario()
 {
 	if (xmlhttp.readyState == 4)
 	{
-		if(xmlhttp.responseText == 1)
+		if(xmlhttp.responseText.charAt(0) == '1')
 		{
                     alert ("El nombre de usuario ya existe en la base de datos.");
                     document.getElementById("campo8").value = '';
@@ -85,7 +85,7 @@ function stateChangedCorreo()
 {
 	if (xmlhttp.readyState == 4)
 	{
-		if(xmlhttp.responseText == 1)
+		if(xmlhttp.responseText.charAt(0) == '1')
 		{
                     alert ("El correo electronico ya existe en la base de datos.");
                     document.getElementById("campo4").value = '';

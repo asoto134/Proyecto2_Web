@@ -53,7 +53,7 @@ if (isset($_POST['entrar']))
                 }
             }
             
-            if($Ornitologo){header("Location: index.html");}
+            if($Ornitologo){header("Location: index2.php");}
             else{header("Location: index.php");}
             actualizar_cookie($_POST['logNomusuario'],md5($_POST['logContrasenia']),$row['permisos']);
       }

@@ -1,3 +1,67 @@
+<?php
+include ("settings.php");
+include ("common.php");
+//echo $_COOKIE['admin'];
+// echo "<script>alert(" . $_COOKIE['admin'] . ");</script>";
+//error_reporting(0);
+//Al presionar el boton de login
+$administrador = $_COOKIE['admin'];
+
+//$_COOKIE['casaculturalamon_id'];
+
+//    $conexionConBaseDeDatos=mysql_connect(HOST, USER, PASS);
+//
+//    @mysql_select_db(DB, $conexionConBaseDeDatos) or die("Error en la seleccion, '$php_errormsg'");
+//
+//    $consultaSql = "SELECT NomUsuario, Contrasenia, permisos FROM usuario WHERE NomUsuario = '" . $_COOKIE['admin'] . "'";
+//
+//    $resultadoConsulta = mysql_query($consultaSql);   
+//   
+//   if (mysql_num_rows($resultadoConsulta) == 0) 
+//   {
+//       echo "<script>alert(\"El usuario no existe en la base de datos.\");</script>";
+//       echo "<script>javascript:history.back();</script>";
+//   }
+//   
+//   
+//   while ($row = mysql_fetch_array($resultadoConsulta))
+//   {
+//      if (md5($_POST['logContrasenia']) != $row['Contrasenia']) 
+//      {
+//          echo "<script>alert(\"Password incorrecto.\");</script>";
+//          echo "<script>javascript:history.back();</script>";
+//      }
+//      else
+//      {
+//
+//            $nom_Usuario = $_POST['logNomusuario'];
+//            $Ornitologo = FALSE;
+//
+//            $consultaSql2 = "SELECT Tipo_de_Persona_idTipo_de_Persona FROM persona INNER JOIN usuario 
+//                      ON persona.Usuario_idUsuario = usuario.idUsuario
+//                      WHERE usuario.NomUsuario = '$nom_Usuario'";
+//            
+//            $resultadoConsulta2 = mysql_query($consultaSql2);
+//            While ($row2 = mysql_fetch_array($resultadoConsulta2))
+//            {
+//                if($row2['Tipo_de_Persona_idTipo_de_Persona'] == 1)
+//                {
+//                    $Ornitologo = TRUE;
+//                }
+//            }
+//            
+//            if($Ornitologo){header("Location: index2.html");}
+//            else{header("Location: index.php");}
+//            actualizar_cookie($_POST['logNomusuario'],md5($_POST['logContrasenia']),$row['permisos']);
+//      }
+//   }
+//    mysql_close($conexionConBaseDeDatos);
+
+  
+?>
+
+
+
 <!DOCTYPE HTML>
 <!--
 	Prologue by HTML5 UP
@@ -55,8 +119,14 @@
 							
 							-->
 							<ul>
-								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
-								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Portfolio</span></a></li>
+								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Introduccion</span></a></li>
+                                                                <?php
+                                                                if($administrador == 1)
+                                                                {
+                                                                        echo '<li><a href="#Administracion" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Administracion</span></a></li>';
+                                                                }
+                                                                ?>
+								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Hallazgos</span></a></li>
 								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
 								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
 							</ul>
@@ -87,31 +157,54 @@
 						<div class="container">
 
 							<header>
-								<h2 class="alt">Hi! I'm <strong>Prologue</strong>, a <a href="http://html5up.net/license">free</a> responsive<br />
-								site template designed by <a href="http://html5up.net">HTML5 UP</a>.</h2>
-								<p>Ligula scelerisque justo sem accumsan diam quis<br />
-								vitae natoque dictum sollicitudin elementum.</p>
+								<h2 class="alt"><strong>Bienvenido Usuario</strong>
+                                                                <br/>
+								</h2>
+								<p>
+                                                                    La asociación costarricense de ornitología pone a su disposicion este sistema
+                                                                <br />
+                                                                    en el cual podrá guardar todos sus descubrimientos.
+								</p>
 							</header>
 							
 							<footer>
-								<a href="#portfolio" class="button scrolly">Magna Aliquam</a>
+								<a href="#portfolio" class="button scrolly">Mira tus hallazgos</a>
 							</footer>
 
 						</div>
 					</section>
+                                
+                                
+                                <!-- Administracion -->
+                                <?php
+                                if($administrador == 1)
+                                {
+                                    echo '
+                                            <section id="Administracion" class="three">
+                                                    <div class="container">
+
+                                                        <header>
+                                                                <h2>Prueba</h2>
+                                                        </header>
+
+                                                        <p>Esto es una prueba para ver como agregar una pestaña de menu administrador.</p>
+
+                                                    </div>
+                                            </section>
+                                                                            ';
+                                }
+                                ?>                                
+                                
 					
 				<!-- Portfolio -->
 					<section id="portfolio" class="two">
 						<div class="container">
 					
 							<header>
-								<h2>Portfolio</h2>
+								<h2>Hallazgos</h2>
 							</header>
 							
-							<p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
-							egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
-							Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis 
-							fusce hendrerit lacus ridiculus.</p>
+							<p>En esta sección puede observar todos sus hallazgos.</p>
 						
 							<div class="row">
 								<div class="4u">
