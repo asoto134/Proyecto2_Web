@@ -633,13 +633,13 @@ CREATE TABLE `pajaros_x_persona` (
   `Pajaro_idPajaro` int(11) NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos del pajaro.',
   `Persona_idPersona` int(11) NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de la persona.',
   `Color_idColor` int(11) NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos del color.',
-  `Fotografia_idFotografia` int(11) NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de la fotografia.',
   `Zona_de_Vida_idZona de Vida` int(11) NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de la zona de vida.',
   `fechaCreacion` date DEFAULT NULL COMMENT 'Fecha de creacion de la tupla.',
   `usuarioCreacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de creacion de la tupla.',
   `fechaUltimaModificacion` date DEFAULT NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
   `usuarioUltimaModificacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
-  `Especie_idEspecie` int(11) NOT NULL
+  `Especie_idEspecie` int(11) NOT NULL,
+  `Fotografia_idFotografia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tabla donde se guardan los datos de las aves que ha visto cada persona.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1029,7 +1029,7 @@ CREATE TABLE `usuario` (
   `fechaUltimaModificacion` date DEFAULT NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
   `usuarioUltimaModificacion` varchar(20) DEFAULT NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Tabla donde se guardan los datos de usuario de la persona.';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Tabla donde se guardan los datos de usuario de la persona.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1038,7 +1038,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'asoto','81dc9bdb52d04dc20036dbd8313ed055',2,NULL,'2015-05-30','root@localhost',NULL,NULL),(2,'asoto','81dc9bdb52d04dc20036dbd8313ed055',2,NULL,'2015-05-30','root@localhost',NULL,NULL);
+INSERT INTO `usuario` VALUES (1,'asoto','81dc9bdb52d04dc20036dbd8313ed055',2,NULL,'2015-05-30','root@localhost',NULL,NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1187,4 +1187,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-30 15:59:03
+-- Dump completed on 2015-05-30 21:15:22

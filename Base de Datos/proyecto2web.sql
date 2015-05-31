@@ -260,6 +260,25 @@ COMMENT = 'Tabla donde se guardan los colores de las aves.';
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
+-- Table `Zona_de_Vida`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Zona_de_Vida` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `Zona_de_Vida` (
+  `idZona_de_Vida` INT NOT NULL AUTO_INCREMENT COMMENT 'Id que se asigna automaticamente por la base de datos a cada zona de vida.',
+  `Zona_de_Vida` VARCHAR(45) NULL COMMENT 'Nombre de la zona de vida.',
+  `fechaCreacion` DATE NULL COMMENT 'Fecha de creacion de la tupla.',
+  `usuarioCreacion` VARCHAR(20) NULL COMMENT 'Usuario de creacion de la tupla.',
+  `fechaUltimaModificacion` DATE NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
+  `usuarioUltimaModificacion` VARCHAR(20) NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
+  PRIMARY KEY (`idZona_de_Vida`))
+ENGINE = InnoDB
+COMMENT = 'Tabla que se utiliza para guardar datos de la zona de vida de cada ave.';
+
+SHOW WARNINGS;
+
+-- -----------------------------------------------------
 -- Table `Fotografia`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Fotografia` ;
@@ -283,25 +302,6 @@ COMMENT = 'Tabla donde se guardan las imagenes de cada usuario.';
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `Zona_de_Vida`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Zona_de_Vida` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `Zona_de_Vida` (
-  `idZona_de_Vida` INT NOT NULL AUTO_INCREMENT COMMENT 'Id que se asigna automaticamente por la base de datos a cada zona de vida.',
-  `Zona_de_Vida` VARCHAR(45) NULL COMMENT 'Nombre de la zona de vida.',
-  `fechaCreacion` DATE NULL COMMENT 'Fecha de creacion de la tupla.',
-  `usuarioCreacion` VARCHAR(20) NULL COMMENT 'Usuario de creacion de la tupla.',
-  `fechaUltimaModificacion` DATE NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
-  `usuarioUltimaModificacion` VARCHAR(20) NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
-  PRIMARY KEY (`idZona_de_Vida`))
-ENGINE = InnoDB
-COMMENT = 'Tabla que se utiliza para guardar datos de la zona de vida de cada ave.';
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
 -- Table `Pajaros_X_Persona`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Pajaros_X_Persona` ;
@@ -311,13 +311,13 @@ CREATE TABLE IF NOT EXISTS `Pajaros_X_Persona` (
   `Pajaro_idPajaro` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos del pajaro.',
   `Persona_idPersona` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de la persona.',
   `Color_idColor` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos del color.',
-  `Fotografia_idFotografia` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de la fotografia.',
   `Zona_de_Vida_idZona de Vida` INT NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de la zona de vida.',
   `fechaCreacion` DATE NULL COMMENT 'Fecha de creacion de la tupla.',
   `usuarioCreacion` VARCHAR(20) NULL COMMENT 'Usuario de creacion de la tupla.',
   `fechaUltimaModificacion` DATE NULL COMMENT 'Fecha de la ultima modificacion de la tupla.',
   `usuarioUltimaModificacion` VARCHAR(20) NULL COMMENT 'Usuario de la ultima modificacion de la tupla.',
-  `Especie_idEspecie` INT NOT NULL)
+  `Especie_idEspecie` INT NOT NULL,
+  `Fotografia_idFotografia` INT NOT NULL)
 ENGINE = InnoDB
 COMMENT = 'Tabla donde se guardan los datos de las aves que ha visto cada persona.';
 
@@ -656,6 +656,29 @@ $$
 SHOW WARNINGS$$
 
 USE `proyecto2web`$$
+DROP TRIGGER IF EXISTS `Zona_de_Vida_BEFORE_INSERT` $$
+SHOW WARNINGS$$
+USE `proyecto2web`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Zona_de_Vida_BEFORE_INSERT` BEFORE INSERT ON `Zona_de_Vida` FOR EACH ROW
+SET    
+NEW.fechaCreacion = sysdate(),
+NEW.usuarioCreacion = current_user();
+$$
+
+SHOW WARNINGS$$
+
+USE `proyecto2web`$$
+DROP TRIGGER IF EXISTS `Zona_de_Vida_BEFORE_UPDATE` $$
+SHOW WARNINGS$$
+USE `proyecto2web`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Zona_de_Vida_BEFORE_UPDATE` BEFORE UPDATE ON `Zona_de_Vida` FOR EACH ROW
+SET    
+NEW.fechaUltimaModificacion = sysdate(),
+NEW.usuarioUltimaModificacion = current_user(); $$
+
+SHOW WARNINGS$$
+
+USE `proyecto2web`$$
 DROP TRIGGER IF EXISTS `Fotografia_BEFORE_INSERT` $$
 SHOW WARNINGS$$
 USE `proyecto2web`$$
@@ -676,29 +699,6 @@ SET
 NEW.fechaUltimaModificacion = sysdate(),
 NEW.usuarioUltimaModificacion = current_user(); 
 $$
-
-SHOW WARNINGS$$
-
-USE `proyecto2web`$$
-DROP TRIGGER IF EXISTS `Zona_de_Vida_BEFORE_INSERT` $$
-SHOW WARNINGS$$
-USE `proyecto2web`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Zona_de_Vida_BEFORE_INSERT` BEFORE INSERT ON `Zona_de_Vida` FOR EACH ROW
-SET    
-NEW.fechaCreacion = sysdate(),
-NEW.usuarioCreacion = current_user();
-$$
-
-SHOW WARNINGS$$
-
-USE `proyecto2web`$$
-DROP TRIGGER IF EXISTS `Zona_de_Vida_BEFORE_UPDATE` $$
-SHOW WARNINGS$$
-USE `proyecto2web`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `proyecto2web`.`Zona_de_Vida_BEFORE_UPDATE` BEFORE UPDATE ON `Zona_de_Vida` FOR EACH ROW
-SET    
-NEW.fechaUltimaModificacion = sysdate(),
-NEW.usuarioUltimaModificacion = current_user(); $$
 
 SHOW WARNINGS$$
 
