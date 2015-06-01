@@ -79,7 +79,7 @@ if (isset($_POST['entrar']))
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Asociación Costarricense de Ornitología</title>
+    <title>Ornitología de Costa Rica</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -113,7 +113,7 @@ if (isset($_POST['entrar']))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Asociación Costarricense de Ornitología</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Ornitología Costa Rica</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -156,25 +156,25 @@ if (isset($_POST['entrar']))
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Registro</h2>
-                    <h3 class="section-subheading text-muted">Registrese para poder acceder al contenido</h3>
+                    <h3 class="section-subheading text-muted">Regístrese para poder comenzar su aventura</h3>
                 </div>
             </div>
 
 
         <form action="registro.php" method="post" >
-            <legend>Formulario de Registro</legend>
+            <legend align="center"> Formulario de Registro </legend>
                 <br/><br/>
-                <table style="float: left;" >
+                <table style="float: left; margin-left:310px; margin-bottom:50px; margin-top:50px;" >
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Nombre:</label>
+                        <label style="width: 125px; display: block; float: left;" >Nombre:</label>
                         <input id="campo1" name="nombre" type="text" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Apellido:</label>
+                        <label style="width: 125px; display: block; float: left;" >Apellido:</label>
                         <input id="campo2" name="apellidos" type="text" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
@@ -190,62 +190,62 @@ if (isset($_POST['entrar']))
                   <tr><td>&nbsp; </td></tr>
 -->
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >&nbsp;</label>
-                        <label style="width: 200px; display: block; float: left;" >ejemplo: 123456789</label>
+                        <label style="width: 125px; display: block; float: left;" >&nbsp;</label>
+                        <label style="width: 200px; display: block; float: left;" >Ejemplo: 123456789</label>
                     </td>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Cédula:</label>
+                        <label style="width: 125px; display: block; float: left;" >Cédula:</label>
                         <input id="campo5" name="cedula" type="text" onkeypress="return justNumbers(event);" onchange="verificarCedula(this.value)" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >&nbsp;</label>
-                        <label style="width: 200px; display: block; float: left;" >ejemplo: 22446688</label>
+                        <label style="width: 125px; display: block; float: left;" >&nbsp;</label>
+                        <label style="width: 200px; display: block; float: left;" >Ejemplo: 22446688</label>
                     </td>
                   </tr>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Teléfono:</label>
+                        <label style="width: 125px; display: block; float: left;" >Teléfono:</label>
                         <input id="campo7" name="telefono" type="text" onkeypress="return justNumbers(event);"  style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
-                        <label for="ornitologo" style="width: 200px; display: block; float: left;" >Ornitologo:</label>
+                        <label for="ornitologo" style="width: 125px; display: block; float: left;" >Ornitologo:</label>
                         <input type="radio" name="tipoPersona" id="rescatista" value="Ornitologo" />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
-                        <label for="aficionado" style="width: 200px; display: block; float: left;" >Aficionado:</label>
+                        <label for="aficionado" style="width: 125px; display: block; float: left;" >Aficionado:</label>
                         <input type="radio" name="tipoPersona" id="adoptante" value="Aficionado" checked  />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
                 </table>
 
-                <table style="float: left;">
+                <table style="float: left; margin-top:50px;">
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Nombre Usuario:</label>
+                        <label style="width: 125px; display: block; float: left;" >Nombre Usuario:</label>
                         <input id="campo8" name="nomUsuario" type="text" onchange="verificarUsuario(this.value)" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Contraseña:</label>
+                        <label style="width: 125px; display: block; float: left;" >Contraseña:</label>
                         <input id="campo9" name="contrasenia" type="password" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
                   <tr>
                     <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Email:</label>
+                        <label style="width: 125px; display: block; float: left;" >Email:</label>
                         <input id="campo4" name="email" type="text" onchange="verificarCorreo(this.value)" style="width: 200px; display: block; float: left;" />
                     </td>
                   </tr>
@@ -254,9 +254,9 @@ if (isset($_POST['entrar']))
 
 
                 </table>
-                <div style="clear: both;"></div>
+                <div style="clear: both; "></div>
                 
-                <input id="campo10" name="enviar" type="submit" value="Enviar" />                
+                <input id="campo10" name="enviar" type="submit" value="Enviar" style="margin-left:701px;"/>                
                 
 	</form>
 
@@ -276,8 +276,8 @@ if (isset($_POST['entrar']))
         </div>
 
         <form id="loggin" action="index.php" method="post">
-                <legend>Entrar al Sistema</legend>
-                <table style="float: left;">
+                <legend align="center">Entrar al Sistema</legend>
+                <table style="float: left; margin-left:500px; margin-bottom:50px; margin-top:50px;">
                   <tr>
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Nombre Usuario:</label>
@@ -294,7 +294,7 @@ if (isset($_POST['entrar']))
                 </table>
                    <div style="clear: both;"></div>
                    <br/><br/>
-                   <input id="campo3" name="entrar" type="submit" value="Entrar" />       
+                   <input id="campo3" name="entrar" type="submit" value="Entrar" style="margin-left:701px;"/>       
         </form>
 
 

@@ -100,7 +100,6 @@ $administrador = $_COOKIE['admin'];
 						<div id="logo">
 							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
 							<h1 id="title">Jane Doe</h1>
-							<p>Hyperspace Engineer</p>
 						</div>
 
 					<!-- Nav -->
@@ -126,9 +125,9 @@ $administrador = $_COOKIE['admin'];
                                                                         echo '<li><a href="#Administracion" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Administracion</span></a></li>';
                                                                 }
                                                                 ?>
-								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Hallazgos</span></a></li>
-								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>
-								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Mis Hallazgos</span></a></li>
+								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Mi Perfil</span></a></li>
+								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contacto</span></a></li>
 							</ul>
 						</nav>
 						
@@ -141,7 +140,6 @@ $administrador = $_COOKIE['admin'];
 							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 							<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-							<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
 							<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
 						</ul>
 				
@@ -201,7 +199,7 @@ $administrador = $_COOKIE['admin'];
 						<div class="container">
 					
 							<header>
-								<h2>Hallazgos</h2>
+								<h2>Mis Hallazgos</h2>
 							</header>
 							
 							<p>En esta sección puede observar todos sus hallazgos.</p>
@@ -260,17 +258,12 @@ $administrador = $_COOKIE['admin'];
 						<div class="container">
 
 							<header>
-								<h2>About Me</h2>
+								<h2>Sobre Mí</h2>
 							</header>
 
 							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
 							
-							<p>Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus 
-							ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae 
-							laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem 
-							parturient nulla quam placerat viverra mauris non cum elit tempus ullamcorper 
-							dolor. Libero rutrum ut lacinia donec curae mus vel quisque sociis nec 
-							ornare iaculis.</p>
+							<p>Descripción del usuario y su trabajo.</p>
 
 						</div>
 					</section>
@@ -280,13 +273,10 @@ $administrador = $_COOKIE['admin'];
 						<div class="container">
 
 							<header>
-								<h2>Contact</h2>
+								<h2>Contactar a este usuario</h2>
 							</header>
 
-							<p>Elementum sem parturient nulla quam placerat viverra 
-							mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia 
-							donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc 
-							orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
+							<p>Esta sección permite contactar con el usuario, hacer cualquier consulta sobre sus hallazgos o consultas generales sobre ornitología.</p>
 							
 							<form method="post" action="#">
 								<div class="row 50%">
