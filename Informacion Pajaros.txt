@@ -1,0 +1,514 @@
+Cuclillo 
+Nombre cientifico: Coccyzus erythropthalmus
+Nombre comun: Cuclillo Pico Negro
+Nombre en inglés: Black Billed Cuckoo
+
+Clase: Aves
+Orden: Cuculiformes
+Familia: Cuculidae
+Género: Coccyzus
+Especie: C. erythropthalmus
+
+Habitat:
+Vive en áreas de crecimiento secundario, matorrales, áreas entresacadas y bordes de bosque. 
+
+Tipo de pico:
+Pico negro
+
+--------------------------------------------------------------------------------------------------
+Chotacabras
+Nombre cientifico: Antrostomus saturatus
+Nombre comun: chotacabras sombrio(Tres Cobijas)
+Nombre en ingles: Dusky Nightjar
+
+Clase: Aves
+Orden: Caprimulgiformes
+Familia: Caprimulgidae
+Género: Antrostomus
+Especie: A. saturatus 
+
+Habitat:
+Prefiere los bordes y aperturas en el dosel de los bosques montanos, inclusive la transición de bosque a páramo, 
+los potreros de montañas altas con árboles esparcidos y los claros.
+
+Cantidad de huevos:
+Ponen 1 huevo blanco color tiza opaco, que mide 28.65 por 21.62 cm.
+
+tipo pico:
+pico negro
+
+---------------------------------------------------------------------------------------------------------
+Martines
+Nombre cientifico: Chloroceryle aenea
+Nombre comun: Martín pescador enano
+Nombre en ingles: American Pygmy Kingfisher
+
+Clase: Aves
+Suborden: Alcedines
+Orden: Coraciiformes
+Familia: Alcedinidae
+Género: Chloroceryle
+Especie: C. aenea
+
+Habitat:
+Habitan cerca de corrientes de agua y pantanos situados en el interior del bosque, y también en canales 
+pequeños dentro de manglares, donde se mantienen en sitios sombreados.
+
+cantidad de huevos:
+Ponen de 3 a 4 huevos de color blanco.
+
+tipo pico:
+pico negro
+
+-----------------------------------------------------------------------------------------------------------
+Bucos
+Nombre cientifico: Malacoptila panamensis
+Nombre comun: Buco barbón
+Nombre en ingles: White- Whiskered Puffbird
+
+Clase: Aves
+Orden: Piciformes
+Familia: Bucconidae
+Género: Malacoptila
+Especie: M. panamensis
+
+Habitat:
+Viven en el sotobosque y los niveles intermedios del bosque, áreas sombreadas 
+parcialmente despejadas (sobre todo en cacaotales) o en zonas de crecimiento secundario viejo.
+
+cantidad de huevos:
+Ponen 2 huevos blancos y 3 en raras ocasiones
+
+tipo de pico:
+Amarillento con la punta fusca
+---------------------------------------------------------------------------------------------------------------
+Jacamares
+Nombre cientifico: Jacamerops aureus
+Nombre comun: Jacamar grande
+Nombre en ingles: Great Jacamar
+
+Clase: Aves
+Orden: Piciformes
+Familia: Galbulidae
+Género: Jacamerops
+Especie: J. aureus
+
+Habitat:
+Frecuenta los niveles medios del dosel en los bosques húmedos y en los bosques 
+secundarios vecinos altos y sombreados; desciende más en los bordes y las aberturas.
+
+tipo de pico:
+con el pico puntiagudo más grueso, corto y ligeramente curvo hacia abajo.
+
+Cantidad de huevos
+Los huevos no se han descrito aún(?)
+
+------------------------------------------------------------------------------------------------------------
+Reinitas
+-------------------------------------------------------------------------------------------------------------
+1. Nombre cientifico: Basileuterus culicivorus
+Nombre comun: Reinita Coronidorada
+Nombre en ingles: Golden Crowned Warbler
+
+Clase:	Aves
+Orden:	Passeriformes
+Familia: Parulidae
+Género:	Basileuterus
+Especie: B. culicivorus
+
+Habitat:
+Vive en el sotobosque de los bosques de montaña, los bordes del bosque y
+ áreas adyacentes, entre los 300 y los 2150 m de altitud.
+
+Cantidad de huevos:
+ La hembra pone 3 huevos blancos, con manchas de color castaño.
+
+tipo de pico:
+El pico tiene la parte superior negruzca y la inferior color cuerno
+----------------------------------------------------------------------------------------------------------------
+2. Nombre cientifico: Basileuterus rufifrons
+Nombre comun: Reinita cabecicastaña
+Nombre en ingles: Rufous Capped Warbler
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Parulidae
+Género: Basileuterus
+Especie:B. rufifrons
+
+Habitat:
+En el interior y borde del bosque seco, en otros tipos de bosque prefiere las arboledas no muy densas, 
+cafetales, bosques secundarios avanzados y cercas vivas.
+
+Cantidad de huevos:
+Ponen de 2 a 3 huevos blancos con finas salpicaduras color canela. 
+
+tipo de pico:
+pico grueso y negro
+--------------------------------------------------------------------------------------------------------------------
+
+3. Nombre cientifico: Basileuterus tristriatus
+Nombre comun: Reinita cabecilistada
+Nombre en ingles: Three-striped Warbler
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Parulidae
+Género: Basileuterus
+Especie: B. tristriatus 
+
+Habitat:
+Frecuenta el sotobosque y los bordes adyacentes de los bosques primarios y secundarios de montañas altas.
+
+Cantidad de huevos:
+ 
+
+tipo de pico:
+El pico es de color cuerno pálido con la base del culmen negruzca
+---------------------------------------------------------------------------------------------------------------------
+4. Nombre cientifico: Helmitheros vermivorum
+Nombre comun: Reinita gusanera
+Nombre en ingles: Worm-eating Warbler
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Parulidae
+Género: Helmitheros
+ 
+
+Habitat:
+Durante el invierno frecuenta matorrales y sotobosques, especialmente en los bosques perennifolios del noroeste.
+
+Cantidad de huevos:
+ 
+tipo de pico:
+El pico es color cuerno con el culmen fusco
+-------------------------------------------------------------------------------------------------------------------------
+5.Nombre cientifico: Mniotilta varia
+Nombre comun: Reinita trepadora
+Nombre en ingles: Black And White Warbler
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Parulidae
+Género: Mniotilta
+
+
+Habitat:
+Habita prácticamente en cualquier matorral alto durante la migración, aunque en invierno prefiere los árboles de buen tamaño en el bosque, 
+áreas parcialmente despejadas, de crecimiento secundario viejo, parques y jardines.
+
+Cantidad de huevos:
+ 
+tipo de pico:
+El pico es color cuerno 
+----------------------------------------------------------------------------------------------------------------------
+6.
+Nombre cientifico: Protonotaria citrea
+Nombre comun: Reinita cabecidorada
+Nombre en ingles: Prothonotary Warbler
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Parulidae
+Género: Protonotaria
+
+
+Habitat:
+Prefiere los manglares y matorrales adyacentes a los ríos, quebradas, estanques y lagos.
+ En general se mantiene a menos de 6 cm. del suelo.
+
+Cantidad de huevos:
+
+tipo de pico:
+El pico es grande, aunque de punta fina.
+
+---------------------------------------------------------------------------------------------------------------------------
+Pinzones
+------------------------------------------------------------------------------------------------------------------------
+Nombre cientifico: Arremonops conirostris
+Nombre comun: Pinzón Cabecilistado
+Nombre en ingles: Black-striped Sparrow
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Emberizidae
+Género: Arremonops
+
+
+Habitat:
+ Frecuentan los matorrales bajos, campos enmalezados, áreas de crecimiento secundario joven, 
+cultivos con sombra, jardines y bordes de bosque en áreas húmedas.
+
+Cantidad de huevos:
+Ponen 2 huevos y en pocas ocasiones 3
+
+tipo de pico:
+El pico exhibe la base amarilla.
+-------------------------------------------------------------------------------------------------------------------
+Nombre cientifico: Arremon aurantiirostris
+Nombre comun: Pico de oro, pico rojo, pinzón piquinaranja
+Nombre en ingles: Orange Billed Sparrow
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Emberizidae
+Género: Arremon
+
+Habitat:
+Frecuentan el sotobosque oscuro de los bosques húmedos y bosques de crecimiento secundario alto.
+
+Cantidad de huevos:
+Ponen 2 huevos blancos lustrosos
+
+tipo de pico:
+ El pico anaranjado brillante
+El pico exhibe la base amarilla.
+---------------------------------------------------------------------------------------------------------------------------
+Suterreys
+---------------------------------------------------------------------------------------------------------------------------
+1. Nombre cientifico: Campylorhynchus rufinucha
+Nombre comun: Chico piojo, saltapiñuelas, soterrey nuquirrufo
+Nombre en ingles: Rufous Naped Wren
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Troglodytidae
+Género: Campylorhynchus
+
+Habitat:
+Frecuenta los bosques caducifolios y de galería, arboledas despejadas, áreas de crecimiento secundario, 
+matorrales bajos, árboles de sabana, cafetales y jardines alrededor de casas.
+
+Cantidad de huevos:
+Ponen de 3 a 5 huevos blancos
+
+tipo de pico:
+ El pico es más o menos largo y curvo
+--------------------------------------------------------------------------------------------------------------------------
+2.
+Nombre cientifico: Campylorhynchus zonatus
+Nombre comun: Soterrey matraquero
+Nombre en ingles: Band Backed Wren
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Troglodytidae
+Género: Campylorhynchus
+
+Habitat:
+Viven en las aberturas y bordes de los bosques muy húmedos, aunque se encuentran con más frecuencia en bosques entresacados, arboledas aledañas a los ríos, 
+árboles y arbustos alrededor de las casas y áreas de crecimiento secundario.
+
+Cantidad de huevos:
+Ponen de 3 a 5 huevos blancos
+
+tipo de pico:
+ El pico es gris parduzco
+---------------------------------------------------------------------------------------------------------------------------
+3.
+Nombre cientifico: Cistothorus platensis
+Nombre comun: Guachipelín, soterrey sabanero
+Nombre en ingles: Sedge Wren
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Troglodytidae
+Género: Cistothorus
+
+Habitat:
+Viven entre las praderas bajas anegadas con zacate alto, campos húmedos con matorrales y pantanos abiertos.
+
+Cantidad de huevos:
+Ponen 4 huevos blancos
+
+tipo de pico:
+ El pico es color canela
+
+--------------------------------------------------------------------------------------------------------------------------
+4.
+Nombre cientifico: Cyphorhinus phaeocephalus
+Nombre comun: Soterrey canoro
+Nombre en ingles: Song Wren
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Troglodytidae
+Género: Cyphorhinus
+
+Habitat:
+Viven en el sotobosque de los bosques muy húmedos y las áreas adyacentes de crecimiento secundario alto .
+
+Cantidad de huevos:
+Ponen 2 huevos blancos
+
+tipo de pico:
+ El pico es negro
+----------------------------------------------------------------------------------------------------------------------------
+Semilleros
+----------------------------------------------------------------------------------------------------------------------------
+1. Nombre cientifico: Sporophila funereus
+Nombre comun: Semillero picogrueso
+Nombre en ingles: Thick-billed Seed-Finch.
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Emberizidae
+Género: Sporophila
+
+Habitat:
+Frecuentan las áreas con gramíneas y herbáceas con arbustos y árboles esparcidos, crecimiento secundario con zacate alto, matorrales,
+ pantanos con arbustos y bordes de bosque.
+
+Cantidad de huevos:
+Ponen 2 huevos de color blanco opaco con un abundante moteado café y lila claro
+
+tipo de pico:
+El pico es  robusto y cónico
+------------------------------------------------------------------------------------------------------------------------
+2.
+ Nombre cientifico: Amaurospiza concolor
+Nombre comun: Semillero azulado
+Nombre en ingles: Blue Seedeater
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Cardinalidae
+Género: Amaurospiza
+
+Habitat:
+Frecuentan las hondonadas, los claros y los bordes en los bosques primarios
+ y secundarios donde exista crecimiento profuso de bambú.
+
+Cantidad de huevos:
+desconcido
+
+tipo de pico:
+el pico es grueso, pero cónico, no convexo 
+-----------------------------------------------------------------------------------------------------------------------
+3.
+Nombre cientifico: Tiaris olivaceus
+Nombre comun: Semillero cariamarillo
+Nombre en ingles: Yellow Faced Grassquit
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Emberizidae
+Género: Tiaris
+
+
+Habitat:
+Frecuenta campos enmalezados, potreros, bordes de carreteras y pastizales descuidados de zacate con semillas.
+
+Cantidad de huevos:
+Ponen de 2 a 3 huevos,
+
+tipo de pico:
+el pico es más agudo y cónico 
+-------------------------------------------------------------------------------------------------------------------
+4.
+Nombre cientifico: Volatinia jacarina
+Nombre comun: Semillerito negro azulado
+Nombre en ingles: Blue Black Grassquit
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Emberizidae
+Género: Volatinia
+
+Habitat:
+Frecuentan campos de gramíneas o herbáceas, matorrales bajos, sitios con arbustos y zonas claras con zacate,
+ bordes de carretera, y lotes baldíos en poblaciones rurales.
+
+Cantidad de huevos:
+Ponen 2 ó 3 huevos blancos o azulados,
+
+tipo de pico:
+pico cónico y puntiagudo
+-------------------------------------------------------------------------------------------------------------------------
+5.
+Nombre cientifico: Sporophila nuttingi
+Nombre comun: Semillero piquirrosado
+Nombre en ingles: 
+
+Clase: Aves
+Orden: Passeriformes
+Familia: Emberizidae
+Género: Sporophila
+
+Habitat:
+Frecuentan las áreas anegadas con gramíneas, generalmente en 
+las cercanías de un espejo de agua o pantano, rodeado de vegetación más alta.
+
+Cantidad de huevos:
+Ponen 2 huevos de color blanco verdoso,
+
+tipo de pico:
+ pico muy voluminoso, y grande
+-------------------------------------------------------------------------------------------------------------------------
+6.
+Nombre cientifico: Sporophila torqueola
+Nombre comun: Semillero de collar
+Nombre en ingles: White Collared Seedeater
+
+Clase:	Aves
+Orden:	Passeriformes
+Familia:	Emberizidae
+Género:	Sporophila
+
+
+Habitat:
+Habita principalmente en campos abiertos, en zonas de arbustos y malezas, tanto en zonas semiáridas 
+como en áreas húmedas, y desde el nivel del mar hasta cerca de los 2 000 m snm. 
+
+Cantidad de huevos:
+ dos huevos grises azulosos con manchas pardas 
+
+tipo de pico:
+ pico gordo, redondeado, fuerte y con una amplia base.
+------------------------------------------------------------------------------------------------------------------------
+7.
+Nombre cientifico: Sporophila minuta
+Nombre comun: Semillero pechicanelo
+Nombre en ingles: Ruddy Breasted Seedeater
+
+Clase:	Aves
+Orden:	Passeriformes
+Familia:	Emberizidae
+Género:	Sporophila
+
+
+Habitat:
+Habita sobre todo en campos abiertos, donde abundan los matorrales y pastos, y en sabanas; en tierras bajas de altas temperaturas. 
+También aparece en jardines, parques y campos de cultivo.
+
+Cantidad de huevos:
+ 
+
+tipo de pico:
+El pico es cónico, grueso en la base y relativamente corto.
+---------------------------------------------------------------------------------------------------------------------
+8.
+Nombre cientifico: Haplospiza rustica
+Nombre comun: Semillero pizarra
+Nombre en ingles: Slaty Finch
+
+Clase:	Aves
+Orden:	Passeriformes
+Familia:	Emberizidae
+Género:	Haplospiza
+
+Habitat:
+ Habita en zonas montañosas  habita las Cordilleras de Tilarán, Volcánica Central y de Talamanca
+
+Cantidad de huevos:
+ tres huevos completamente blancos
+
+tipo de pico:
+pico cónico y puntiagudo color gris
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+
+

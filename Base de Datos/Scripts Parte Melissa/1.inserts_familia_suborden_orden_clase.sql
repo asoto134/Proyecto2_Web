@@ -39,10 +39,23 @@ BEGIN
     values (id_Suborden,id_orden,nombre_suborden);
 END//
 
---
+-- Insert para cantidad de huevos
+DELIMITER //
+CREATE PROCEDURE add_cantidad_Huevos(IN id_cantidad_huevos int, IN cantidad_huevos varchar(50)) 
+BEGIN
+    insert into cantidad_huevos(idcantidad_Huevos,Cantidad)
+	
+    values (id_cantidad_huevos,cantidad_huevos);
+END//
+-- Insert para zona de vida
 
-
-
+DELIMITER //
+CREATE PROCEDURE add_zona_vida(IN id_zona_vida int, IN zona varchar(50)) 
+BEGIN
+    insert into zona_de_vida(idZona_de_Vida,Zona_de_Vida)
+	
+    values (id_zona_vida,zona);
+END//
 
 
 
