@@ -179,16 +179,6 @@ if (isset($_POST['entrar']))
                     </td>
                   </tr>
                   <tr><td>&nbsp; </td></tr>
-<!--
-                  <tr>
-                    <td width="500">
-                        <label style="width: 200px; display: block; float: left;" >Segundo Apellido:</label>
-                        <input id="campo3" name="segundoApellido" type="text" style="width: 200px; display: block; float: left;" />
-                    </td>
-                  </tr>
-
-                  <tr><td>&nbsp; </td></tr>
--->
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >&nbsp;</label>
                         <label style="width: 200px; display: block; float: left;" >ejemplo: 123456789</label>
