@@ -1,12 +1,12 @@
---Amanda Solano Astorga, mayo 26--
---Cambiar tabla Correo, para que acepta más de un correo--
+-- Amanda Solano Astorga, mayo 26--
+-- Cambiar tabla Correo, para que acepta más de un correo--
 ALTER TABLE `proyecto2web`.`correo` 
 CHANGE COLUMN `Correo` `Correo` VARCHAR(45) NOT NULL COMMENT 'correo de la persona.' ,
 DROP PRIMARY KEY,
 ADD PRIMARY KEY (`Persona_idPersona`, `Correo`);
 
---Buscar todos los correos de un usuarios--
---Recibe el id de los usuarios--
+--- Buscar todos los correos de un usuarios--
+-- Recibe el id de los usuarios--
 USE `proyecto2web`;
 DROP procedure IF EXISTS `obtener_correos`;
 
@@ -24,8 +24,8 @@ $$
 
 DELIMITER ;
 
---Buscar todos  los telefonos del usuario
---Recibe el id de los usuarios--
+-- Buscar todos  los telefonos del usuario
+-- Recibe el id de los usuarios--
 USE `proyecto2web`;
 DROP procedure IF EXISTS `obtener_telefonos`;
 
@@ -43,9 +43,9 @@ $$
 
 DELIMITER ;
 
---Mostrar los datos del usuario--
---Recibe el id del usuario y muestra: Id_Persona, ya que es la cédula
---nombre,apellido y el usuario
+-- Mostrar los datos del usuario--
+-- Recibe el id del usuario y muestra: Id_Persona, ya que es la cédula
+-- nombre,apellido y el usuario
 USE `proyecto2web`;
 DROP procedure IF EXISTS `mostrar_datos_usuario`;
 
@@ -61,7 +61,7 @@ $$
 
 DELIMITER ;
 
---Agregar contraseña, telefono y correo--
+-- Agregar contraseña, telefono y correo--
 USE `proyecto2web`;
 DROP procedure IF EXISTS `Cambiar_Datos`;
 
@@ -98,9 +98,9 @@ END
 $$
 
 DELIMITER ;
---Borrar datos un telefono o un correo--
---Recibe un usuario, un telefono y un correo y un tipo y en base a esto
---realiza los cambios necesarios
+-- Borrar datos un telefono o un correo--
+-- Recibe un usuario, un telefono y un correo y un tipo y en base a esto
+-- realiza los cambios necesarios
 USE `proyecto2web`;
 DROP procedure IF EXISTS `Borrar_Datos`;
 
