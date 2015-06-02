@@ -79,7 +79,7 @@ if (isset($_POST['entrar']))
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Ornitología de Costa Rica</title>
+    <title>Ornitología de Costa Rica - Bienvenido</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -314,7 +314,7 @@ if (isset($_POST['entrar']))
                     <ul class="timeline">
                         <li>
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/1.jpg" alt="">
+                                <img class="img-circle img-responsive" src="img/about/liz.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">

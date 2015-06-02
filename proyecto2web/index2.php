@@ -70,7 +70,7 @@ $administrador = $_COOKIE['admin'];
 -->
 <html>
 	<head>
-		<title>Prologue by HTML5 UP</title>
+		<title>Ornitología Costa Rica - Inicio</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -117,7 +117,10 @@ $administrador = $_COOKIE['admin'];
 								   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
 							
 							-->
-							<ul>
+                            
+                            <!-- etiquetas del menú izquierdo -->
+							<ul>                                
+                                
 								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Introduccion</span></a></li>
                                                                 <?php
                                                                 if($administrador == 1)
@@ -125,9 +128,14 @@ $administrador = $_COOKIE['admin'];
                                                                         echo '<li><a href="#Administracion" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Administracion</span></a></li>';
                                                                 }
                                                                 ?>
+                                <li><a href="#Registro" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Registro de Aves</span></a></li>
+                                
 								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Mis Hallazgos</span></a></li>
+                                
 								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Mi Perfil</span></a></li>
+                                
 								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contacto</span></a></li>
+                                
 							</ul>
 						</nav>
 						
@@ -156,12 +164,10 @@ $administrador = $_COOKIE['admin'];
 
 							<header>
 								<h2 class="alt"><strong>Bienvenido Usuario</strong>
-                                                                <br/>
+                                <br/>
 								</h2>
-								<p>
-                                                                    La asociación costarricense de ornitología pone a su disposicion este sistema
-                                                                <br />
-                                                                    en el cual podrá guardar todos sus descubrimientos.
+								<p>La asociación costarricense de ornitología pone a su disposicion este sistema
+                                <br />en el cual podrá guardar todos sus descubrimientos.
 								</p>
 							</header>
 							
@@ -177,6 +183,7 @@ $administrador = $_COOKIE['admin'];
                                 <?php
                                 if($administrador == 1)
                                 {
+                                    // pestaña de administrador
                                     echo '
                                             <section id="Administracion" class="three">
                                                     <div class="container">
@@ -191,8 +198,244 @@ $administrador = $_COOKIE['admin'];
                                             </section>
                                                                             ';
                                 }
-                                ?>                                
-                                
+                                ?> 
+                
+                
+                                <!-- Administracion -->
+                                <?php
+                                if($administrador == 1)
+                                {
+                                    // pestaña de administrador
+                                    echo '
+            <section id="Registro" class="three">
+                <div class="container">
+
+                    <header>
+                            <h2>Registro de Especies</h2>
+                    </header>
+
+                    <p>Formulario para Registro de Especies
+                       (Haga click en los menus para seleccionar la opcion)</p>
+
+                </div>
+
+                <form action="registro.php" method="post" >
+
+                    <table style="float: left; margin-left:80px; margin-top:50px;" >
+                      <tr>                                        
+                        <td width="500">
+                            <label style="width: 200px; display: inline-block; float: left;" >Nombre Común:</label>
+                            <input id="campo1" name="nombrecomun" type="text" style="width: 220px; display: block; float: left;" />
+                        </td>
+
+                        <th colspan="1"></th>
+
+                        <td width="500">
+                            <label style="width: 200px; display: inline-block; float: left;" >Nombre Científico:</label>
+                            <input id="campo2" name="nombrecientifico" type="text" style="width: 220px; display: block; float: left;" />
+                        </td>
+                      </tr>
+
+                      <tr><td>&nbsp; </td></tr>
+
+                      <tr>                                        
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Nombre Inglés:</label>
+                            <input id="campo1" name="nombreingles" type="text" style="width: 220px; display: block; float: left;" />
+                            <th colspan="1"></th>
+                        </td>
+
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Orden:</label>
+                            <select id="ordenpajaros" style="width: 220px;">
+                              <option value="cuclillos">Cuclillos</option>
+                              <option value="chotacabras">Chotacabras</option>
+                            </select>
+                        </td>
+                      </tr>
+
+                      <tr><td>&nbsp; </td></tr>
+
+                      <tr>
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Suborden:</label>
+                            <select id="subordenpajaros" style="width: 220px;">
+                              <option value="alcedines">Alcedines</option>
+                              <option value="passeri">Passeri</option>
+                            </select>
+                        <th colspan="1"></th>
+                        </td>
+
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Familia:</label>
+                            <select id="familiapajaros" style="width: 220px;">
+                              <option value="cuculidae">Cuculidae</option>
+                              <option value="caprimulgidae">Caprimulgidae</option>
+                            </select>
+                        </td>
+                      </tr>
+                      
+                      <tr><td>&nbsp; </td></tr>
+
+                      <tr>
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Género:</label>
+                            <select id="generopajaros" style="width: 220px;">
+                              <option value="crotophaga">Crotophaga</option>
+                              <option value="nyctidromus">Nyctidromus</option>
+                            </select>
+                        <th colspan="1"></th>
+                        </td>
+
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Especie:</label>
+                            <select id="especiepajaros" style="width: 220px;">
+                                  <option value="cuclillos">Cuclillos</option>
+                                  <option value="chotacabras">Chotacabras</option>
+                                  <option value="bucos">Bucos</option>
+                                  <option value="jacamares">Jacamares</option>
+                            </select>
+                        </td>
+                      </tr>
+                      
+                      <tr><td>&nbsp; </td></tr>
+                      
+                      <tr>
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Tipo de Pico:</label>
+                            <select id="tipopicopajaros" style="width: 220px;">
+                              <option value="picosurcos">Pico Sin Surco</option>
+                              <option value="picoamplio">Pico Amplio</option>
+                            </select>
+                        <th colspan="1"></th>
+                        </td>
+
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Cantidad de Huevos:</label>
+                            <select id="cantidadhuevospajaros" style="width: 220px;">
+                                  <option value="uno">1</option>
+                                  <option value="dos">2</option>
+                                  <option value="tres">3</option>
+                                  <option value="cuatro">4</option>
+                            </select>
+                        </td>
+                      </tr>
+                      
+                      <tr><td>&nbsp; </td></tr>
+                      
+                      <tr>
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Zona de Vida:</label>
+                            <select id="zonavidapajaros" style="width: 220px;">
+                                  <option value="bosque">Bosque Lluvioso</option>
+                                  <option value="tropical">Bosque Tropical</option>
+                                  <option value="seco">Bosque Seco</option>
+                                  <option value="humedo">Bosque Humedo</option>
+                            </select>
+                        <th colspan="1"></th>
+                        </td>
+
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Color:</label>
+                            <select id="colorpajaros" style="width: 220px;">
+                                  <option value="blanco">Blanco</option>
+                                  <option value="rojo">Rojo</option>
+                                  <option value="azul">Azul</option>
+                                  <option value="verde">Verde</option>
+                            </select>
+                        </td>
+                      </tr>
+
+                    </table>
+
+                    <div style="clear: both; "></div>
+                    <input id="campo10" name="boton_registrar" type="submit" value="Registrar" style="margin-left:40px;"/> 
+
+</form>
+
+                </section>          
+                                                                            ';
+                                }
+                                else{
+                                    echo '
+                            <section id="Registro" class="three">
+                            <div class="container">
+
+                                <header>
+                                        <h2>Registro de Aves</h2>
+                                </header>
+
+                                <p>Formulario para Registro de Aves
+                                   (Haga click en los menus para seleccionar la opcion)</p>
+
+                            </div>
+                        
+                        <form action="registro.php" method="post" >
+                    
+                        <table style="float: left; margin-left:390px; margin-top:50px;" >
+                            
+                          <tr>
+                            <td width="500">
+                                <label style="width: 150px; display: block; float: left;" >Zona de Vida:</label>
+                                <select style="width: 250px;">
+                                    
+                                  <option value="bosque">Bosque Lluvioso</option>
+                                  <option value="tropical">Bosque Tropical</option>
+                                  <option value="seco">Bosque Seco</option>
+                                  <option value="humedo">Bosque Humedo</option>
+                                    
+                                </select></td>
+                          </tr>
+                            
+                          <tr><td>&nbsp; </td></tr>
+                            
+                          <tr>                              
+                            <td width="500">
+                                <label style="width: 150px; display: block; float: left;" >Color:</label>
+                                <select style="width: 250px;">
+                                    
+                                  <option value="blanco">Blanco</option>
+                                  <option value="rojo">Rojo</option>
+                                  <option value="azul">Azul</option>
+                                  <option value="verde">Verde</option>
+                                    
+                                </select></td>
+                            </td>
+                          </tr>
+                            
+                          <tr><td>&nbsp; </td></tr>
+                            
+                          <tr>                              
+                            <td width="500">
+                                <label style="width: 150px; display: block; float: left;" >Especie:</label>
+                                <select style="width: 250px;">
+                                    
+                                  <option value="cuclillos">Cuclillos</option>
+                                  <option value="chotacabras">Chotacabras</option>
+                                  <option value="bucos">Bucos</option>
+                                  <option value="jacamares">Jacamares</option>
+                                    
+                                </select></td>
+                            </td>
+                          </tr>
+                            
+                          <tr><td>&nbsp; </td></tr>
+                            
+                        </table>
+    
+                        <div style="clear: both; "></div>
+                        <input id="campo10" name="boton_registrar" type="submit" value="Registrar" style="margin-left:40px;"/> 
+                    
+	</form>
+                        
+                    </section>
+                                    
+                                    ';
+                                }
+                                ?> 
+                
+                
+                              
 					
 				<!-- Portfolio -->
 					<section id="portfolio" class="two">
@@ -280,17 +523,17 @@ $administrador = $_COOKIE['admin'];
 							
 							<form method="post" action="#">
 								<div class="row 50%">
-									<div class="6u"><input type="text" name="name" placeholder="Name" /></div>
-									<div class="6u"><input type="text" name="email" placeholder="Email" /></div>
+									<div class="6u"><input type="text" name="name" placeholder="Nombre" /></div>
+									<div class="6u"><input type="text" name="email" placeholder="Correo Electrónico" /></div>
 								</div>
 								<div class="row 50%">
 									<div class="12u">
-										<textarea name="message" placeholder="Message"></textarea>
+										<textarea name="message" placeholder="Mensaje"></textarea>
 									</div>
 								</div>
 								<div class="row">
 									<div class="12u">
-										<input type="submit" value="Send Message" />
+										<input type="submit" value="Enviar Mensaje" />
 									</div>
 								</div>
 							</form>
@@ -305,7 +548,7 @@ $administrador = $_COOKIE['admin'];
 				
 				<!-- Copyright -->
 					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>&copy; Ornitología de Costa Rica. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				
 			</div>
