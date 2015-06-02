@@ -7,53 +7,21 @@ include ("common.php");
 //Al presionar el boton de login
 $administrador = $_COOKIE['admin'];
 
-//$_COOKIE['casaculturalamon_id'];
 
 //    $conexionConBaseDeDatos=mysql_connect(HOST, USER, PASS);
-//
+////
 //    @mysql_select_db(DB, $conexionConBaseDeDatos) or die("Error en la seleccion, '$php_errormsg'");
-//
+////
 //    $consultaSql = "SELECT NomUsuario, Contrasenia, permisos FROM usuario WHERE NomUsuario = '" . $_COOKIE['admin'] . "'";
-//
+////
 //    $resultadoConsulta = mysql_query($consultaSql);   
-//   
-//   if (mysql_num_rows($resultadoConsulta) == 0) 
-//   {
-//       echo "<script>alert(\"El usuario no existe en la base de datos.\");</script>";
-//       echo "<script>javascript:history.back();</script>";
-//   }
-//   
-//   
+////   
+//
 //   while ($row = mysql_fetch_array($resultadoConsulta))
 //   {
-//      if (md5($_POST['logContrasenia']) != $row['Contrasenia']) 
-//      {
-//          echo "<script>alert(\"Password incorrecto.\");</script>";
-//          echo "<script>javascript:history.back();</script>";
-//      }
-//      else
-//      {
+//       
+//      $row['Contrasenia'];
 //
-//            $nom_Usuario = $_POST['logNomusuario'];
-//            $Ornitologo = FALSE;
-//
-//            $consultaSql2 = "SELECT Tipo_de_Persona_idTipo_de_Persona FROM persona INNER JOIN usuario 
-//                      ON persona.Usuario_idUsuario = usuario.idUsuario
-//                      WHERE usuario.NomUsuario = '$nom_Usuario'";
-//            
-//            $resultadoConsulta2 = mysql_query($consultaSql2);
-//            While ($row2 = mysql_fetch_array($resultadoConsulta2))
-//            {
-//                if($row2['Tipo_de_Persona_idTipo_de_Persona'] == 1)
-//                {
-//                    $Ornitologo = TRUE;
-//                }
-//            }
-//            
-//            if($Ornitologo){header("Location: index2.html");}
-//            else{header("Location: index.php");}
-//            actualizar_cookie($_POST['logNomusuario'],md5($_POST['logContrasenia']),$row['permisos']);
-//      }
 //   }
 //    mysql_close($conexionConBaseDeDatos);
 
@@ -99,7 +67,7 @@ $administrador = $_COOKIE['admin'];
 					<!-- Logo -->
 						<div id="logo">
 							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
-							<h1 id="title">Jane Doe</h1>
+							<h1 id="title"><?php echo $_COOKIE['id'] ?></h1>
 						</div>
 
 					<!-- Nav -->
@@ -121,20 +89,17 @@ $administrador = $_COOKIE['admin'];
                             <!-- etiquetas del menú izquierdo -->
 							<ul>                                
                                 
-								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Introduccion</span></a></li>
+								<li><a href="#Perfil" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Perfil</span></a></li>
                                                                 <?php
                                                                 if($administrador == 1)
                                                                 {
-                                                                        echo '<li><a href="#Administracion" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Administracion</span></a></li>';
+                                                                        echo '<li><a href="#RegistroEspecies" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Registro de Especies</span></a></li>';
                                                                 }
                                                                 ?>
-                                <li><a href="#Registro" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Registro de Aves</span></a></li>
-                                
+                                                                <li><a href="#RegistroFotos" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Registro de Fotos</span></a></li>
 								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Mis Hallazgos</span></a></li>
-                                
-								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Mi Perfil</span></a></li>
-                                
-								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contacto</span></a></li>
+                                                                <li><a href="#Estadisticas" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Estadisticas</span></a></li>
+                                                                <li><a href="#Consultas" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Consultas</span></a></li>
                                 
 							</ul>
 						</nav>
@@ -159,11 +124,11 @@ $administrador = $_COOKIE['admin'];
 			<div id="main">
 
 				<!-- Intro -->
-					<section id="top" class="one dark cover">
+					<section id="Perfil" class="one dark cover">
 						<div class="container">
 
 							<header>
-								<h2 class="alt"><strong>Bienvenido Usuario</strong>
+								<h2 class="alt"><strong>Bienvenido <?php echo $_COOKIE['id'] ?></strong>
                                 <br/>
 								</h2>
 								<p>La asociación costarricense de ornitología pone a su disposicion este sistema
@@ -179,27 +144,7 @@ $administrador = $_COOKIE['admin'];
 					</section>
                                 
                                 
-                                <!-- Administracion -->
-                                <?php
-                                if($administrador == 1)
-                                {
-                                    // pestaña de administrador
-                                    echo '
-                                            <section id="Administracion" class="three">
-                                                    <div class="container">
-
-                                                        <header>
-                                                                <h2>Prueba</h2>
-                                                        </header>
-
-                                                        <p>Esto es una prueba para ver como agregar una pestaña de menu administrador.</p>
-
-                                                    </div>
-                                            </section>
-                                                                            ';
-                                }
-                                ?> 
-                
+              
                 
                                 <!-- Administracion -->
                                 <?php
@@ -207,7 +152,7 @@ $administrador = $_COOKIE['admin'];
                                 {
                                     // pestaña de administrador
                                     echo '
-            <section id="Registro" class="three">
+            <section id="RegistroEspecies" class="three">
                 <div class="container">
 
                     <header>
@@ -434,7 +379,16 @@ $administrador = $_COOKIE['admin'];
                                 }
                                 ?> 
                 
-                
+<!--                                Registro de fotos-->
+                                <section id="RegistroFotos" class="three">
+                                        <div class="container">
+
+                                            <header>
+                                                    <h2>REGISTRO DE FOTOS</h2>
+                                            </header>
+
+                                        </div>
+                                </section>                
                               
 					
 				<!-- Portfolio -->
@@ -496,52 +450,32 @@ $administrador = $_COOKIE['admin'];
 						</div>
 					</section>
 
-				<!-- About Me -->
-					<section id="about" class="three">
-						<div class="container">
+                                
+<!--                                Estadisticas-->
+                                <section id="Estadisticas" class="three">
+                                        <div class="container">
 
-							<header>
-								<h2>Sobre Mí</h2>
-							</header>
+                                            <header>
+                                                    <h2>ESTADISTICAS</h2>
+                                            </header>
 
-							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
-							
-							<p>Descripción del usuario y su trabajo.</p>
+                                        </div>
+                                </section> 
 
-						</div>
-					</section>
-			
-				<!-- Contact -->
-					<section id="contact" class="four">
-						<div class="container">
 
-							<header>
-								<h2>Contactar a este usuario</h2>
-							</header>
 
-							<p>Esta sección permite contactar con el usuario, hacer cualquier consulta sobre sus hallazgos o consultas generales sobre ornitología.</p>
-							
-							<form method="post" action="#">
-								<div class="row 50%">
-									<div class="6u"><input type="text" name="name" placeholder="Nombre" /></div>
-									<div class="6u"><input type="text" name="email" placeholder="Correo Electrónico" /></div>
-								</div>
-								<div class="row 50%">
-									<div class="12u">
-										<textarea name="message" placeholder="Mensaje"></textarea>
-									</div>
-								</div>
-								<div class="row">
-									<div class="12u">
-										<input type="submit" value="Enviar Mensaje" />
-									</div>
-								</div>
-							</form>
+<!--                                Consultas-->
+                                <section id="Consultas" class="three">
+                                        <div class="container">
 
-						</div>
-					</section>
-			
-			</div>
+                                            <header>
+                                                    <h2>CONSULTAS</h2>
+                                            </header>
+
+                                        </div>
+                                </section>                
+                                
+
 
 		<!-- Footer -->
 			<div id="footer">
