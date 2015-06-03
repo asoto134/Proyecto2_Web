@@ -7,14 +7,27 @@ include ("common.php");
 //Al presionar el boton de login
 $administrador = $_COOKIE['admin'];
 
+//Conecta con la base, prueba, hace la consulta y cierra conexión//
+$conexionC=mysql_connect(HOST, USER, PASS);
+ @mysql_select_db(DB, $conexionC) or die("Error en la seleccion, '$php_errormsg'");
+$ConsultaColor="CALL getColor();";
+$resultadoColor= \mysql_query($ConsultaColor);
+mysql_close($conexionC);
+//
+$conexionZ=mysql_connect(HOST, USER, PASS);
+ @mysql_select_db(DB, $conexionZ) or die("Error en la seleccion, '$php_errormsg'");
+$consultaZona = "CALL `proyecto2web`.`getZonadeVida`();";
+$resultadoZona = mysql_query($consultaZona);
+mysql_close($conexionZ);
+//
+$conexionE=mysql_connect(HOST, USER, PASS);
+ @mysql_select_db(DB, $conexionE) or die("Error en la seleccion, '$php_errormsg'");
+$consultaEspecie = "CALL getEspecie()";
+$resultadoEspecie = mysql_query($consultaEspecie);
+mysql_close($conexionE);
 
-//    $conexionConBaseDeDatos=mysql_connect(HOST, USER, PASS);
-////
-//    @mysql_select_db(DB, $conexionConBaseDeDatos) or die("Error en la seleccion, '$php_errormsg'");
-////
-//    $consultaSql = "SELECT NomUsuario, Contrasenia, permisos FROM usuario WHERE NomUsuario = '" . $_COOKIE['admin'] . "'";
-////
-//    $resultadoConsulta = mysql_query($consultaSql);   
+
+
 ////   
 //
 //   while ($row = mysql_fetch_array($resultadoConsulta))
@@ -147,6 +160,11 @@ $administrador = $_COOKIE['admin'];
               
                 
                                 <!-- Administracion -->
+                                <?php
+                                if($administrador == 1)
+                                {
+                                    // pestaña de administrador
+                                    echo '
             <section id="RegistroEspecies" class="three">
                 <div class="container">
 
@@ -294,311 +312,101 @@ $administrador = $_COOKIE['admin'];
 </form>
 
                 </section>          
+                                                                            ';
+                                }
+                                else{
+                                    echo '
+                            <section id="Registro" class="three">
+                            <div class="container">
+
+                                <header>
+                                        <h2>Registro de Aves</h2>
+                                </header>
+
+                                <p>Formulario para Registro de Aves
+                                   (Haga click en los menus para seleccionar la opcion)</p>
+
+                            </div>
+                        
+                        <form action="registro.php" method="post" >
+                    
+                        <table style="float: left; margin-left:390px; margin-top:50px;" >
+                            
+                          <tr>
+                            <td width="500">
+                                <label style="width: 150px; display: block; float: left;" >Zona de Vida:</label>
+                                <select style="width: 250px;">
+                         '   ?>
+                               <?php
+                               
+                                while($fila=mysql_fetch_array($resultadoZona)){
+    echo "<option value='".$fila['idZona_de_Vida']."'>".$fila['Zona_de_Vida']."</option>";
+        }
+                                 
                                 
+                          echo'      </select></td>
+                          
+                            </tr>
+                            
+                          <tr><td>&nbsp; </td></tr>
+                            
+                          <tr>                              
+                            <td width="500">
+                                <label style="width: 150px; display: block; float: left;" >Color:</label>
+                                <select style="width: 250px;">
+                                              '   ?>
+                               <?php
+                              while($fila=mysql_fetch_array($resultadoColor)){
+    echo "<option value='".$fila['idColor']."'>".$fila['Color']."</option>";
+                              }
+                                 
                                 
+                          echo'      </select></td>
+                          
+                            </td>
+                          </tr>
+                            
+                          <tr><td>&nbsp; </td></tr>
+                            
+                          <tr>                              
+                            <td width="500">
+                                <label style="width: 150px; display: block; float: left;" >Especie:</label>
+                                <select style="width: 250px;">
+                                                               '   ?>
+                               <?php
+                              while($fila=mysql_fetch_array($resultadoEspecie)){
+    echo "<option value='".$fila['idEspecie']."'>".$fila['Especie']."</option>";
+                              }
+                                 
                                 
-                                <?php
-//                                if($administrador == 1)
-//                                {
-//                                    // pestaña de administrador
-//                                    echo '
-//            <section id="RegistroEspecies" class="three">
-//                <div class="container">
-//
-//                    <header>
-//                            <h2>Registro de Especies</h2>
-//                    </header>
-//
-//                    <p>Formulario para Registro de Especies
-//                       (Haga click en los menus para seleccionar la opcion)</p>
-//
-//                </div>
-//
-//                <form action="registro.php" method="post" >
-//
-//                    <table style="float: left; margin-left:80px; margin-top:50px;" >
-//                      <tr>                                        
-//                        <td width="500">
-//                            <label style="width: 200px; display: inline-block; float: left;" >Nombre Común:</label>
-//                            <input id="campo1" name="nombrecomun" type="text" style="width: 220px; display: block; float: left;" />
-//                        </td>
-//
-//                        <th colspan="1"></th>
-//
-//                        <td width="500">
-//                            <label style="width: 200px; display: inline-block; float: left;" >Nombre Científico:</label>
-//                            <input id="campo2" name="nombrecientifico" type="text" style="width: 220px; display: block; float: left;" />
-//                        </td>
-//                      </tr>
-//
-//                      <tr><td>&nbsp; </td></tr>
-//
-//                      <tr>                                        
-//                        <td width="500">
-//                            <label style="width: 200px; display: block; float: left;" >Nombre Inglés:</label>
-//                            <input id="campo1" name="nombreingles" type="text" style="width: 220px; display: block; float: left;" />
-//                            <th colspan="1"></th>
-//                        </td>
-//
-//                        <td width="500">
-//                            <label style="width: 200px; display: block; float: left;" >Orden:</label>
-//                            <select id="ordenpajaros" style="width: 220px;">
-//                              <option value="cuclillos">Cuclillos</option>
-//                              <option value="chotacabras">Chotacabras</option>
-//                            </select>
-//                        </td>
-//                      </tr>
-//
-//                      <tr><td>&nbsp; </td></tr>
-//
-//                      <tr>
-//                        <td width="500">
-//                            <label style="width: 200px; display: block; float: left;" >Suborden:</label>
-//                            <select id="subordenpajaros" style="width: 220px;">
-//                              <option value="alcedines">Alcedines</option>
-//                              <option value="passeri">Passeri</option>
-//                            </select>
-//                        <th colspan="1"></th>
-//                        </td>
-//
-//                        <td width="500">
-//                            <label style="width: 200px; display: block; float: left;" >Familia:</label>
-//                            <select id="familiapajaros" style="width: 220px;">
-//                              <option value="cuculidae">Cuculidae</option>
-//                              <option value="caprimulgidae">Caprimulgidae</option>
-//                            </select>
-//                        </td>
-//                      </tr>
-//                      
-//                      <tr><td>&nbsp; </td></tr>
-//
-//                      <tr>
-//                        <td width="500">
-//                            <label style="width: 200px; display: block; float: left;" >Género:</label>
-//                            <select id="generopajaros" style="width: 220px;">
-//                              <option value="crotophaga">Crotophaga</option>
-//                              <option value="nyctidromus">Nyctidromus</option>
-//                            </select>
-//                        <th colspan="1"></th>
-//                        </td>
-//
-//                        <td width="500">
-//                            <label style="width: 200px; display: block; float: left;" >Especie:</label>
-//                            <select id="especiepajaros" style="width: 220px;">
-//                                  <option value="cuclillos">Cuclillos</option>
-//                                  <option value="chotacabras">Chotacabras</option>
-//                                  <option value="bucos">Bucos</option>
-//                                  <option value="jacamares">Jacamares</option>
-//                            </select>
-//                        </td>
-//                      </tr>
-//                      
-//                      <tr><td>&nbsp; </td></tr>
-//                      
-//                      <tr>
-//                        <td width="500">
-//                            <label style="width: 200px; display: block; float: left;" >Tipo de Pico:</label>
-//                            <select id="tipopicopajaros" style="width: 220px;">
-//                              <option value="picosurcos">Pico Sin Surco</option>
-//                              <option value="picoamplio">Pico Amplio</option>
-//                            </select>
-//                        <th colspan="1"></th>
-//                        </td>
-//
-//                        <td width="500">
-//                            <label style="width: 200px; display: block; float: left;" >Cantidad de Huevos:</label>
-//                            <select id="cantidadhuevospajaros" style="width: 220px;">
-//                                  <option value="uno">1</option>
-//                                  <option value="dos">2</option>
-//                                  <option value="tres">3</option>
-//                                  <option value="cuatro">4</option>
-//                            </select>
-//                        </td>
-//                      </tr>
-//                      
-//                      <tr><td>&nbsp; </td></tr>
-//                      
-//                      <tr>
-//                        <td width="500">
-//                            <label style="width: 200px; display: block; float: left;" >Zona de Vida:</label>
-//                            <select id="zonavidapajaros" style="width: 220px;">
-//                                  <option value="bosque">Bosque Lluvioso</option>
-//                                  <option value="tropical">Bosque Tropical</option>
-//                                  <option value="seco">Bosque Seco</option>
-//                                  <option value="humedo">Bosque Humedo</option>
-//                            </select>
-//                        <th colspan="1"></th>
-//                        </td>
-//
-//                        <td width="500">
-//                            <label style="width: 200px; display: block; float: left;" >Color:</label>
-//                            <select id="colorpajaros" style="width: 220px;">
-//                                  <option value="blanco">Blanco</option>
-//                                  <option value="rojo">Rojo</option>
-//                                  <option value="azul">Azul</option>
-//                                  <option value="verde">Verde</option>
-//                            </select>
-//                        </td>
-//                      </tr>
-//
-//                    </table>
-//
-//                    <div style="clear: both; "></div>
-//                    <input id="campo10" name="boton_registrar" type="submit" value="Registrar" style="margin-left:40px;"/> 
-//
-//</form>
-//
-//                </section>          
-//                                                                            ';
-//                                }
-                                 ?> 
+                          echo'      </select></td>
+                            </td>
+                          </tr>
+                            
+                          <tr><td>&nbsp; </td></tr>
+                            
+                        </table>
+    
+                        <div style="clear: both; "></div>
+                        <input id="campo10" name="boton_registrar" type="submit" value="Registrar" style="margin-left:40px;"/> 
+                    
+	</form>
+                        
+                    </section>
+                                    
+                                    ';
+                                }
+                                ?> 
                 
 <!--                                Registro de fotos-->
-                <section id="RegistroFotos" class="three">
-                <div class="container">
+                                <section id="RegistroFotos" class="three">
+                                        <div class="container">
 
-                    <header>
-                            <h2>Registro de Fotos</h2>
-                    </header>
+                                            <header>
+                                                    <h2>REGISTRO DE FOTOS</h2>
+                                            </header>
 
-                    <p>Formulario para Registro de Fotos</p>
-
-                </div>
-
-                <form action="registrarFoto.php" method="post" >
-
-                    <table style="float: left; margin-left:80px; margin-top:50px;" >
-                      <tr>                                        
-                        <td width="500">
-                            <label style="width: 200px; display: inline-block; float: left;" >Nombre Común:</label>
-                            <input id="campo1" name="nombrecomun" type="text" style="width: 220px; display: block; float: left;" />
-                        </td>
-
-                        <th colspan="1"></th>
-
-                        <td width="500">
-                            <label style="width: 200px; display: inline-block; float: left;" >Nombre Científico:</label>
-                            <input id="campo2" name="nombrecientifico" type="text" style="width: 220px; display: block; float: left;" />
-                        </td>
-                      </tr>
-
-                      <tr><td>&nbsp; </td></tr>
-
-                      <tr>                                        
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Nombre Inglés:</label>
-                            <input id="campo1" name="nombreingles" type="text" style="width: 220px; display: block; float: left;" />
-                            <th colspan="1"></th>
-                        </td>
-
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Orden:</label>
-                            <select id="ordenpajaros" style="width: 220px;">
-                              <option value="cuclillos">Cuclillos</option>
-                              <option value="chotacabras">Chotacabras</option>
-                            </select>
-                        </td>
-                      </tr>
-
-                      <tr><td>&nbsp; </td></tr>
-
-                      <tr>
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Suborden:</label>
-                            <select id="subordenpajaros" style="width: 220px;">
-                              <option value="alcedines">Alcedines</option>
-                              <option value="passeri">Passeri</option>
-                            </select>
-                        <th colspan="1"></th>
-                        </td>
-
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Familia:</label>
-                            <select id="familiapajaros" style="width: 220px;">
-                              <option value="cuculidae">Cuculidae</option>
-                              <option value="caprimulgidae">Caprimulgidae</option>
-                            </select>
-                        </td>
-                      </tr>
-                      
-                      <tr><td>&nbsp; </td></tr>
-
-                      <tr>
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Género:</label>
-                            <select id="generopajaros" style="width: 220px;">
-                              <option value="crotophaga">Crotophaga</option>
-                              <option value="nyctidromus">Nyctidromus</option>
-                            </select>
-                        <th colspan="1"></th>
-                        </td>
-
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Especie:</label>
-                            <select id="especiepajaros" style="width: 220px;">
-                                  <option value="cuclillos">Cuclillos</option>
-                                  <option value="chotacabras">Chotacabras</option>
-                                  <option value="bucos">Bucos</option>
-                                  <option value="jacamares">Jacamares</option>
-                            </select>
-                        </td>
-                      </tr>
-                      
-                      <tr><td>&nbsp; </td></tr>
-                      
-                      <tr>
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Tipo de Pico:</label>
-                            <select id="tipopicopajaros" style="width: 220px;">
-                              <option value="picosurcos">Pico Sin Surco</option>
-                              <option value="picoamplio">Pico Amplio</option>
-                            </select>
-                        <th colspan="1"></th>
-                        </td>
-
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Cantidad de Huevos:</label>
-                            <select id="cantidadhuevospajaros" style="width: 220px;">
-                                  <option value="uno">1</option>
-                                  <option value="dos">2</option>
-                                  <option value="tres">3</option>
-                                  <option value="cuatro">4</option>
-                            </select>
-                        </td>
-                      </tr>
-                      
-                      <tr><td>&nbsp; </td></tr>
-                      
-                      <tr>
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Zona de Vida:</label>
-                            <select id="zonavidapajaros" style="width: 220px;">
-                                  <option value="bosque">Bosque Lluvioso</option>
-                                  <option value="tropical">Bosque Tropical</option>
-                                  <option value="seco">Bosque Seco</option>
-                                  <option value="humedo">Bosque Humedo</option>
-                            </select>
-                        <th colspan="1"></th>
-                        </td>
-
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Color:</label>
-                            <select id="colorpajaros" style="width: 220px;">
-                                  <option value="blanco">Blanco</option>
-                                  <option value="rojo">Rojo</option>
-                                  <option value="azul">Azul</option>
-                                  <option value="verde">Verde</option>
-                            </select>
-                        </td>
-                      </tr>
-
-                    </table>
-
-                    <div style="clear: both; "></div>
-                    <input id="campo10" name="boton_registrar_Foto" type="submit" value="Registrar_Foto" style="margin-left:40px;"/> 
-
-</form>
-
+                                        </div>
                                 </section>                
                               
 					
@@ -669,7 +477,9 @@ $administrador = $_COOKIE['admin'];
                                             <header>
                                                     <h2>ESTADISTICAS</h2>
                                             </header>
-
+                                           
+                                            
+                                            
                                         </div>
                                 </section> 
 
