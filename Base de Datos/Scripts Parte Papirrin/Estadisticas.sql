@@ -20,7 +20,7 @@ BEGIN
 END//
 
 -- 3--------------- Top N de pajaros por persona-------------------------
-DELIMITER//
+DELIMITER //
 CREATE PROCEDURE TopPajaros(IN top int)
 BEGIN
 	select tabla.nombre,tabla.Apellido

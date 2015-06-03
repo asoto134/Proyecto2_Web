@@ -8,6 +8,14 @@ include ("common.php");
 $administrador = $_COOKIE['admin'];
 
 //Conecta con la base, prueba, hace la consulta y cierra conexión//
+
+$conexion=mysql_connect(HOST, USER, PASS);
+ @mysql_select_db(DB, $conexion) or die("Error en la seleccion, '$php_errormsg'");
+$consultaOrden = "CALL getOrden(1)";
+$resultadoOrden = mysql_query($consultaOrden);
+mysql_close($conexion);
+
+
 $conexionC=mysql_connect(HOST, USER, PASS);
  @mysql_select_db(DB, $conexionC) or die("Error en la seleccion, '$php_errormsg'");
 $ConsultaColor="CALL getColor();";
@@ -20,11 +28,14 @@ $consultaZona = "CALL `proyecto2web`.`getZonadeVida`();";
 $resultadoZona = mysql_query($consultaZona);
 mysql_close($conexionZ);
 //
-$conexionE=mysql_connect(HOST, USER, PASS);
- @mysql_select_db(DB, $conexionE) or die("Error en la seleccion, '$php_errormsg'");
-$consultaEspecie = "CALL getEspecie()";
-$resultadoEspecie = mysql_query($consultaEspecie);
-mysql_close($conexionE);
+$conexionH=mysql_connect(HOST, USER, PASS);
+ @mysql_select_db(DB, $conexionH) or die("Error en la seleccion, '$php_errormsg'");
+$consultaHuevos = "CALL `proyecto2web`.`getCantHuevos`();";
+$resultadoHuevos = mysql_query($consultaHuevos);
+mysql_close($conexionH);
+////
+
+
 
 
 
@@ -106,9 +117,9 @@ mysql_close($conexionE);
                                                                 <?php
                                                                 if($administrador == 1)
                                                                 {
-                                                                        echo '<li><a href="#RegistroEspecies" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Registro de Especies</span></a></li>';
                                                                 }
                                                                 ?>
+                                                                <li><a href="#RegistroHallazgos" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Registro de Hallazgos</span></a></li>
                                                                 <li><a href="#RegistroFotos" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Registro de Fotos</span></a></li>
 								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Mis Hallazgos</span></a></li>
                                                                 <li><a href="#Estadisticas" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Estadisticas</span></a></li>
@@ -157,19 +168,13 @@ mysql_close($conexionE);
 					</section>
                                 
                                 
-              
-                
-                                <!-- Administracion -->
-                                <?php
-                                if($administrador == 1)
-                                {
-                                    // pestaña de administrador
-                                    echo '
-            <section id="RegistroEspecies" class="three">
+                                
+             <!--Registro de hallazgos-->                   
+            <section id="RegistroHallazgos" class="three">
                 <div class="container">
 
                     <header>
-                            <h2>Registro de Especies</h2>
+                            <h2>Registro de Hallazgos</h2>
                     </header>
 
                     <p>Formulario para Registro de Especies
@@ -197,19 +202,26 @@ mysql_close($conexionE);
                       <tr><td>&nbsp; </td></tr>
 
                       <tr>                                        
+
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Orden:</label>
+                            <select id="ordenpajaros" onChange="getSubOrden(this.value);" style="width: 220px;">
+                                <option value="0">Seleccione el Orden</option>
+                               <?php
+                                while($fila=mysql_fetch_array($resultadoOrden))
+                                {
+                                    echo "<option value='".$fila['idOrden']."'>".$fila['Orden']."</option>";
+                                }
+                                ?>
+                        </select>
+                        </td>
+                         <th colspan="1"></th>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Nombre Inglés:</label>
                             <input id="campo1" name="nombreingles" type="text" style="width: 220px; display: block; float: left;" />
                             <th colspan="1"></th>
-                        </td>
-
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Orden:</label>
-                            <select id="ordenpajaros" style="width: 220px;">
-                              <option value="cuclillos">Cuclillos</option>
-                              <option value="chotacabras">Chotacabras</option>
-                            </select>
-                        </td>
+                        </td>   
+                        
                       </tr>
 
                       <tr><td>&nbsp; </td></tr>
@@ -217,89 +229,92 @@ mysql_close($conexionE);
                       <tr>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Suborden:</label>
-                            <select id="subordenpajaros" style="width: 220px;">
-                              <option value="alcedines">Alcedines</option>
-                              <option value="passeri">Passeri</option>
+                            <select id="subordenpajaros" onChange="getFamilia(this.value);" style="width: 220px;">
+                                <option value="0">Seleccione el Sub Orden</option>
                             </select>
                         <th colspan="1"></th>
                         </td>
 
                         <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Familia:</label>
-                            <select id="familiapajaros" style="width: 220px;">
-                              <option value="cuculidae">Cuculidae</option>
-                              <option value="caprimulgidae">Caprimulgidae</option>
+                            <label style="width: 200px; display: block; float: left;" >Tipo de Pico:</label>
+                            <select id="tipopicopajaros" style="width: 220px;">
+                               <option value="0">Seleccione el Tipo de Pico</option> 
                             </select>
                         </td>
                       </tr>
                       
+                      <tr><td>&nbsp; </td></tr>
+                      
+                      <tr>
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Familia:</label>
+                            <select id="familiapajaros" onChange="getGenero(this.value);" style="width: 220px;">
+                              <option value="0">Seleccione la Familia</option>
+                            </select>
+                        </td>
+                             
+                    <th colspan="1"></th>
+
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Cantidad de Huevos:</label>
+                            <select id="cantidadhuevospajaros" style="width: 220px;">
+                                  <option value="0">Seleccione el Color</option>
+                                <?php
+                                while($fila=mysql_fetch_array($resultadoHuevos))
+                                {
+                                    echo "<option value='".$fila['idcantidad_Huevos']."'>".$fila['Cantidad']."</option>";
+                                }
+                                ?>
+                            </select>
+                        </td>
+                      </tr>
                       <tr><td>&nbsp; </td></tr>
 
                       <tr>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Género:</label>
-                            <select id="generopajaros" style="width: 220px;">
-                              <option value="crotophaga">Crotophaga</option>
-                              <option value="nyctidromus">Nyctidromus</option>
+                            <select id="generopajaros" onChange="getEspecie(this.value);" style="width: 220px;">
+                              <option value="0">Seleccione el Genero</option>
                             </select>
                         <th colspan="1"></th>
                         </td>
 
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Especie:</label>
-                            <select id="especiepajaros" style="width: 220px;">
-                                  <option value="cuclillos">Cuclillos</option>
-                                  <option value="chotacabras">Chotacabras</option>
-                                  <option value="bucos">Bucos</option>
-                                  <option value="jacamares">Jacamares</option>
-                            </select>
-                        </td>
-                      </tr>
-                      
-                      <tr><td>&nbsp; </td></tr>
-                      
-                      <tr>
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Tipo de Pico:</label>
-                            <select id="tipopicopajaros" style="width: 220px;">
-                              <option value="picosurcos">Pico Sin Surco</option>
-                              <option value="picoamplio">Pico Amplio</option>
-                            </select>
-                        <th colspan="1"></th>
-                        </td>
-
-                        <td width="500">
-                            <label style="width: 200px; display: block; float: left;" >Cantidad de Huevos:</label>
-                            <select id="cantidadhuevospajaros" style="width: 220px;">
-                                  <option value="uno">1</option>
-                                  <option value="dos">2</option>
-                                  <option value="tres">3</option>
-                                  <option value="cuatro">4</option>
-                            </select>
-                        </td>
-                      </tr>
-                      
-                      <tr><td>&nbsp; </td></tr>
-                      
-                      <tr>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Zona de Vida:</label>
                             <select id="zonavidapajaros" style="width: 220px;">
-                                  <option value="bosque">Bosque Lluvioso</option>
-                                  <option value="tropical">Bosque Tropical</option>
-                                  <option value="seco">Bosque Seco</option>
-                                  <option value="humedo">Bosque Humedo</option>
+                                  <option value="0">Seleccione la Zona de Vida</option>
+                               <?php
+                                while($fila=mysql_fetch_array($resultadoZona))
+                                {
+                                    echo "<option value='".$fila['idZona_de_Vida']."'>".$fila['Zona_de_Vida']."</option>";
+                                }
+                                ?>
                             </select>
                         <th colspan="1"></th>
                         </td>
+                      </tr>
 
+                      
+                      <tr><td>&nbsp; </td></tr>
+                      
+                      <tr>
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Especie:</label>
+                            <select id="especiepajaros" onChange="getTipoPico(this.value);"  style="width: 220px;">
+                                  <option value="0">Seleccione la Especie</option>
+                            </select>
+                        </td>                        
+                        <th colspan="1"></th>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Color:</label>
                             <select id="colorpajaros" style="width: 220px;">
-                                  <option value="blanco">Blanco</option>
-                                  <option value="rojo">Rojo</option>
-                                  <option value="azul">Azul</option>
-                                  <option value="verde">Verde</option>
+                                  <option value="0">Seleccione el Color</option>
+                                <?php
+                                while($fila=mysql_fetch_array($resultadoColor))
+                                {
+                                    echo "<option value='".$fila['idColor']."'>".$fila['Color']."</option>";
+                                }
+                                ?>
                             </select>
                         </td>
                       </tr>
@@ -312,9 +327,15 @@ mysql_close($conexionE);
 </form>
 
                 </section>          
-                                                                            ';
-                                }
-                                else{
+              
+                                
+                                
+                                
+                
+                                <!-- Administracion -->
+                                <?php
+                                if($administrador == 1)
+                                {
                                     echo '
                             <section id="Registro" class="three">
                             <div class="container">
@@ -507,6 +528,11 @@ mysql_close($conexionE);
 					</ul>
 				
 			</div>
+                
+                
+                
+    <!-- Validaciones -->
+    <script src="js/misFunciones.js"></script>                
 
 	</body>
 </html>

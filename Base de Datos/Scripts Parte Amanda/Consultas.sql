@@ -14,8 +14,7 @@ BEGIN
     and idZona_de_Vida= dzona
     
     
-END
-$$
+END $$
 
 DELIMITER ;
 

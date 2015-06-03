@@ -1,4 +1,4 @@
---Amanda Solano Astorga,2 de junio
+-- Amanda Solano Astorga,2 de junio
 USE `proyecto2web`;
 DROP procedure IF EXISTS `getZonadeVida`;
 
@@ -11,9 +11,7 @@ order by Zona_de_Vida;
 END
 $$
 
-DELIMITER ;
-
-
+DELIMITER $$
 CREATE DEFINER=`proyecto2web`@`localhost` PROCEDURE `getColor`()
 BEGIN
 	Select idColor,Color

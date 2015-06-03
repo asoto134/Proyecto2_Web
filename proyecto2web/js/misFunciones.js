@@ -126,34 +126,169 @@ function justNumbers(e)
     
         return /\d/.test(String.fromCharCode(keynum));
     }
-////Agregar a misfunciones.js//
-///////////////Funciones para el administrador////////
-////No es la mejor forma de hacerlo, pero es la única que se me ocurre
-//function getProvincia1(id_ComboPais)
-//{ 
-//    
-//    xmlhttp = GetXmlHttpObject();
-//
-//    if (xmlhttp == null)
-//    {
-//            alert ("El navegador no soporta la solicitud HTTP realizada.");
-//            return;
-//    }
-//    xmlhttp.onreadystatechange = stateChangedProvincia1;
-//    xmlhttp.open("POST","buscarProvincias.php",true);
-//
-////establece el header para la respuesta
-//    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-//
-////enviamos las variables al archivo get_combo2.php
-//    xmlhttp.send("q=" + id_ComboPais);	
-//
-//}
-//
-//function stateChangedProvincia1()
-//{
-//    if (xmlhttp.readyState===4 && xmlhttp.status===200)
-//    {
-//        document.getElementById("com_Provincia1").innerHTML=xmlhttp.responseText;
-//    }
-//}
+    
+
+    
+/////////////////////////////////////////////////////////////////////////////////
+
+
+function getSubOrden(id_Orden)
+{ 
+    
+    xmlhttp = GetXmlHttpObject();
+
+    if (xmlhttp == null)
+    {
+            alert ("El navegador no soporta la solicitud HTTP realizada.");
+            return;
+    }
+    xmlhttp.onreadystatechange = stateChangedSubOrden;
+    xmlhttp.open("POST","buscarSubOrden.php",true);
+
+//establece el header para la respuesta
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+//enviamos las variables al archivo get_combo2.php
+    xmlhttp.send("q=" + id_Orden);	
+
+}
+
+function stateChangedSubOrden()
+{
+    if (xmlhttp.readyState===4 && xmlhttp.status===200)
+    {
+        document.getElementById("subordenpajaros").innerHTML=xmlhttp.responseText;
+    }
+}
+    
+/////////////////////////////////////////////////////////////////////////////////
+
+
+function getFamilia(id_Familia)
+{ 
+    
+    xmlhttp = GetXmlHttpObject();
+
+    if (xmlhttp == null)
+    {
+            alert ("El navegador no soporta la solicitud HTTP realizada.");
+            return;
+    }
+    xmlhttp.onreadystatechange = stateChangedFamilia;
+    xmlhttp.open("POST","buscarFamilia.php",true);
+
+//establece el header para la respuesta
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+//enviamos las variables al archivo get_combo2.php
+    xmlhttp.send("q=" + id_Familia);	
+
+}
+
+function stateChangedFamilia()
+{
+    if (xmlhttp.readyState===4 && xmlhttp.status===200)
+    {
+        document.getElementById("familiapajaros").innerHTML=xmlhttp.responseText;
+    }
+}
+    
+/////////////////////////////////////////////////////////////////////////////////
+
+
+function getGenero(id_Genero)
+{ 
+    
+    xmlhttp = GetXmlHttpObject();
+
+    if (xmlhttp == null)
+    {
+            alert ("El navegador no soporta la solicitud HTTP realizada.");
+            return;
+    }
+    xmlhttp.onreadystatechange = stateChangedGenero;
+    xmlhttp.open("POST","buscarGenero.php",true);
+
+//establece el header para la respuesta
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+//enviamos las variables al archivo get_combo2.php
+    xmlhttp.send("q=" + id_Genero);	
+
+}
+
+function stateChangedGenero()
+{
+    if (xmlhttp.readyState===4 && xmlhttp.status===200)
+    {
+        document.getElementById("generopajaros").innerHTML=xmlhttp.responseText;
+    }
+}
+ 
+ 
+/////////////////////////////////////////////////////////////////////////////////
+
+
+function getEspecie(id_Especie)
+{ 
+    
+    xmlhttp = GetXmlHttpObject();
+
+    if (xmlhttp == null)
+    {
+            alert ("El navegador no soporta la solicitud HTTP realizada.");
+            return;
+    }
+    xmlhttp.onreadystatechange = stateChangedEspecie;
+    xmlhttp.open("POST","buscarEspecie.php",true);
+
+//establece el header para la respuesta
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+//enviamos las variables al archivo get_combo2.php
+    xmlhttp.send("q=" + id_Especie);	
+
+}
+
+function stateChangedEspecie()
+{
+    if (xmlhttp.readyState===4 && xmlhttp.status===200)
+    {
+        document.getElementById("especiepajaros").innerHTML=xmlhttp.responseText;
+    }
+}
+    
+ 
+/////////////////////////////////////////////////////////////////////////////////
+
+
+function getTipoPico(id_TipoPico)
+{ 
+    
+    xmlhttp = GetXmlHttpObject();
+
+    if (xmlhttp == null)
+    {
+            alert ("El navegador no soporta la solicitud HTTP realizada.");
+            return;
+    }
+    xmlhttp.onreadystatechange = stateChangedTipoPico;
+    xmlhttp.open("POST","buscarTipoPico.php",true);
+
+//establece el header para la respuesta
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+//enviamos las variables al archivo get_combo2.php
+    xmlhttp.send("q=" + id_TipoPico);	
+
+}
+
+function stateChangedTipoPico()
+{
+    if (xmlhttp.readyState===4 && xmlhttp.status===200)
+    {
+        document.getElementById("tipopicopajaros").innerHTML=xmlhttp.responseText;
+    }
+}
+    
+ 
