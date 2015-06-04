@@ -70,3 +70,42 @@ END
 $$
 
 
+DROP procedure IF EXISTS `getAllEspecies`;
+DELIMITER $$
+CREATE PROCEDURE `getAllEspecies` ()
+BEGIN
+Select idEspecie,Especie from especie 
+order by especie;
+END
+$$
+
+DROP procedure IF EXISTS `getPerfil`;
+DELIMITER $$
+CREATE PROCEDURE `getPerfil` (in pUsuario varchar(50))
+BEGIN
+Select Nombre,Apellido,Telefono,Tipo_de_Persona_idTipo_de_Persona,Correo 
+from persona inner join usuario on persona.Usuario_idUsuario =  usuario.idUsuario
+			 inner join telefono on telefono.Persona_idPersona = persona.idPersona
+             inner join correo  on correo.Persona_idPersona = persona.idPersona
+where usuario.NomUsuario = pUsuario;
+END
+$$
+
+DROP procedure IF EXISTS `setPerfil`;
+DELIMITER $$
+CREATE PROCEDURE `setPerfil` (in pNombre varchar(50), in pApellido varchar(50), in pTelefono varchar(50), 
+							  in pTipoPersona int, in pCorreo varchar(50),in pUsuario varchar(50))
+BEGIN
+Update persona, usuario set Nombre = pNombre, Apellido = pApellido, Tipo_de_Persona_idTipo_de_Persona = pTipoPersona
+where persona.Usuario_idUsuario =  usuario.idUsuario and usuario.NomUsuario = pUsuario;
+
+Update correo,persona, usuario set Correo = pCorreo
+where persona.Usuario_idUsuario =  usuario.idUsuario and usuario.NomUsuario = pUsuario and correo.Persona_idPersona = persona.idPersona;
+
+
+Update telefono,persona, usuario set Telefono = pTelefono
+where persona.Usuario_idUsuario =  usuario.idUsuario and usuario.NomUsuario = pUsuario and telefono.Persona_idPersona = persona.idPersona;
+
+END
+$$
+
