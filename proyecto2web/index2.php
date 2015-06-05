@@ -138,10 +138,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <div class="top">
 
             <!-- Logo -->
-                    <div id="logo">
+<!--                    <div id="logo">
                             <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
-                            <h1 id="title"><?php echo $_COOKIE['id'] ?></h1>
-                    </div>
+                            <h1 id="title"> Hola</h1>
+                    </div>-->
 
             <!-- Nav -->
                     <nav id="nav">
@@ -164,25 +164,25 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                                     <li><a href="#Inicio" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Bienvenido a este sitio</span></a></li>
                                     <li><a href="#Administracion" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Administra los datos</span></a></li>
-                                    <li><a href="#Perfil" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Verfifica y edita perfil</span></a></li>
+                                    <li><a href="#Perfil" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-edit">Verfifica y edita perfil</span></a></li>
                                     <?php
                                     if($administrador == 1)
                                     {
                                     }
                                     ?>
-                                    <li><a href="#RegistroAves" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Registro de Aves</span></a></li>
-                                    <li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Mis Hallazgos</span></a></li>
-                                    <li><a href="#Estadisticas" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Estadisticas</span></a></li>
-                                    <li><a href="#Consultas" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Consultas</span></a></li>
+                                    <li><a href="#RegistroAves" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-camera">Registro de Aves</span></a></li>
+                                    <li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-photo">Mis Hallazgos</span></a></li>
+                                    <li><a href="#Estadisticas" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-line-chart">Estadisticas</span></a></li>
+                                    <li><a href="#Consultas" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-question">Consultas</span></a></li>
 
                             </ul>
                     </nav>
 
     </div>
 
-    <div class="bottom">
+<!--    <div class="bottom">
 
-            <!-- Social Icons -->
+             Social Icons 
                     <ul class="icons">
                             <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
                             <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -190,7 +190,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
                     </ul>
 
-    </div>
+    </div>-->
 
 </div>
 
@@ -482,15 +482,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 </td>
 </tr>
 
-<tr><td>&nbsp; </td></tr>
-
-<tr>
-<td width="500">
-    <label style="width: 200px; display: block; float: left;" >Foto:</label>
-    <input type="file" name="foto_Perfil" style="width: 400px; display: block; float: left;">                    
-</td>
-</tr>  
-
 
 </table>
 
@@ -505,7 +496,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
 
-    <!-- Administracion -->
+    <!----------------------------------------------- Registro de aves --------------------------------------------------->
+
+    
 <section id="RegistroAves" class="three">
 <div class="container">
 
@@ -566,7 +559,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <td width="500">
     <label style="width: 150px; display: block; float: left;" >Especie:</label>
     <select style="width: 250px;">
-                                   '   ?>
+    <option value="0">Seleccione la Especie</option> 
    <?php
     while($fila=mysql_fetch_array($resultadoEspecie))
     {
