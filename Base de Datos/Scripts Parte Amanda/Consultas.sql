@@ -1,7 +1,7 @@
 
---Realizado por Amanda Solano, junio 5.
---Consulta de aves por especie,genero,familia,orden y cantidad de huevos
---Esta búsqueda es solamente para aves
+-- Realizado por Amanda Solano, junio 5.
+-- Consulta de aves por especie,genero,familia,orden y cantidad de huevos
+-- Esta búsqueda es solamente para aves
 USE `proyecto2web`;
 DROP procedure IF EXISTS `proyecto2web`.`CONSULTAS_AVES`;
 
@@ -45,8 +45,8 @@ end$$
 
 DELIMITER ;
 ;
---Consulta de Aves por persona--
---Aquí el usuario puede consultar las aves subidas por otros usuarios. Por cierto, falta que el filtro muestre las fotos
+-- Consulta de Aves por persona--
+-- Aquí el usuario puede consultar las aves subidas por otros usuarios. Por cierto, falta que el filtro muestre las fotos
 CREATE DEFINER=`proyecto2web`@`localhost` PROCEDURE `CONSULTA_AVES_POR_PERSONA`(in DESPECIE int,in DGENERO int, in dfamilia int,in dorden int,in dcolor int,in dzona int,in dcantidad int, in dusuario int)
 BEGIN
 		if (DESPECIE=0 and DGENERO=0 and dfamilia=0 and dorden=0 and dcantidad=0,dzona=0,dcolor=0,dusuario=0) then

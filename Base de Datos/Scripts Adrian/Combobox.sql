@@ -74,7 +74,7 @@ DROP procedure IF EXISTS `getAllEspecies`;
 DELIMITER $$
 CREATE PROCEDURE `getAllEspecies` ()
 BEGIN
-Select idEspecie,Especie from especie 
+Select idEspecie,Especie,Nombre_Cientifico from especie 
 order by especie;
 END
 $$
@@ -108,4 +108,38 @@ where persona.Usuario_idUsuario =  usuario.idUsuario and usuario.NomUsuario = pU
 
 END
 $$
+
+
+
+DROP procedure IF EXISTS `getPajaroXPersona`;
+DELIMITER $$
+CREATE PROCEDURE `getPajaroXPersona` (in pUsuario varchar(50))
+BEGIN
+Select Pajaros_X_Persona_id,Especie,Nombre_Cientifico 
+from pajaros_x_persona inner join especie on pajaros_x_persona.Especie_idEspecie = especie.idEspecie
+					   inner join usuario on pajaros_x_persona.Persona_idPersona = usuario.idUsuario
+where usuario.NomUsuario = pUsuario
+order by especie;
+END
+$$
+
+DROP procedure IF EXISTS `getIdUsuario`;
+DELIMITER $$
+CREATE PROCEDURE `getIdUsuario` (in pUsuario varchar(50))
+BEGIN
+Select idUsuario from usuario where usuario.NomUsuario = pUsuario;
+END
+$$
+
+
+DROP procedure IF EXISTS `addFoto`;
+DELIMITER $$
+CREATE PROCEDURE `addFoto` (in pIdPxP int, in pNombre varchar(45), in pFormato varchar(45),in pUrl varchar(100))
+BEGIN
+Insert into  fotografia (nombre,formato,URL,Pajaros_X_Persona_Pajaros_X_Persona_id) 
+	   values (pNombre,pFormato,pUrl,pIdPxP);
+END
+$$
+
+
 

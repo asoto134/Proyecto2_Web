@@ -3,9 +3,10 @@ include ("settings.php");
 include ("common.php");
 //echo $_COOKIE['admin'];
 // echo "<script>alert(" . $_COOKIE['admin'] . ");</script>";
-error_reporting(0);
+//error_reporting(0);
 //Al presionar el boton de login
 $administrador = $_COOKIE['admin'];
+$idUsuario = 0;
 
 //Conecta con la base, prueba, hace la consulta y cierra conexión//
 
@@ -59,6 +60,25 @@ $consultaPerfil = "CALL `proyecto2web`.`getPerfil`('" . $_COOKIE['id'] . "');";
 $resultadoPerfil = mysql_query($consultaPerfil);
 mysql_close($conexionP);
 ////
+$conexionPajaros=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexionPajaros) or die("Error en la seleccion, '$php_errormsg'");
+$consultaPajaros = "CALL `proyecto2web`.`getPajaroXPersona`('" . $_COOKIE['id'] . "');";
+$resultadoPajaros = mysql_query($consultaPajaros);
+mysql_close($conexionPajaros);
+////
+$conexionU=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexionU) or die("Error en la seleccion, '$php_errormsg'");
+$consultaUsuario = "CALL getIdUsuario ('" . $_COOKIE['id'] . "');";
+$resultadoUsuario = mysql_query($consultaUsuario);
+mysql_close($conexionU);
+while($fila=mysql_fetch_array($resultadoUsuario))
+{
+    $idUsuario = $fila['idUsuario'];
+}
+
+
+
+////
 
 if (isset($_POST['boton_Editar_Perfil']))
 {
@@ -85,6 +105,60 @@ if (isset($_POST['boton_Editar_Perfil']))
     echo "<script>alert(\"Se cambiaron los datos correctamente\");</script>";
     echo "<script>setTimeout(location.href='index2.php', 5000);</script>";
 }
+
+else if(isset($_POST['boton_agregar_ave']))
+{
+    $RPZona = $_POST['RPZona'];
+    $RPColor = $_POST['RPColor'];
+    $RPEspecie = $_POST['RPEspecie'];
+    if($RPZona != 0 && $RPColor != 0 && $RPEspecie != 0)
+    {
+        $conexionConBaseDeDatos=mysql_connect(HOST, USER, PASS);
+        @mysql_select_db(DB, $conexionConBaseDeDatos) or die("Error en la seleccion, '$php_errormsg'");
+        $consultaSql = "CALL add_P_x_P ($idUsuario,$RPColor,$RPZona,$RPEspecie);";
+        mysql_query($consultaSql); 
+        mysql_close($conexionConBaseDeDatos);
+        echo "<script>alert(\"Se agrego el avistamiento correctamente.\");</script>";
+        echo "<script>setTimeout(location.href='index2.php', 5000);</script>";
+    }
+    else
+    {
+        echo "<script>alert(\"Debe llenar todos los datos\");</script>";
+    }
+}
+else if(isset($_POST['boton_insertar_imagen']))
+{
+    
+    $RIAvistamiento = $_POST['RIAvistamiento'];
+    if($RIAvistamiento != 0 && $_FILES['foto_Pajaro']['error']==0)
+    {
+        $foto_Pajaro_name = $_FILES['foto_Pajaro']['name'];
+        $foto_Pajaro_type = $_FILES['foto_Pajaro']['type'];
+        $foto_Pajaro = $_FILES['foto_Pajaro']['tmp_name'];
+        $path = "Pajaros/".time().$foto_Pajaro_name ;
+        move_uploaded_file($foto_Pajaro, $path);
+        
+        $conexionConBaseDeDatos=mysql_connect(HOST, USER, PASS);
+        @mysql_select_db(DB, $conexionConBaseDeDatos) or die("Error en la seleccion, '$php_errormsg'");
+        $consultaSql = "CALL addFoto ($RIAvistamiento,'$foto_Pajaro_name','$foto_Pajaro_type','$path');";
+        mysql_query($consultaSql); 
+        mysql_close($conexionConBaseDeDatos);
+        
+        echo "<script>alert(\"Su imagen se ha guardado correctamente\");</script>";
+
+    }
+    else
+    {
+        echo "<script>alert(\"A ocurrido un error intentelo de nuevo\");</script>";
+    }
+    
+    
+    
+    
+
+    
+}
+
 
 
 
@@ -456,7 +530,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 </tr>
 </tr>
 
-<tr><td>&nbsp; </td> <th colspan="2"></th></tr>
+<tr><td>&nbsp; </td> 
+    
+<th colspan="2"></th></tr>
 
 <tr>
 <td width="500">
@@ -506,19 +582,22 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             <h2>Registro de Aves</h2>
     </header>
 
-    <p>Formulario para Registro de Aves
-       (Haga click en los menus para seleccionar la opcion)</p>
-
 </div>
 
-<form action="registro.php" method="post" >
+<br/>
+<br/>
 
-<table style="float: left; margin-left:390px; margin-top:50px;" >
+<form action="index2.php" method="post" >
+    
+<legend>Registre el ave que observo</legend>
+
+<table style="float: left; margin-left:100px; margin-top:50px;" >
+    
 
 <tr>
 <td width="500">
     <label style="width: 150px; display: block; float: left;" >Zona de Vida:</label>
-    <select style="width: 250px;">
+    <select name="RPZona" style="width: 700px;">
       <option value="0">Seleccione la Zona de Vida</option>
    <?php
 
@@ -538,7 +617,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <tr>                              
 <td width="500">
     <label style="width: 150px; display: block; float: left;" >Color:</label>
-    <select style="width: 250px;">
+    <select name="RPColor" style="width: 700px;">
         <option value="0">Seleccione el Color</option>  
   <?php
     while($fila=mysql_fetch_array($resultadoColor2))
@@ -558,12 +637,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <tr>                              
 <td width="500">
     <label style="width: 150px; display: block; float: left;" >Especie:</label>
-    <select style="width: 250px;">
+    <select name="RPEspecie" style="width: 700px;">
     <option value="0">Seleccione la Especie</option> 
    <?php
     while($fila=mysql_fetch_array($resultadoEspecie))
     {
-        echo "<option value='".$fila['idEspecie']."'>".$fila['Especie']."</option>";
+        echo "<option value='".$fila['idEspecie']."'>".$fila['Especie']." (".$fila['Nombre_Cientifico'].")</option>";
     }
     ?>
 
@@ -572,23 +651,62 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 </td>
 </tr>
 
-<tr><td>&nbsp; </td></tr>
-
-<tr>
-<td width="500">
-    <label style="width: 200px; display: block; float: left;" >Foto:</label>
-    <input type="file" name="foto_Pajaro" style="width: 400px; display: block; float: left;">                    
-</td>
-</tr>  
 
 
 </table>
 
 <div style="clear: both; "></div>
-<input id="campo10" name="boton_registrar" type="submit" value="Registrar" style="margin-left:40px;"/> 
+<input id="campo10" name="boton_agregar_ave" type="submit" value="Agregar Ave" style="margin-left:40px;"/> 
 
 </form>
 
+<br/>
+<br/>
+<br/>
+<br/>
+
+<!--    --------------------------------------------------------------------------------------------->
+
+<form action="index2.php" method="post"  enctype="multipart/form-data" >
+    
+<legend>Inserte imagenes a sus registros</legend>
+
+<table style="float: left; margin-left:100px; margin-top:50px;" >
+
+<tr>                              
+<td width="500">
+    <label style="width: 150px; display: block; float: left;" >Pajaro observado</label>
+    <select name="RIAvistamiento" style="width: 700px;">
+    <option value="0">Seleccione su avistamiento</option> 
+   <?php
+    while($fila=mysql_fetch_array($resultadoPajaros))
+    {
+        echo "<option value='".$fila['Pajaros_X_Persona_id']."'>".$fila['Especie']." (".$fila['Nombre_Cientifico'].")</option>";
+    }
+    ?>
+
+
+</select>
+</td>
+</tr>
+
+<tr><td>&nbsp; </td></tr>
+
+<tr>
+<td width="500">
+    <label style="width: 200px; display: block; float: left;" >Foto:</label>
+    <input type="file" name="foto_Pajaro" style="width: 700px; display: block; float: left;">                    
+</td>
+</tr>  
+
+</table>
+
+<div style="clear: both; "></div>
+<input id="campo10" name="boton_insertar_imagen" type="submit" value="Insertar Imagen" style="margin-left:40px;"/> 
+
+</form>
+
+    
 </section>
 
 
@@ -659,6 +777,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <header>
                         <h2>ESTADISTICAS</h2>
                 </header>
+            </div> 
+        
+        <form action="registro.php" method="post" >
+        
                 <table style="float: left; margin-left: 25px; vertical-align: top;">
                     <!-- Combo box -->
                     <tr>
@@ -670,6 +792,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         </td>
                         
                         <td>&nbsp; </td>
+                        <th colspan="1"></th>
                         
                         <td width="500">
                         <label style="width: 250px; float: left;" >Estadística a consultar:</label>
@@ -679,12 +802,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     </tr>
                     </table>
                 
-<div style="clear: both; "></div>
-<input id="botonestadistica" name="boton_estadistica" type="submit" value="Consultar" style="margin-left:40px;"/> 
+            <div style="clear: both; "></div>
+            <input id="botonestadistica" name="boton_estadistica" type="submit" value="Consultar" style="margin-left:40px;"/> 
 
                     <tr><td>&nbsp; </td></tr>
+    </form>  
                 
-            </div>
     </section> 
 
 
@@ -696,7 +819,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <header>
                         <h2>CONSULTAS</h2>
                 </header>
-                
+            </div>
+        <form action="registro.php" method="post" >
                 <table>
                 
                     <tr>                                        
@@ -819,8 +943,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 <div style="clear: both; "></div>
 <input id="botonconsulta" name="boton_estadistica" type="submit" value="Consultar" style="margin-left:40px;"/> 
-
-            </div>
+</form>
     </section>                
 
 
