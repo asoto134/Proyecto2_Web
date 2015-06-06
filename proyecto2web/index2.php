@@ -3,7 +3,7 @@ include ("settings.php");
 include ("common.php");
 //echo $_COOKIE['admin'];
 // echo "<script>alert(" . $_COOKIE['admin'] . ");</script>";
-//error_reporting(0);
+error_reporting(0);
 //Al presionar el boton de login
 $administrador = $_COOKIE['admin'];
 
@@ -405,7 +405,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
 
-            <section id="Perfil" class="three">
+            <section id="Perfil" class="two">
                     <div class="container">
 
                             <header>
@@ -652,28 +652,173 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </section>
 
 
-<!--                                Estadisticas-->
+<!-- --------------------------------------Estadisticas------------------------------------------------------->
     <section id="Estadisticas" class="three">
             <div class="container">
 
                 <header>
                         <h2>ESTADISTICAS</h2>
                 </header>
+                <table style="float: left; margin-left: 25px; vertical-align: top;">
+                    <!-- Combo box -->
+                    <tr>
+                        <td width="500">
+                            <label style="width: 150px; float: left;" >Estadística:</label>
+                                <select id="estadistica" style="width: 220px; margin-right: -50px">
+                                    <option value="0">Estadística</option>
+                                </select>
+                        </td>
+                        
+                        <td>&nbsp; </td>
+                        
+                        <td width="500">
+                        <label style="width: 250px; float: left;" >Estadística a consultar:</label>
+                            <input id="campoestadistica" name="campoestadistica" type="text" value="Estadística" style="width: 200px; display: block; float: left;" />
+                        </td>
+                    
+                    </tr>
+                    </table>
+                
+<div style="clear: both; "></div>
+<input id="botonestadistica" name="boton_estadistica" type="submit" value="Consultar" style="margin-left:40px;"/> 
 
-
-
+                    <tr><td>&nbsp; </td></tr>
+                
             </div>
     </section> 
 
 
 
 <!--                                Consultas-->
-    <section id="Consultas" class="three">
+    <section id="Consultas" class="two">
             <div class="container">
 
                 <header>
                         <h2>CONSULTAS</h2>
                 </header>
+                
+                <table>
+                
+                    <tr>                                        
+
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Orden:</label>
+                                <select id="ordenconsultas" onChange="getSubOrden(this.value);" style="width: 240px;">
+                                    <option value="0">Seleccione el Orden</option>
+                                   <?php
+                                    while($fila=mysql_fetch_array($resultadoOrden))
+                                    {
+                                        echo "<option value='".$fila['idOrden']."'>".$fila['Orden']."</option>";
+                                    }
+                                    ?>
+                                </select>
+                        </td>
+                        
+                        <th colspan="1"></th>
+                        
+                    <td width="500">
+                        <label style="width: 200px; display: block; float: left;" >Color:</label>
+                            <select id="colorconsulta" style="width: 240px;">
+                                <option value="0">Seleccione el Color</option>
+                                <?php
+                                while($fila=mysql_fetch_array($resultadoColor))
+                                {
+                                    echo "<option value='".$fila['idColor']."'>".$fila['Color']."</option>";
+                                }
+                                ?>
+                            </select>
+                    </td>  
+
+                    </tr>
+
+                    <tr><td>&nbsp; </td></tr>
+
+                    <tr>
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Suborden:</label>
+                                <select id="subordenconsulta" onChange="getFamilia(this.value);" style="width: 240px;">
+                                    <option value="0">Seleccione el Sub Orden</option>
+                                </select>
+                            <th colspan="1"></th>
+                        </td>
+
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Tipo de Pico:</label>
+                                <select id="tipopicoconsulta" style="width: 240px;">
+                                   <option value="0">Seleccione el Tipo de Pico</option> 
+                                </select>
+                        </td>
+                    </tr>
+
+                    <tr><td>&nbsp; </td></tr>
+
+                    <tr>
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Familia:</label>
+                                <select id="familiaconsulta" onChange="getGenero(this.value);" style="width: 240px;">
+                                  <option value="0">Seleccione la Familia</option>
+                                </select>
+                        </td>
+
+                    <th colspan="1"></th>
+
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Especie:</label>
+                                <select id="especieconsulta" onChange="getTipoPico(this.value);"  style="width: 240px;">
+                                      <option value="0">Seleccione la Especie</option>
+                                </select>
+                        </td>                        
+                    </tr>
+        
+                    <tr><td>&nbsp; </td></tr>
+
+                    <tr>
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Género:</label>
+                                <select id="generoconsulta" onChange="getEspecie(this.value);" style="width: 240px;">
+                                  <option value="0">Seleccione el Genero</option>
+                                </select>
+                            <th colspan="1"></th>
+                        </td>
+
+                        <td width="500">
+                            <label style="width: 200px; display: block; float: left;" >Zona de Vida:</label>
+                                <select id="zonavidaconsulta" style="width: 240px;">
+                                      <option value="0">Seleccione la Zona de Vida</option>
+                                   <?php
+                                    while($fila=mysql_fetch_array($resultadoZona))
+                                    {
+                                        echo "<option value='".$fila['idZona_de_Vida']."'>".$fila['Zona_de_Vida']."</option>";
+                                    }
+                                    ?>
+                                </select>
+                        <th colspan="1"></th>
+                        </td>
+                    </tr>
+
+                    <tr><td>&nbsp; </td></tr>
+
+                    <tr>
+
+                    <td width="500">
+                    <label style="width: 200px; display: block; float: left;" >Cantidad de Huevos:</label>
+                    <select id="cantidadhuevosconsultas" style="width: 240px;">
+                          <option value="0">Seleccione el Color</option>
+                        <?php
+                        while($fila=mysql_fetch_array($resultadoHuevos))
+                        {
+                            echo "<option value='".$fila['idcantidad_Huevos']."'>".$fila['Cantidad']."</option>";
+                        }
+                        ?>
+                    </select>
+                    </td>    
+                    
+                    </tr>
+                
+                </table>
+
+<div style="clear: both; "></div>
+<input id="botonconsulta" name="boton_estadistica" type="submit" value="Consultar" style="margin-left:40px;"/> 
 
             </div>
     </section>                
