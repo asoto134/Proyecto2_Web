@@ -141,5 +141,31 @@ Insert into  fotografia (nombre,formato,URL,Pajaros_X_Persona_Pajaros_X_Persona_
 END
 $$
 
+DROP procedure IF EXISTS `getFotos`;
+DELIMITER $$
+CREATE PROCEDURE `getFotos` (in pUsuario varchar(50))
+BEGIN
+Select URL,Especie,Nombre_Comun,Nombre_Cientifico From 
+fotografia inner join pajaros_x_persona on fotografia.Pajaros_X_Persona_Pajaros_X_Persona_id = pajaros_x_persona.Pajaros_X_Persona_id 
+		   inner join especie on especie.idEspecie = pajaros_x_persona.Especie_idEspecie
+           inner join usuario on pajaros_x_persona.Persona_idPersona = usuario.idUsuario
+where usuario.NomUsuario = pUsuario;
+END
+$$
+
+DROP procedure IF EXISTS `setContrasenia`;
+DELIMITER $$
+CREATE PROCEDURE `setContrasenia` (in pViejaContrasenia varchar(45),in pNuevaContrasenia varchar(45),in pUsuario varchar(45))
+BEGIN
+
+SET SQL_SAFE_UPDATES = 0;
+
+Update usuario set Contrasenia = pNuevaContrasenia where usuario.NomUsuario = pUsuario;
+
+Insert Into bitacora_contrasenias 
+Values((select idUsuario from usuario where usuario.NomUsuario = pUsuario),pNuevaContrasenia,pViejaContrasenia,sysdate());
+
+END
+$$
 
 

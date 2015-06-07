@@ -290,5 +290,5 @@ function stateChangedTipoPico()
         document.getElementById("tipopicopajaros").innerHTML=xmlhttp.responseText;
     }
 }
-    
- 
+
+

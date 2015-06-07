@@ -12,3 +12,7 @@ CHANGE COLUMN `Nombre Cientifico` `Nombre_Cientifico` VARCHAR(45) NULL DEFAULT N
 
 ALTER TABLE `proyecto2web`.`pajaros_x_persona` 
 CHANGE COLUMN `Zona_de_Vida_idZona de Vida` `Zona_de_Vida_idZonadeVida` INT(11) NOT NULL COMMENT 'Llave foranea que nos lleva a la tupla con los datos de la zona de vida.' ;
+
+
+ALTER TABLE `proyecto2web`.`bitacora_contrasenias` 
+DROP PRIMARY KEY;

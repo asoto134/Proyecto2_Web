@@ -286,15 +286,17 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                     <li><a href="#Inicio" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Bienvenido a este sitio</span></a></li>
                                     <li><a href="#Administracion" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Administra los datos</span></a></li>
                                     <li><a href="#Perfil" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-edit">Verfifica y edita perfil</span></a></li>
+                                    <li><a href="#cambioContrasenia" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-star">Cambiar contraseña</span></a></li>
                                     <?php
                                     if($administrador == 1)
                                     {
                                     }
                                     ?>
                                     <li><a href="#RegistroAves" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-camera">Registro de Aves</span></a></li>
-                                    <li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-photo">Mis Hallazgos</span></a></li>
+                                    <li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-photo">Mis Fotografias</span></a></li>
                                     <li><a href="#Estadisticas" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-line-chart">Estadisticas</span></a></li>
                                     <li><a href="#Consultas" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-question">Consultas</span></a></li>
+                                    <li><a href="index.php" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-close">Salir</span></a></li>
 
                             </ul>
                     </nav>
@@ -532,7 +534,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <div class="container">
 
                             <header>
-                                    <h2 class="alt"><strong>Bienvenido Adrián</strong>
+                                    <h2 class="alt"><strong>Perfil</strong>
     <br/>
                                     </h2>
                                     <p>En esta sección podrá encontrar sus datos personales, y podrá editarlos.
@@ -611,13 +613,69 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 </table>
 
 <div style="clear: both; "></div>
-<input id="campo10" name="boton_Editar_Perfil" type="submit" value="EditarPerfil" style="margin-left:40px;"/> 
+<input id="campo10" name="boton_Editar_Perfil" type="submit" value="Editar Perfil" style="margin-left:40px;"/> 
 
 </form>
 
 
 
             </section>
+
+
+
+<!------------------------------------------------ Cambio de contraseña -------------------------------------------------->
+
+<section id="cambioContrasenia" class="two">
+                    <div class="container">
+
+                            <header>
+                                    <h2 class="alt"><strong>Cambio de Contraseña</strong>
+    <br/>
+                                    </h2>
+                                    <p>En esta sección podrá editar su contraseña.
+                                    </p>
+                            </header>
+</div>
+
+    <form action="cambioContrasenia.php" method="post" name ="f1" >
+
+<table style="float: left; margin-left:300px; margin-top:50px" >
+
+<tr>
+<td width="500">
+<label style="width: 200px; display: block; float: left;" >Nueva Contraseña:</label>
+<input id="campo1" name="nuevoPassword" type="password" value="" style="width: 200px; display: block; float: left;" />
+</td>
+
+<tr><td>&nbsp; </td></tr>
+
+<td width="500">
+<label style="width: 200px; display: block; float: left;" >Confirme Contraseña:</label>
+<input id="campo2" name="confirNuevoPassword" type="password" value="" onchange="comprobarClave"  style="width: 200px; display: block; float: left;" />
+</td>
+
+
+<tr><td>&nbsp; </td></tr>
+
+<td width="500">
+<label style="width: 200px; display: block; float: left;" >Contraseña Anterior:</label>
+<input id="campo2" name="passwordAnterior" type="password" value="" style="width: 200px; display: block; float: left;" />
+</td>
+
+
+
+</table>
+
+<div style="clear: both; "></div>
+<input id="campo10" name="boton_cambiar_contrasenia" type="submit" value="Cambiar Contraseña" style="margin-left:40px;"/> 
+
+</form>
+
+
+
+            </section>
+
+
 
 
 
@@ -714,7 +772,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <br/>
 <br/>
 <br/>
-<br/>
 
 <!--    --------------------------------------------------------------------------------------------->
 
@@ -766,27 +823,45 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <div class="container">
 
                             <header>
-                                    <h2>Mis Hallazgos</h2>
+                                    <h2>Mis Fotografias</h2>
                             </header>
 
-                            <p>En esta sección puede observar todos sus hallazgos.</p>
+                            <p>En esta sección puede observar todas su album de fotos.</p>
 
                             <div class="row">
+                                
+                                <?php 
+ 
+                            $conexionFotos=mysql_connect(HOST, USER, PASS);
+                            @mysql_select_db(DB, $conexionFotos) or die("Error en la seleccion, '$php_errormsg'");
+                            $consultaFotos = "CALL `proyecto2web`.`getFotos`('" . $_COOKIE['id'] . "');";
+                            $resultadoFotos = mysql_query($consultaFotos);
+                            mysql_close($conexionFotos);  
+                            while($fila=mysql_fetch_array($resultadoFotos))
+                            {
+                                echo '                                
                                     <div class="4u">
                                             <article class="item">
-                                                    <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+                                                    <a href="#" class="image fit"><img src="'.$fila['URL'].'" alt="" /></a>
                                                     <header>
-                                                            <h3>Ipsum Feugiat</h3>
-                                                    </header>
-                                            </article>
-                                            <article class="item">
-                                                    <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-                                                    <header>
-                                                            <h3>Rhoncus Semper</h3>
+                                                            <h3>Especie: "'.$fila['Especie'].'"</h3>
+                                                            <h3>N. Cientifico: "'.$fila['Nombre_Cientifico'].'"</h3>
+                                                            <h3>N. Comun: "'.$fila['Nombre_Comun'].'"</h3>
                                                     </header>
                                             </article>
                                     </div>
-<!--                                <div class="4u">
+                                    ';
+                                
+                                
+                                
+                            }
+
+                                
+                                ?>
+                                
+                                
+                                
+                                <!--                                <div class="4u">
                                             <article class="item">
                                                     <a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
                                                     <header>

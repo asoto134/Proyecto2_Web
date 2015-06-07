@@ -43,8 +43,7 @@ begin
     
 end$$
 
-DELIMITER ;
-;
+DELIMITER ;;
 -- Consulta de Aves por persona--
 -- Aquí el usuario puede consultar las aves subidas por otros usuarios. Por cierto, falta que el filtro muestre las fotos
 CREATE DEFINER=`proyecto2web`@`localhost` PROCEDURE `CONSULTA_AVES_POR_PERSONA`(in DESPECIE int,in DGENERO int, in dfamilia int,in dorden int,in dcolor int,in dzona int,in dcantidad int, in dusuario int)
