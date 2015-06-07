@@ -266,37 +266,24 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
             <!-- Nav -->
                     <nav id="nav">
-                            <!--
-
-                                    Prologue's nav expects links in one of two formats:
-
-                                    1. Hash link (scrolls to a different section within the page)
-
-                                       <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
-
-                                    2. Standard link (sends the user to another page/site)
-
-                                       <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
-
-                            -->
-
+                        
 <!-- etiquetas del menú izquierdo -->
                             <ul>                                
 
-                                    <li><a href="#Inicio" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Bienvenido a este sitio</span></a></li>
-                                    <li><a href="#Administracion" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Administra los datos</span></a></li>
-                                    <li><a href="#Perfil" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-edit">Verfifica y edita perfil</span></a></li>
-                                    <li><a href="#cambioContrasenia" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-star">Cambiar contraseña</span></a></li>
+                                    <li><a href="#Inicio" id="bienvenido" class="skel-layers-ignoreHref"><span class="icon fa-home">Bienvenido a este sitio</span></a></li>
+                                    <li><a href="#Administracion" id="administrador" class="skel-layers-ignoreHref"><span class="icon fa-user">Administra los datos</span></a></li>
+                                    <li><a href="#Perfil" id="perfil" class="skel-layers-ignoreHref"><span class="icon fa-edit">Verifica y edita perfil</span></a></li>
+                                    <li><a href="#cambioContrasenia" id="cambiocontrasena" class="skel-layers-ignoreHref"><span class="icon fa-star">Cambiar contraseña</span></a></li>
                                     <?php
                                     if($administrador == 1)
                                     {
                                     }
                                     ?>
-                                    <li><a href="#RegistroAves" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-camera">Registro de Aves</span></a></li>
-                                    <li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-photo">Mis Fotografias</span></a></li>
-                                    <li><a href="#Estadisticas" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-line-chart">Estadisticas</span></a></li>
-                                    <li><a href="#Consultas" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-question">Consultas</span></a></li>
-                                    <li><a href="index.php" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-close">Salir</span></a></li>
+                                    <li><a href="#RegistroAves" id="registroaves" class="skel-layers-ignoreHref"><span class="icon fa-camera">Registro de Aves</span></a></li>
+                                    <li><a href="#portfolio" id="fotografias" class="skel-layers-ignoreHref"><span class="icon fa-photo">Mis Fotografias</span></a></li>
+                                    <li><a href="#Estadisticas" id="estadisticas" class="skel-layers-ignoreHref"><span class="icon fa-line-chart">Estadisticas</span></a></li>
+                                    <li><a href="#Consultas" id="consultas" class="skel-layers-ignoreHref"><span class="icon fa-question">Consultas</span></a></li>
+                                    <li><a href="index.php" id="salir" class="skel-layers-ignoreHref"><span class="icon fa-close">Salir</span></a></li>
 
                             </ul>
                     </nav>
@@ -341,7 +328,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </section>
 
     
-<!-------------------------------------Administracio----------------------------------------------->                   
+<!-------------------------------------Administracion----------------------------------------------->                   
 
 
 <section id="Administracion" class="three">
@@ -358,18 +345,18 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 <form action="registro.php" method="post" >
 
-<table style="float: left; margin-left:80px; margin-top:50px;" >
+<table style="float: left; margin-left: 35px; margin-top: 50px;" >
 <tr>                                        
 <td width="500">
 <label style="width: 200px; display: inline-block; float: left;" >Nombre Común:</label>
-<input id="campo1" name="nombrecomun" type="text" style="width: 220px; display: block; float: left;" />
+<input id="campo1" name="nombrecomun" type="text" style="width: 300px; display: block; float: left;" />
 </td>
 
 <th colspan="1"></th>
 
 <td width="500">
 <label style="width: 200px; display: inline-block; float: left;" >Nombre Científico:</label>
-<input id="campo2" name="nombrecientifico" type="text" style="width: 220px; display: block; float: left;" />
+<input id="campo2" name="nombrecientifico" type="text" style="width: 300px; display: block; float: left;" />
 </td>
 </tr>
 
@@ -379,7 +366,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Orden:</label>
-<select id="ordenpajaros" onChange="getSubOrden(this.value);" style="width: 220px;">
+<select id="ordenpajaros" onChange="getSubOrden(this.value);" style="width: 300px;">
     <option value="0">Seleccione el Orden</option>
    <?php
     while($fila=mysql_fetch_array($resultadoOrden))
@@ -392,7 +379,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <th colspan="1"></th>
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Nombre Inglés:</label>
-<input id="campo1" name="nombreingles" type="text" style="width: 220px; display: block; float: left;" />
+<input id="campo1" name="nombreingles" type="text" style="width: 300px; display: block; float: left;" />
 <th colspan="1"></th>
 </td>   
 
@@ -403,7 +390,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <tr>
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Suborden:</label>
-<select id="subordenpajaros" onChange="getFamilia(this.value);" style="width: 220px;">
+<select id="subordenpajaros" onChange="getFamilia(this.value);" style="width: 300px;">
     <option value="0">Seleccione el Sub Orden</option>
 </select>
 <th colspan="1"></th>
@@ -411,7 +398,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Tipo de Pico:</label>
-<select id="tipopicopajaros" style="width: 220px;">
+<select id="tipopicopajaros" style="width: 300px;">
    <option value="0">Seleccione el Tipo de Pico</option> 
 </select>
 </td>
@@ -422,7 +409,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <tr>
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Familia:</label>
-<select id="familiapajaros" onChange="getGenero(this.value);" style="width: 220px;">
+<select id="familiapajaros" onChange="getGenero(this.value);" style="width: 300px;">
   <option value="0">Seleccione la Familia</option>
 </select>
 </td>
@@ -431,7 +418,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Cantidad de Huevos:</label>
-<select id="cantidadhuevospajaros" style="width: 220px;">
+<select id="cantidadhuevospajaros" style="width: 300px;">
       <option value="0">Seleccione el Color</option>
     <?php
     while($fila=mysql_fetch_array($resultadoHuevos))
@@ -447,7 +434,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <tr>
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Género:</label>
-<select id="generopajaros" onChange="getEspecie(this.value);" style="width: 220px;">
+<select id="generopajaros" onChange="getEspecie(this.value);" style="width: 300px;">
   <option value="0">Seleccione el Genero</option>
 </select>
 <th colspan="1"></th>
@@ -455,7 +442,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Zona de Vida:</label>
-<select id="zonavidapajaros" style="width: 220px;">
+<select id="zonavidapajaros" style="width: 300px;">
       <option value="0">Seleccione la Zona de Vida</option>
    <?php
     while($fila=mysql_fetch_array($resultadoZona))
@@ -476,14 +463,14 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <tr>
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Especie:</label>
-<select id="especiepajaros" onChange="getTipoPico(this.value);"  style="width: 220px;">
+<select id="especiepajaros" onChange="getTipoPico(this.value);"  style="width: 300px;">
       <option value="0">Seleccione la Especie</option>
 </select>
 </td>                        
 <th colspan="1"></th>
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Color:</label>
-<select id="colorpajaros" style="width: 220px;">
+<select id="colorpajaros" style="width: 300px;">
       <option value="0">Seleccione el Color</option>
     <?php
     while($fila=mysql_fetch_array($resultadoColor))
@@ -625,7 +612,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 <!------------------------------------------------ Cambio de contraseña -------------------------------------------------->
 
-<section id="cambioContrasenia" class="two">
+<section id="cambioContrasenia" class="three">
                     <div class="container">
 
                             <header>
@@ -682,12 +669,16 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <!----------------------------------------------- Registro de aves --------------------------------------------------->
 
     
-<section id="RegistroAves" class="three">
+<section id="RegistroAves" class="two">
 <div class="container">
 
-    <header>
-            <h2>Registro de Aves</h2>
-    </header>
+                            <header>
+                                    <h2 class="alt"><strong>Registro de Aves</strong>
+    <br/>
+                                    </h2>
+                                    <p>Este es un formulario para registrar las aves que ha avistado
+                                    </p>
+                            </header>
 
 </div>
 
@@ -695,8 +686,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <br/>
 
 <form action="index2.php" method="post" >
-    
-<legend>Registre el ave que observo</legend>
 
 <table style="float: left; margin-left:100px; margin-top:50px;" >
     
@@ -773,17 +762,28 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <br/>
 <br/>
 
+</section>
+
 <!--    --------------------------------------------------------------------------------------------->
 
+<section id="agregaravistamientos" class="three">
 <form action="index2.php" method="post"  enctype="multipart/form-data" >
-    
-<legend>Inserte imagenes a sus registros</legend>
+
+<div>
+                                <header>
+                                    <h2 class="alt"><strong>Avistamientos</strong>
+    <br/>
+                                    </h2>
+                                    <p>Agregue los avistamientos capturados de las aves
+                                    </p>
+                            </header>
+</div>
 
 <table style="float: left; margin-left:100px; margin-top:50px;" >
 
 <tr>                              
 <td width="500">
-    <label style="width: 150px; display: block; float: left;" >Pajaro observado</label>
+    <label style="width: 220px; display: block; float: left;" >Pajaro observado:</label>
     <select name="RIAvistamiento" style="width: 700px;">
     <option value="0">Seleccione su avistamiento</option> 
    <?php
@@ -897,11 +897,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
 <!-- --------------------------------------Estadisticas------------------------------------------------------->
-    <section id="Estadisticas" class="three">
+     <section id="Estadisticas" class="three">
             <div class="container">
 
                 <header>
-                        <h2>ESTADISTICAS</h2>
+                        <h2>Estadísticas</h2>
                 </header>
             </div> 
         
@@ -994,7 +994,7 @@ if (isset($_POST['boton_estadistica'])){
                     
                 
             <div style="clear: both; "></div>
-            <input id="botonestadistica" name="boton_estadistica" type="submit" value="Consultar" style="margin-left:40px;"/> 
+            <input id="botonestadistica" name="boton_estadistica" type="submit" value="Consultar Estadísticas" style="margin-left:40px;"/> 
 
                     <tr><td>&nbsp; </td></tr>
     </form>  
@@ -1008,17 +1008,17 @@ if (isset($_POST['boton_estadistica'])){
             <div class="container">
 
                 <header>
-                        <h2>CONSULTAS</h2>
+                        <h2>Consultas</h2>
                 </header>
             </div>
         <form action="registro.php" method="post" >
-                <table>
+                <table style="margin-left: 40px; margin-top: 40px;">
                 
                     <tr>                                        
 
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Orden:</label>
-                                <select id="ordenconsultas" style="width: 240px;">
+                                <select id="ordenconsultas" style="width: 300px;">
                                     <option value="0">Seleccione el Orden</option>
                                    <?php
                                     while($fila=mysql_fetch_array($resultadoOrden1))
@@ -1033,7 +1033,7 @@ if (isset($_POST['boton_estadistica'])){
                         
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Color:</label>
-                            <select id="colorconsulta" style="width: 240px;">
+                            <select id="colorconsulta" style="width: 300px;">
                                 <option value="0">Seleccione el Color</option>
                                 <?php
                                 while($fila=mysql_fetch_array($resultadoColor3))
@@ -1051,7 +1051,7 @@ if (isset($_POST['boton_estadistica'])){
                     <tr>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Suborden:</label>
-                                <select id="subordenconsulta"  style="width: 240px;">
+                                <select id="subordenconsulta"  style="width: 300px;">
                                     <option value="0">Seleccione el Sub Orden</option>
                                 </select>
                             <th colspan="1"></th>
@@ -1059,7 +1059,7 @@ if (isset($_POST['boton_estadistica'])){
 
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Tipo de Pico:</label>
-                                <select id="tipopicoconsulta" style="width: 240px;">
+                                <select id="tipopicoconsulta" style="width: 300px;">
                                    <option value="0">Seleccione el Tipo de Pico</option> 
                                 </select>
                         </td>
@@ -1070,7 +1070,7 @@ if (isset($_POST['boton_estadistica'])){
                     <tr>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Familia:</label>
-                                <select id="familiaconsulta"  style="width: 240px;">
+                                <select id="familiaconsulta"  style="width: 300px;">
                                   <option value="0">Seleccione la Familia</option>
                                 </select>
                         </td>
@@ -1079,7 +1079,7 @@ if (isset($_POST['boton_estadistica'])){
 
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Especie:</label>
-                                <select id="especieconsulta"   style="width: 240px;">
+                                <select id="especieconsulta"   style="width: 300px;">
                                       <option value="0">Seleccione la Especie</option>
                                 </select>
                         </td>                        
@@ -1090,7 +1090,7 @@ if (isset($_POST['boton_estadistica'])){
                     <tr>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Género:</label>
-                                <select id="generoconsulta"  style="width: 240px;">
+                                <select id="generoconsulta"  style="width: 300px;">
                                   <option value="0">Seleccione el Genero</option>
                                 </select>
                             <th colspan="1"></th>
@@ -1098,7 +1098,7 @@ if (isset($_POST['boton_estadistica'])){
 
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Zona de Vida:</label>
-                                <select id="zonavidaconsulta" style="width: 240px;">
+                                <select id="zonavidaconsulta" style="width: 300px;">
                                       <option value="0">Seleccione la Zona de Vida</option>
                                    <?php
                                     while($fila=mysql_fetch_array($resultadoZona3))
@@ -1117,7 +1117,7 @@ if (isset($_POST['boton_estadistica'])){
 
                     <td width="500">
                     <label style="width: 200px; display: block; float: left;" >Cantidad de Huevos:</label>
-                    <select id="cantidadhuevosconsultas" style="width: 240px;">
+                    <select id="cantidadhuevosconsultas" style="width: 300px;">
                           <option value="0">Seleccione el Color</option>
                         <?php
                         while($fila=mysql_fetch_array($resultadoHuevos1))
@@ -1133,21 +1133,11 @@ if (isset($_POST['boton_estadistica'])){
                 </table>
 
 <div style="clear: both; "></div>
-<input id="botonconsulta" name="boton_estadistica" type="submit" value="Consultar" style="margin-left:40px;"/> 
+<input id="botonconsulta" name="boton_estadistica" type="submit" value="Consultar Información" style="margin-left:40px;"/> 
 </form>
     </section>                
 
 
-
-<!-- Footer -->
-<div id="footer">
-
-    <!-- Copyright -->
-            <ul class="copyright">
-                    <li>&copy; Ornitología de Costa Rica. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
-            </ul>
-
-</div>
 
 
 
