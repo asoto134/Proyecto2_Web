@@ -16,8 +16,21 @@ $consultaOrden = "CALL getOrden(1)";
 $resultadoOrden = mysql_query($consultaOrden);
 mysql_close($conexion);
 
+$conexion1=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexion1) or die("Error en la seleccion, '$php_errormsg'");
+$consultaOrden1 = "CALL getallOrden()";
+$resultadoOrden1 = mysql_query($consultaOrden1);
+mysql_close($conexion1);
+
+//
+$conexionS=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexionS) or die("Error en la seleccion, '$php_errormsg'");
+$consultaS = "CALL getallSuborden()";
+$resultadoS = mysql_query($consultaS);
+mysql_close($conexionS);
 
 
+//
 
 $conexionC=mysql_connect(HOST, USER, PASS);
 @mysql_select_db(DB, $conexionC) or die("Error en la seleccion, '$php_errormsg'");
@@ -34,9 +47,20 @@ mysql_close($conexionC2);
 $conexionC3=mysql_connect(HOST, USER, PASS);
 @mysql_select_db(DB, $conexionC3) or die("Error en la seleccion, '$php_errormsg'");
 $ConsultaColor3="CALL getColor();";
-$resultadoColor3= mysql_query($ConsultaColor2);
+$resultadoColor3= mysql_query($ConsultaColor3);
 mysql_close($conexionC3);
-
+//
+$conexionPico=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexionPico) or die("Error en la seleccion, '$php_errormsg'");
+$ConsultaPico="CALL getallPico();";
+$resultadoPico= mysql_query($ConsultaPico);
+mysql_close($conexionPico);
+//
+$conexionFamilia=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexionFamilia) or die("Error en la seleccion, '$php_errormsg'");
+$ConsultaFamilia="CALL getallFamilia();";
+$resultadoFamilia= mysql_query($ConsultaFamilia);
+mysql_close($conexionFamilia);
 
 //
 $conexionZ=mysql_connect(HOST, USER, PASS);
@@ -83,6 +107,12 @@ $conexionE1=mysql_connect(HOST, USER, PASS);
 $consultaEspecie1 = "CALL `proyecto2web`.`getAllEspecies`();";
 $resultadoEspecie1 = mysql_query($consultaEspecie1);
 mysql_close($conexionE1);
+//
+$conexiongenero=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexiongenero) or die("Error en la seleccion, '$php_errormsg'");
+$consultagenero = "CALL `proyecto2web`.`getAllGenero`();";
+$resultadogenero = mysql_query($consultagenero);
+mysql_close($conexiongenero);
 
 
 ////
@@ -1001,24 +1031,25 @@ if (isset($_POST['boton_estadistica'])){
                 
     </section> 
 
-<!--Faltan consultas -->
+   <!--Faltan las Consulta -->
+
 
 <!--                                Consultas-->
     <section id="Consultas" class="two">
             <div class="container">
 
                 <header>
-                        <h2>Consultas</h2>
+                        <h2>CONSULTAS</h2>
                 </header>
             </div>
-        <form action="registro.php" method="post" >
-                <table style="margin-left: 40px; margin-top: 40px;">
+        <form action="index2.php" method="post" >
+                <table>
                 
                     <tr>                                        
 
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Orden:</label>
-                                <select id="ordenconsultas" style="width: 300px;">
+                                <select name='OC' id="ordenconsultas" style="width: 240px;">
                                     <option value="0">Seleccione el Orden</option>
                                    <?php
                                     while($fila=mysql_fetch_array($resultadoOrden1))
@@ -1033,7 +1064,7 @@ if (isset($_POST['boton_estadistica'])){
                         
                     <td width="500">
                         <label style="width: 200px; display: block; float: left;" >Color:</label>
-                            <select id="colorconsulta" style="width: 300px;">
+                            <select name="colorconsulta" style="width: 240px;">
                                 <option value="0">Seleccione el Color</option>
                                 <?php
                                 while($fila=mysql_fetch_array($resultadoColor3))
@@ -1051,16 +1082,30 @@ if (isset($_POST['boton_estadistica'])){
                     <tr>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Suborden:</label>
-                                <select id="subordenconsulta"  style="width: 300px;">
+                                <select name="subordenconsulta"  style="width: 240px;">
+                                    
                                     <option value="0">Seleccione el Sub Orden</option>
+                                    <?php
+                                    while($fila=mysql_fetch_array($resultadoS))
+                                    {
+                                        echo "<option value='".$fila['idSuborden']."'>".$fila['Suborden']."</option>";
+                                    }
+                                    ?>
                                 </select>
                             <th colspan="1"></th>
                         </td>
 
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Tipo de Pico:</label>
-                                <select id="tipopicoconsulta" style="width: 300px;">
+                                <select name="tipopicoconsulta" style="width: 240px;">
                                    <option value="0">Seleccione el Tipo de Pico</option> 
+                                  <?php
+                                    while($fila=mysql_fetch_array($resultadoPico))
+                                    {
+                                        echo "<option value='".$fila['idTipo_de_Pico']."'>".$fila['Tipo_de_Pico']."</option>";
+                                    }
+                                    ?>
+                                
                                 </select>
                         </td>
                     </tr>
@@ -1070,8 +1115,14 @@ if (isset($_POST['boton_estadistica'])){
                     <tr>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Familia:</label>
-                                <select id="familiaconsulta"  style="width: 300px;">
+                                <select name="familiaconsulta"  style="width: 240px;">
                                   <option value="0">Seleccione la Familia</option>
+                                  <?php
+                                    while($fila=mysql_fetch_array($resultadoFamilia))
+                                    {
+                                        echo "<option value='".$fila['idFamilia']."'>".$fila['Familia']."</option>";
+                                    }
+                                    ?>
                                 </select>
                         </td>
 
@@ -1079,8 +1130,14 @@ if (isset($_POST['boton_estadistica'])){
 
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Especie:</label>
-                                <select id="especieconsulta"   style="width: 300px;">
+                                <select name="especieconsulta"   style="width: 240px;">
                                       <option value="0">Seleccione la Especie</option>
+                                      <?php
+                                       while($fila=mysql_fetch_array($resultadoEspecie1))
+                                    {
+                                        echo "<option value='".$fila['idEspecie']."'>".$fila['Especie']."</option>";
+                                    }
+                                    ?>
                                 </select>
                         </td>                        
                     </tr>
@@ -1090,15 +1147,21 @@ if (isset($_POST['boton_estadistica'])){
                     <tr>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Género:</label>
-                                <select id="generoconsulta"  style="width: 300px;">
+                                <select name="generoconsulta"  style="width: 240px;">
                                   <option value="0">Seleccione el Genero</option>
+                                  <?php
+                                   while($fila=mysql_fetch_array($resultadogenero))
+                                    {
+                                        echo "<option value='".$fila['idGenero']."'>".$fila['Genero']."</option>";
+                                    }
+                                    ?>
                                 </select>
                             <th colspan="1"></th>
                         </td>
 
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Zona de Vida:</label>
-                                <select id="zonavidaconsulta" style="width: 300px;">
+                                <select name="zonavidaconsulta" style="width: 240px;">
                                       <option value="0">Seleccione la Zona de Vida</option>
                                    <?php
                                     while($fila=mysql_fetch_array($resultadoZona3))
@@ -1117,8 +1180,8 @@ if (isset($_POST['boton_estadistica'])){
 
                     <td width="500">
                     <label style="width: 200px; display: block; float: left;" >Cantidad de Huevos:</label>
-                    <select id="cantidadhuevosconsultas" style="width: 300px;">
-                          <option value="0">Seleccione el Color</option>
+                    <select name="cantidadhuevosconsultas" style="width: 240px;">
+                          <option value="0">Seleccione la cantidad de huevos</option>
                         <?php
                         while($fila=mysql_fetch_array($resultadoHuevos1))
                         {
@@ -1129,15 +1192,105 @@ if (isset($_POST['boton_estadistica'])){
                     </td>    
                     
                     </tr>
-                
+                            
                 </table>
+           <?php
+           ////Código para realizar las consultas
+           if (isset($_POST['bConsultas']))
+               
+           {
+           
+               
+               $Orden=$_POST['OC'];
+               $Suborden=$_POST['subordenconsulta'];
+               $Familia=$_POST['familiaconsulta'];
+               $Genero=$_POST['generoconsulta'];
+               $huevos=$_POST['cantidadhuevosconsultas'];
+               $Color=$_POST['colorconsulta'];
+               $Pico=$_POST['tipopicoconsulta'];
+               $Especie=$_POST['especieconsulta'];
+               $Zona_de_Vida=$_POST['zonavidaconsulta'];
+               
+              
+    $conexionCA=mysql_connect(HOST, USER, PASS);
+    @mysql_select_db(DB, $conexionCA) or die("Error en la seleccion, '$php_errormsg'");
+    $ConsultaCA="CALL CONSULTA_AVES_POR_PERSONA($Especie,$Genero,$Familia,$Suborden,$Color,$Zona_de_Vida,$huevos,0);";
+    $resultadoCA= mysql_query($ConsultaCA);
+    mysql_close($conexionCA);
+    
+     $ok=true;
+    
+ if ($ok == true){
+		
+		 echo "<table border = 1>
+		 <tr>
+		 
+                 <th>Nombre</th>
+		 <th>Apellido</th>
+                 <th>Especie </th>
+                 <th>Nombre_Cientifico </th>
+                 <th>Nombre_Comun </th>
+                 <th>Nombre_en_Ingles</th>
+                 <th>Cantidad </th>
+                 <th>Genero</th>
+                 <th>familia</th>
+                 <th>suborden</th>
+                 
+                 </tr>";
+		 
+		 // agarramos los datos q fueron devueltos en el cursor
+		 while ($entry = mysql_fetch_array($resultadoCA)){
+			 // aca se agarran los datos obtenidos por la busqueda
+			 // osea los NOMBRES EXACTOS de las columnas
+			 // ($variable = $entry["NOMBRE EXACTO CULUMNA"])
+			 // por ejemplo:
+			 
+			 
+                         
+			 echo "<tr>";
+			 echo "<td>".$entry['Nombre']."</td>";
+			 echo "<td>".$entry['Apellido']."</td>";
+                         echo "<td>".$entry['Especie']."</td>";
+                         echo "<td>".$entry['Nombre_Cientifico']."</td>";
+                         echo "<td>".$entry['Nombre_Comun']."</td>";
+                         echo "<td>".$entry['Nombre_en_Ingles']."</td>";
+                         echo "<td>".$entry['Cantidad']."</td>";
+                         echo "<td>".$entry['Genero']."</td>";
+                         echo "<td>".$entry['familia']."</td>";
+                         echo "<td>".$entry['suborden']."</td>";
+                         
+                         
+			
+			 echo "</tr>";
+			 
+		 }
+		 
+		 echo "</table>";
+           
+           }
+           else{
+               echo 'Problemas';
+           }
+           
+                 }
+           ?>
 
 <div style="clear: both; "></div>
-<input id="botonconsulta" name="boton_estadistica" type="submit" value="Consultar Información" style="margin-left:40px;"/> 
+<input id="botonconsulta" name="bConsultas" type="submit" value="Consultar" style="margin-left:40px;"/> 
 </form>
     </section>                
 
 
+
+<!-- Footer -->
+<div id="footer">
+
+    <!-- Copyright -->
+            <ul class="copyright">
+                    <li>&copy; Ornitología de Costa Rica. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+
+</div>
 
 
 

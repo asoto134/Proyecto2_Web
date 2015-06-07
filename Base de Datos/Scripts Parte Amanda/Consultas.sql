@@ -46,13 +46,18 @@ end$$
 DELIMITER ;;
 -- Consulta de Aves por persona--
 -- Aquí el usuario puede consultar las aves subidas por otros usuarios. Por cierto, falta que el filtro muestre las fotos
-CREATE DEFINER=`proyecto2web`@`localhost` PROCEDURE `CONSULTA_AVES_POR_PERSONA`(in DESPECIE int,in DGENERO int, in dfamilia int,in dorden int,in dcolor int,in dzona int,in dcantidad int, in dusuario int)
+USE `proyecto2web`;
+DROP procedure IF EXISTS `CONSULTA_AVES_POR_PERSONA`;
+
+DELIMITER $$
+USE `proyecto2web`$$
+CREATE DEFINER=`proyecto2web`@`localhost` PROCEDURE `CONSULTA_AVES_POR_PERSONA`(in DESPECIE int,in DGENERO int, in dfamilia int,in dorden int,in dcolor int,in dzona int,in dcantidad int,in dusuario int)
 BEGIN
-		if (DESPECIE=0 and DGENERO=0 and dfamilia=0 and dorden=0 and dcantidad=0,dzona=0,dcolor=0,dusuario=0) then
-	Select p.Nombre,p.Apellido,E.Especie,E.Nombre_Cientifico,e.Nombre_Comun,e.Nombre_en_Ingles,c.Cantidad,g.Genero,F.familia,S.suborden
+        if (DESPECIE=0 and DGENERO=0 and dfamilia=0 and dorden=0 and dcantidad=0 and dzona=0 and dcolor=0 and dusuario=0) then
+            Select p.Nombre,p.Apellido,E.Especie,E.Nombre_Cientifico,e.Nombre_Comun,e.Nombre_en_Ingles,ch.Cantidad,g.Genero,F.familia,S.suborden
         from pajaros_x_persona pxp
         inner join persona p
-        on p.idPersona=pxp.Persona_idPersona
+        on p.Usuario_idUsuario=pxp.Persona_idPersona
         inner join color c
         on pxp.Color_idColor=c.idColor
         inner join zona_de_Vida z
@@ -67,11 +72,11 @@ BEGIN
         on f.idFamilia=g.Familia_idFamilia 
         inner join suborden s
         on f.Suborden_idSuborden =s.idSuborden;
-	else
-		Select p.Nombre,p.Apellido,E.Especie,E.Nombre_Cientifico,e.Nombre_Comun,e.Nombre_en_Ingles,c.Cantidad,g.Genero,F.familia,S.suborden
+    else
+                Select p.Nombre,p.Apellido,E.Especie,E.Nombre_Cientifico,e.Nombre_Comun,e.Nombre_en_Ingles,ch.Cantidad,g.Genero,F.familia,S.suborden
         from pajaros_x_persona pxp
         inner join persona p
-        on p.idPersona=pxp.Persona_idPersona
+        on p.Usuario_idUsuario=pxp.Persona_idPersona
         inner join color c
         on pxp.Color_idColor=c.idColor
         inner join zona_de_Vida z
@@ -86,10 +91,13 @@ BEGIN
         on f.idFamilia=g.Familia_idFamilia 
         inner join suborden s
         on f.Suborden_idSuborden =s.idSuborden
-        where e.idEspecie=DESPECIE or c.idcantidad_Huevos=DCANTIDAD or 
+        where e.idEspecie=DESPECIE or ch.idcantidad_Huevos=DCANTIDAD or 
         g.idGenero=DGENERO or f.idFamilia=DFAMILIA or s.idSuborden=DORDEN or
         z.idZona_de_Vida=dzona or c.idcolor=dcolor or pxp.Persona_idPersona=dusuario;
+      
+    
         
-		
         end if;
-END
+END$$
+
+DELIMITER ;
