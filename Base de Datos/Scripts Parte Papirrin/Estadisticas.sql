@@ -27,7 +27,7 @@ BEGIN
   	from (Select nombre,Apellido,count(Pajaros_X_Persona_id)
 			from Pajaros_X_Persona, persona
 			where (Tipo_de_Persona_idTipo_de_Persona <= 2)
-			and Persona_idPersona = idPersona
+			and Persona_idPersona = Usuario_idUsuario
 			group by idPersona
 			order by count(Pajaros_X_Persona_id) desc) as tabla
   	limit top;

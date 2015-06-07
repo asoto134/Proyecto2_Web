@@ -3,7 +3,7 @@ include ("settings.php");
 include ("common.php");
 //echo $_COOKIE['admin'];
 // echo "<script>alert(" . $_COOKIE['admin'] . ");</script>";
-//error_reporting(0);
+error_reporting(0);
 //Al presionar el boton de login
 $administrador = $_COOKIE['admin'];
 $idUsuario = 0;
@@ -17,6 +17,8 @@ $resultadoOrden = mysql_query($consultaOrden);
 mysql_close($conexion);
 
 
+
+
 $conexionC=mysql_connect(HOST, USER, PASS);
 @mysql_select_db(DB, $conexionC) or die("Error en la seleccion, '$php_errormsg'");
 $ConsultaColor="CALL getColor();";
@@ -28,6 +30,14 @@ $conexionC2=mysql_connect(HOST, USER, PASS);
 $ConsultaColor2="CALL getColor();";
 $resultadoColor2= mysql_query($ConsultaColor2);
 mysql_close($conexionC2);
+
+$conexionC3=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexionC3) or die("Error en la seleccion, '$php_errormsg'");
+$ConsultaColor3="CALL getColor();";
+$resultadoColor3= mysql_query($ConsultaColor2);
+mysql_close($conexionC3);
+
+
 //
 $conexionZ=mysql_connect(HOST, USER, PASS);
 @mysql_select_db(DB, $conexionZ) or die("Error en la seleccion, '$php_errormsg'");
@@ -40,12 +50,26 @@ $conexionZ2=mysql_connect(HOST, USER, PASS);
 $consultaZona2 = "CALL `proyecto2web`.`getZonadeVida`();";
 $resultadoZona2 = mysql_query($consultaZona2);
 mysql_close($conexionZ2);
+
+$conexionZ3=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexionZ3) or die("Error en la seleccion, '$php_errormsg'");
+$consultaZona3 = "CALL `proyecto2web`.`getZonadeVida`();";
+$resultadoZona3 = mysql_query($consultaZona3);
+mysql_close($conexionZ3);
 //
 $conexionH=mysql_connect(HOST, USER, PASS);
 @mysql_select_db(DB, $conexionH) or die("Error en la seleccion, '$php_errormsg'");
 $consultaHuevos = "CALL `proyecto2web`.`getCantHuevos`();";
 $resultadoHuevos = mysql_query($consultaHuevos);
 mysql_close($conexionH);
+
+$conexionH1=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexionH1) or die("Error en la seleccion, '$php_errormsg'");
+$consultaHuevos1 = "CALL `proyecto2web`.`getCantHuevos`();";
+$resultadoHuevos1 = mysql_query($consultaHuevos1);
+mysql_close($conexionH1);
+
+
 ////
 
 $conexionE=mysql_connect(HOST, USER, PASS);
@@ -53,6 +77,14 @@ $conexionE=mysql_connect(HOST, USER, PASS);
 $consultaEspecie = "CALL `proyecto2web`.`getAllEspecies`();";
 $resultadoEspecie = mysql_query($consultaEspecie);
 mysql_close($conexionE);
+
+$conexionE1=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexionE1) or die("Error en la seleccion, '$php_errormsg'");
+$consultaEspecie1 = "CALL `proyecto2web`.`getAllEspecies`();";
+$resultadoEspecie1 = mysql_query($consultaEspecie1);
+mysql_close($conexionE1);
+
+
 ////
 $conexionP=mysql_connect(HOST, USER, PASS);
 @mysql_select_db(DB, $conexionP) or die("Error en la seleccion, '$php_errormsg'");
@@ -66,6 +98,21 @@ $consultaPajaros = "CALL `proyecto2web`.`getPajaroXPersona`('" . $_COOKIE['id'] 
 $resultadoPajaros = mysql_query($consultaPajaros);
 mysql_close($conexionPajaros);
 ////
+///
+$conexionCantidadAves=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexionCantidadAves) or die("Error en la seleccion, '$php_errormsg'");
+$consultaCantidadAves = "CALL `proyecto2web`.`totalPajaros`();";
+$resultadoCantidadAves = mysql_query($consultaCantidadAves);
+mysql_close($conexionCantidadAves);
+//
+$conexionCantidadAvesXZONA=mysql_connect(HOST, USER, PASS);
+@mysql_select_db(DB, $conexionCantidadAvesXZONA) or die("Error en la seleccion, '$php_errormsg'");
+$consultaCantidadAvesXZONA = "CALL `proyecto2web`.`Pajaros_x_ZonaVida`();";
+$resultadoCantidadAvesXZONA = mysql_query($consultaCantidadAvesXZONA);
+mysql_close($conexionCantidadAvesXZONA);
+//
+
+
 $conexionU=mysql_connect(HOST, USER, PASS);
 @mysql_select_db(DB, $conexionU) or die("Error en la seleccion, '$php_errormsg'");
 $consultaUsuario = "CALL getIdUsuario ('" . $_COOKIE['id'] . "');";
@@ -413,7 +460,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     {
         echo "<option value='".$fila['idZona_de_Vida']."'>".$fila['Zona_de_Vida']."</option>";
     }
+  
     ?>
+     
 </select>
 <th colspan="1"></th>
 </td>
@@ -605,6 +654,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     {
     echo "<option value='".$fila['idZona_de_Vida']."'>".$fila['Zona_de_Vida']."</option>";
     }
+    
 
     ?>
 
@@ -625,6 +675,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         echo "<option value='".$fila['idColor']."'>".$fila['Color']."</option>";
     }
     ?>
+        
 
 
  </select></td>
@@ -735,7 +786,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                                     </header>
                                             </article>
                                     </div>
-<!--								<div class="4u">
+<!--                                <div class="4u">
                                             <article class="item">
                                                     <a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
                                                     <header>
@@ -779,28 +830,93 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 </header>
             </div> 
         
-        <form action="registro.php" method="post" >
+        <form action="index2.php" method="post" >
         
                 <table style="float: left; margin-left: 25px; vertical-align: top;">
                     <!-- Combo box -->
-                    <tr>
-                        <td width="500">
-                            <label style="width: 150px; float: left;" >Estadística:</label>
-                                <select id="estadistica" style="width: 220px; margin-right: -50px">
-                                    <option value="0">Estadística</option>
-                                </select>
-                        </td>
-                        
-                        <td>&nbsp; </td>
-                        <th colspan="1"></th>
-                        
-                        <td width="500">
-                        <label style="width: 250px; float: left;" >Estadística a consultar:</label>
-                            <input id="campoestadistica" name="campoestadistica" type="text" value="Estadística" style="width: 200px; display: block; float: left;" />
-                        </td>
                     
-                    </tr>
+                    <td>
+                        <tr>
+                            <?php
+                    $contados = mysql_result($resultadoCantidadAves,0);
+                    echo 'Total de Aves registradas:</label>'.$contados;?>
+                        </tr>
+                        
+                    <td>
+                       <?php
+                        echo 'Cantidad de aves registradas por zona de vida';
+                        if ($row = mysql_fetch_array($resultadoCantidadAvesXZONA)){ 
+   echo "<table border = '1'> \n"; 
+   echo "<tr><td>Cantidad</td><td>Zona de Vida</td></tr> \n"; 
+   do { 
+      echo "<tr><td>".$row["Cantidad"]."</td><td>".$row["Zona_de_Vida"]."</td></tr> \n"; 
+   } while ($row = mysql_fetch_array($resultadoCantidadAvesXZONA)); 
+   echo "</table> \n"; 
+}
+                       ?>
+  <td width="500">
+                        <label style="width: 250px; float: left;" >Inserte el top:</label>
+                            <input id="campoestadistica" name="campoestadistica" type="text" value="Estadística" style="width: 200px; display: block; float: left;" />
+                        </td>                            
+                        </td>
+                        <td>
+                                    
+                        </td>
+                        
+                     </td>
                     </table>
+                            <?php 
+                            
+
+if (isset($_POST['boton_estadistica'])){
+    $conexionTop=mysql_connect(HOST, USER, PASS);
+    $campo=$_POST['campoestadistica'];
+    @mysql_select_db(DB, $conexionTop) or die("Error en la seleccion, '$php_errormsg'");
+    $ConsultaTop="CALL `proyecto2web`.`TopPajaros`($campo);";
+    $resultadoTop= mysql_query($ConsultaTop);
+    mysql_close($conexionTop); 
+     $ok=true;
+    
+ if ($ok == true){
+        
+         echo "<table border = 1>
+         <tr>
+         
+                 <th>nombre</th>
+         <th>apellido</th>
+                 </tr>";
+         
+         // agarramos los datos q fueron devueltos en el cursor
+         while ($entry = mysql_fetch_array($resultadoTop)){
+             // aca se agarran los datos obtenidos por la busqueda
+             // osea los NOMBRES EXACTOS de las columnas
+             // ($variable = $entry["NOMBRE EXACTO CULUMNA"])
+             // por ejemplo:
+             $PAIS = $entry['nombre'];
+             $ID = $entry['Apellido'];
+             
+             
+             echo "<tr>";
+             echo "<td>".$PAIS."</td>";
+             echo "<td>".$ID."</td>";
+            
+             echo "</tr>";
+             
+         }
+         
+         echo "</table>";
+        
+    }
+        ELSE{
+            
+            echo "Problemas";
+        }
+           
+     
+} 
+?> 
+                            
+                    
                 
             <div style="clear: both; "></div>
             <input id="botonestadistica" name="boton_estadistica" type="submit" value="Consultar" style="margin-left:40px;"/> 
@@ -810,7 +926,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 
     </section> 
 
-
+<!--Faltan consultas -->
 
 <!--                                Consultas-->
     <section id="Consultas" class="two">
@@ -827,10 +943,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Orden:</label>
-                                <select id="ordenconsultas" onChange="getSubOrden(this.value);" style="width: 240px;">
+                                <select id="ordenconsultas" style="width: 240px;">
                                     <option value="0">Seleccione el Orden</option>
                                    <?php
-                                    while($fila=mysql_fetch_array($resultadoOrden))
+                                    while($fila=mysql_fetch_array($resultadoOrden1))
                                     {
                                         echo "<option value='".$fila['idOrden']."'>".$fila['Orden']."</option>";
                                     }
@@ -845,7 +961,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <select id="colorconsulta" style="width: 240px;">
                                 <option value="0">Seleccione el Color</option>
                                 <?php
-                                while($fila=mysql_fetch_array($resultadoColor))
+                                while($fila=mysql_fetch_array($resultadoColor3))
                                 {
                                     echo "<option value='".$fila['idColor']."'>".$fila['Color']."</option>";
                                 }
@@ -860,7 +976,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <tr>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Suborden:</label>
-                                <select id="subordenconsulta" onChange="getFamilia(this.value);" style="width: 240px;">
+                                <select id="subordenconsulta"  style="width: 240px;">
                                     <option value="0">Seleccione el Sub Orden</option>
                                 </select>
                             <th colspan="1"></th>
@@ -879,7 +995,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <tr>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Familia:</label>
-                                <select id="familiaconsulta" onChange="getGenero(this.value);" style="width: 240px;">
+                                <select id="familiaconsulta"  style="width: 240px;">
                                   <option value="0">Seleccione la Familia</option>
                                 </select>
                         </td>
@@ -888,7 +1004,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Especie:</label>
-                                <select id="especieconsulta" onChange="getTipoPico(this.value);"  style="width: 240px;">
+                                <select id="especieconsulta"   style="width: 240px;">
                                       <option value="0">Seleccione la Especie</option>
                                 </select>
                         </td>                        
@@ -899,7 +1015,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <tr>
                         <td width="500">
                             <label style="width: 200px; display: block; float: left;" >Género:</label>
-                                <select id="generoconsulta" onChange="getEspecie(this.value);" style="width: 240px;">
+                                <select id="generoconsulta"  style="width: 240px;">
                                   <option value="0">Seleccione el Genero</option>
                                 </select>
                             <th colspan="1"></th>
@@ -910,7 +1026,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                                 <select id="zonavidaconsulta" style="width: 240px;">
                                       <option value="0">Seleccione la Zona de Vida</option>
                                    <?php
-                                    while($fila=mysql_fetch_array($resultadoZona))
+                                    while($fila=mysql_fetch_array($resultadoZona3))
                                     {
                                         echo "<option value='".$fila['idZona_de_Vida']."'>".$fila['Zona_de_Vida']."</option>";
                                     }
@@ -929,7 +1045,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <select id="cantidadhuevosconsultas" style="width: 240px;">
                           <option value="0">Seleccione el Color</option>
                         <?php
-                        while($fila=mysql_fetch_array($resultadoHuevos))
+                        while($fila=mysql_fetch_array($resultadoHuevos1))
                         {
                             echo "<option value='".$fila['idcantidad_Huevos']."'>".$fila['Cantidad']."</option>";
                         }
