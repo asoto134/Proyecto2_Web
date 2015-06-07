@@ -51,10 +51,10 @@ DROP procedure IF EXISTS `CONSULTA_AVES_POR_PERSONA`;
 
 DELIMITER $$
 USE `proyecto2web`$$
-CREATE DEFINER=`proyecto2web`@`localhost` PROCEDURE `CONSULTA_AVES_POR_PERSONA`(in DESPECIE int,in DGENERO int, in dfamilia int,in dorden int,in dcolor int,in dzona int,in dcantidad int,in dusuario int)
+CREATE DEFINER=`proyecto2web`@`localhost` PROCEDURE `CONSULTA_AVES_POR_PERSONA`(in DESPECIE int,in DGENERO int, in dfamilia int,in dorden int,in dcolor int,in dzona int,in dcantidad int,in dusuario int,in dpico int)
 BEGIN
-        if (DESPECIE=0 and DGENERO=0 and dfamilia=0 and dorden=0 and dcantidad=0 and dzona=0 and dcolor=0 and dusuario=0) then
-            Select p.Nombre,p.Apellido,E.Especie,E.Nombre_Cientifico,e.Nombre_Comun,e.Nombre_en_Ingles,ch.Cantidad,g.Genero,F.familia,S.suborden
+        if (DESPECIE=0 and DGENERO=0 and dfamilia=0 and dorden=0 and dcantidad=0 and dzona=0 and dcolor=0 and dusuario=0 and dpico=0) then
+            Select p.Nombre,p.Apellido,E.Especie,E.Nombre_Cientifico,e.Nombre_Comun,e.Nombre_en_Ingles,ch.Cantidad,g.Genero,F.familia,S.suborden,tp.Tipo_de_pico
         from pajaros_x_persona pxp
         inner join persona p
         on p.Usuario_idUsuario=pxp.Persona_idPersona
@@ -64,6 +64,8 @@ BEGIN
         on z.idZona_de_Vida=pxp.Zona_de_Vida_idZonadeVida
         inner join especie e
         on pxp.Especie_idEspecie=e.idEspecie
+        inner join tipo_de_pico tp
+        on pxp.Especie_idEspecie=tp.Especie_idEspecie
         inner join cantidad_huevos ch
         on e.cantidad_Huevos_idcantidad_Huevos=ch.idcantidad_Huevos
         inner join genero g
@@ -73,7 +75,7 @@ BEGIN
         inner join suborden s
         on f.Suborden_idSuborden =s.idSuborden;
     else
-                Select p.Nombre,p.Apellido,E.Especie,E.Nombre_Cientifico,e.Nombre_Comun,e.Nombre_en_Ingles,ch.Cantidad,g.Genero,F.familia,S.suborden
+                Select p.Nombre,p.Apellido,E.Especie,E.Nombre_Cientifico,e.Nombre_Comun,e.Nombre_en_Ingles,ch.Cantidad,g.Genero,F.familia,S.suborden,tp.Tipo_de_pico
         from pajaros_x_persona pxp
         inner join persona p
         on p.Usuario_idUsuario=pxp.Persona_idPersona
@@ -83,6 +85,8 @@ BEGIN
         on z.idZona_de_Vida=pxp.Zona_de_Vida_idZonadeVida
         inner join especie e
         on pxp.Especie_idEspecie=e.idEspecie
+        inner join tipo_de_pico tp
+        on pxp.Especie_idEspecie=tp.Especie_idEspecie
         inner join cantidad_huevos ch
         on e.cantidad_Huevos_idcantidad_Huevos=ch.idcantidad_Huevos
         inner join genero g
@@ -93,11 +97,12 @@ BEGIN
         on f.Suborden_idSuborden =s.idSuborden
         where e.idEspecie=DESPECIE or ch.idcantidad_Huevos=DCANTIDAD or 
         g.idGenero=DGENERO or f.idFamilia=DFAMILIA or s.idSuborden=DORDEN or
-        z.idZona_de_Vida=dzona or c.idcolor=dcolor or pxp.Persona_idPersona=dusuario;
-      
+        z.idZona_de_Vida=dzona or c.idcolor=dcolor or pxp.Persona_idPersona=dusuario
+        or tp.idTipo_de_Pico=dpico;
     
         
         end if;
 END$$
 
 DELIMITER ;
+

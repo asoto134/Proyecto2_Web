@@ -1214,7 +1214,7 @@ if (isset($_POST['boton_estadistica'])){
               
     $conexionCA=mysql_connect(HOST, USER, PASS);
     @mysql_select_db(DB, $conexionCA) or die("Error en la seleccion, '$php_errormsg'");
-    $ConsultaCA="CALL CONSULTA_AVES_POR_PERSONA($Especie,$Genero,$Familia,$Suborden,$Color,$Zona_de_Vida,$huevos,0);";
+    $ConsultaCA="CALL CONSULTA_AVES_POR_PERSONA($Especie,$Genero,$Familia,$Suborden,$Color,$Zona_de_Vida,$huevos,0,$Pico);";
     $resultadoCA= mysql_query($ConsultaCA);
     mysql_close($conexionCA);
     
@@ -1228,13 +1228,14 @@ if (isset($_POST['boton_estadistica'])){
                  <th>Nombre</th>
 		 <th>Apellido</th>
                  <th>Especie </th>
-                 <th>Nombre_Cientifico </th>
-                 <th>Nombre_Comun </th>
-                 <th>Nombre_en_Ingles</th>
+                 <th>Nombre Cientifico </th>
+                 <th>Nombre Comun </th>
+                 <th>Nombre en Ingles</th>
                  <th>Cantidad </th>
                  <th>Genero</th>
                  <th>familia</th>
                  <th>suborden</th>
+                 <th>Tipo de Pico</th>
                  
                  </tr>";
 		 
@@ -1258,6 +1259,8 @@ if (isset($_POST['boton_estadistica'])){
                          echo "<td>".$entry['Genero']."</td>";
                          echo "<td>".$entry['familia']."</td>";
                          echo "<td>".$entry['suborden']."</td>";
+                         echo "<td>".$entry['tipo_de_pico']."</td>";
+
                          
                          
 			
