@@ -304,29 +304,27 @@ if (isset($_POST['entrar']))
                     <ul class="timeline">
                         <li>
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/liz.jpg" alt="">
+                                <img class="img-circle img-responsive" src="img/1.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>Liza Chaves Carranza</h4>
-                                    <h4 class="subheading">Interfaz Gráfica</h4>
+                                    <h4>Nelson Abarca Quirós</h4>
+                                    <h4 class="subheading">Desarrollador: Base de Datos</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Diseñadora de la interfaz gráfica y todos los toques pichudos que en realidad los hizo Adrián.</p>
                                 </div>
                             </div>
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
+                                <img class="img-circle img-responsive" src="img/liz.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>I Semestre 2015</h4>
-                                    <h4 class="subheading">I Proyecto Programado</h4>
+                                    <h4>Liza Chaves Carranza</h4>
+                                    <h4 class="subheading">Diseñadora Web</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">El primer proyecto fue retador, donde se puso en práctica lo aprendido, y donde se quería plasmar las ideas innovadoras del grupo de trabajo, creando así un sistema para facilitar la adopción de mascotas en el país.</p>
                                 </div>
                             </div>
                         </li>
@@ -336,11 +334,10 @@ if (isset($_POST['entrar']))
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>I Semestre 2015</h4>
-                                    <h4 class="subheading">Más Aprendizaje</h4>
+                                    <h4>Amando Solano Astorga</h4>
+                                    <h4 class="subheading">Desarrolladora: Consultas</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Las críticas constructivas por parte de la evaluadora fueron bien recibidas, haciendo que el rendimiento del grupo mejorara. Los temas que prosiguieron fueron claves para poder llevar a cabo el segundo proyecto programado, por ejemplo: jobs, seguridad de DBMS y el trabajo que desempeña un Administrador de Bases de Datos.</p>
                                 </div>
                             </div>
                         </li>
@@ -350,20 +347,26 @@ if (isset($_POST['entrar']))
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>I Semestre 2015</h4>
-                                    <h4 class="subheading">II Proyecto Programado</h4>
+                                    <h4>Melissa Molina Corrales</h4>
+                                    <h4 class="subheading">Desarolladora e Investigadora: Bases de Datos</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">En desarrollo actualmente, el segundo proyecto está dirigido hacia los amantes de la ornitología, ciencia que estudia y analiza las aves. El objetivo principal es que los ornitólogos y aficionados de esta disciplina puedan compartir todos sus hallazgos y fotografías de sus aves preferidas.</p>
                                 </div>
                             </div>
                         </li>
-                        <li class="timeline-inverted">
+                        <li>
                             <div class="timeline-image">
-                                <h4>¡Se Parte
-                                    <br>De Nuestra
-                                    <br>Historia!</h4>
+                                <img class="img-circle img-responsive" src="img/adrian.jpg" alt="">
                             </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Adrián Soto Loría</h4>
+                                    <h4 class="subheading">Programador Principal</h4>
+                                </div>
+                                <div class="timeline-body">
+                                </div>
+                            </div>
+                        </li>
                         </li>
                     </ul>
                 </div>
