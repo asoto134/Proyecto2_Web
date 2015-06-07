@@ -1,7 +1,7 @@
 <?php
 include ("settings.php");
 include ("common.php");
-//error_reporting(0);
+error_reporting(0);
 //Al presionar el boton de login
 if (isset($_POST['entrar']))
 { // if form has been submitted
@@ -304,15 +304,15 @@ if (isset($_POST['entrar']))
                     <ul class="timeline">
                         <li>
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/1.jpg" alt="">
+                                <img class="img-circle img-responsive" src="img/liz.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>I Semestre 2015</h4>
-                                    <h4 class="subheading">Aprendiendo sobre bases de Datos Relacionales</h4>
+                                    <h4>Liza Chaves Carranza</h4>
+                                    <h4 class="subheading">Interfaz Gráfica</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Al inicio del curso, las bases del conocimiento comenzaron por la historia en el tiempo sobre las bases de datos, siguiendo con el aprendizaje del idioma principal para entenderlas, el SQL. Se reforzaron los conocimientos para poder hacer todos los procedimientos correctamente y que el aprendizaje fuera enriquecedor.</p>
+                                    <p class="text-muted">Diseñadora de la interfaz gráfica y todos los toques pichudos que en realidad los hizo Adrián.</p>
                                 </div>
                             </div>
                         </li>
