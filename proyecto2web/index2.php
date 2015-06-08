@@ -1264,21 +1264,7 @@ if (isset($_POST['boton_estadistica'])){
 <div style="clear: both; "></div>
 <input id="botonconsulta" name="bConsultas" type="submit" value="Consultar" style="margin-left:40px;"/> 
 </form>
-    </section>                
-
-
-
-<!-- Footer -->
-<div id="footer">
-
-    <!-- Copyright -->
-            <ul class="copyright">
-                    <li>&copy; Ornitología de Costa Rica. Todos los derechos reservados.</li><li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
-            </ul>
-
-</div>
-
-
+    </section>
 
 <!-- Validaciones -->
 <script src="js/misFunciones.js"></script> 
