@@ -1,6 +1,6 @@
---Creados por Amanda--
---Procedimientos para poder connsultar--
---Obtiene todos los ordenes--
+-- Creados por Amanda--
+-- Procedimientos para poder connsultar--
+-- Obtiene todos los ordenes--
 USE `proyecto2web`;
 DROP procedure IF EXISTS `getallOrden`;
 
@@ -16,7 +16,7 @@ $$
 
 DELIMITER ;
 
---Obtiene todo los subordenes--
+-- Obtiene todo los subordenes--
 
 USE `proyecto2web`;
 DROP procedure IF EXISTS `proyecto2web`.`getallSuborden`;
@@ -33,7 +33,7 @@ END$$
 DELIMITER ;
 ;
 
---Obtiene todos los picos--
+-- Obtiene todos los picos--
 
 USE `proyecto2web`;
 DROP procedure IF EXISTS `proyecto2web`.`getallPico`;
@@ -49,7 +49,7 @@ END$$
 
 DELIMITER ;
 ;
---Obtiene todas las familias--
+-- Obtiene todas las familias--
 
 USE `proyecto2web`;
 DROP procedure IF EXISTS `proyecto2web`.`getallFamilia`;
@@ -64,7 +64,7 @@ END$$
 
 DELIMITER ;
 ;
---Obtiene todos los genero--
+-- Obtiene todos los genero--
 
 USE `proyecto2web`;
 DROP procedure IF EXISTS `getallGenero`;

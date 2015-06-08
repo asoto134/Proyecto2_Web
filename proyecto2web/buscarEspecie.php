@@ -17,7 +17,7 @@ mysql_close($conexion);
  
     while($fila=mysql_fetch_array($resultado))
     {
-        echo "<option value='".$fila['idEspecie']."'>".$fila['Especie']."</option>";
+        echo "<option value='".$fila['Especie']."'>".$fila['Especie']."</option>";
     }
 ?>
 

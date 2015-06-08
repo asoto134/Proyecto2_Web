@@ -44,6 +44,8 @@ begin
 end$$
 
 DELIMITER ;;
+
+
 -- Consulta de Aves por persona--
 -- Aquí el usuario puede consultar las aves subidas por otros usuarios. Por cierto, falta que el filtro muestre las fotos
 USE `proyecto2web`;
@@ -103,6 +105,4 @@ BEGIN
         
         end if;
 END$$
-
-DELIMITER ;
 

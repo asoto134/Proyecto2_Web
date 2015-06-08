@@ -259,10 +259,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <div class="top">
 
             <!-- Logo -->
-<!--                    <div id="logo">
-                            <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
-                            <h1 id="title"> Hola</h1>
-                    </div>-->
+                   <div id="logo">
+                            <span class="image avatar48"><img src="images/logo.jpg" alt="" /></span>
+                        </div>
 
             <!-- Nav -->
                     <nav id="nav">

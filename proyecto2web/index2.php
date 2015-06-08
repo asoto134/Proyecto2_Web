@@ -32,11 +32,11 @@ mysql_close($conexionS);
 
 //
 
-$conexionC=mysql_connect(HOST, USER, PASS);
-@mysql_select_db(DB, $conexionC) or die("Error en la seleccion, '$php_errormsg'");
-$ConsultaColor="CALL getColor();";
-$resultadoColor= mysql_query($ConsultaColor);
-mysql_close($conexionC);
+//$conexionC=mysql_connect(HOST, USER, PASS);
+//@mysql_select_db(DB, $conexionC) or die("Error en la seleccion, '$php_errormsg'");
+//$ConsultaColor="CALL getColor();";
+//$resultadoColor= mysql_query($ConsultaColor);
+//mysql_close($conexionC);
 
 $conexionC2=mysql_connect(HOST, USER, PASS);
 @mysql_select_db(DB, $conexionC2) or die("Error en la seleccion, '$php_errormsg'");
@@ -63,11 +63,11 @@ $resultadoFamilia= mysql_query($ConsultaFamilia);
 mysql_close($conexionFamilia);
 
 //
-$conexionZ=mysql_connect(HOST, USER, PASS);
-@mysql_select_db(DB, $conexionZ) or die("Error en la seleccion, '$php_errormsg'");
-$consultaZona = "CALL `proyecto2web`.`getZonadeVida`();";
-$resultadoZona = mysql_query($consultaZona);
-mysql_close($conexionZ);
+//$conexionZ=mysql_connect(HOST, USER, PASS);
+//@mysql_select_db(DB, $conexionZ) or die("Error en la seleccion, '$php_errormsg'");
+//$consultaZona = "CALL `proyecto2web`.`getZonadeVida`();";
+//$resultadoZona = mysql_query($consultaZona);
+//mysql_close($conexionZ);
 
 $conexionZ2=mysql_connect(HOST, USER, PASS);
 @mysql_select_db(DB, $conexionZ2) or die("Error en la seleccion, '$php_errormsg'");
@@ -288,12 +288,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
     <div class="top">
 
-            <!-- Logo -->
-<!--                    <div id="logo">
-                            <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
-                            <h1 id="title"> Hola</h1>
-                    </div>-->
-
             <!-- Nav -->
                     <nav id="nav">
                         
@@ -301,14 +295,15 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <ul>                                
 
                                     <li><a href="#Inicio" id="bienvenido" class="skel-layers-ignoreHref"><span class="icon fa-home">Bienvenido a este sitio</span></a></li>
-                                    <li><a href="#Administracion" id="administrador" class="skel-layers-ignoreHref"><span class="icon fa-user">Administra los datos</span></a></li>
-                                    <li><a href="#Perfil" id="perfil" class="skel-layers-ignoreHref"><span class="icon fa-edit">Verifica y edita perfil</span></a></li>
-                                    <li><a href="#cambioContrasenia" id="cambiocontrasena" class="skel-layers-ignoreHref"><span class="icon fa-star">Cambiar contraseña</span></a></li>
                                     <?php
                                     if($administrador == 1)
                                     {
+                                        echo '<li><a href="#Administracion" id="administrador" class="skel-layers-ignoreHref"><span class="icon fa-user">Administra los datos</span></a></li>'; 
+
                                     }
                                     ?>
+                                    <li><a href="#Perfil" id="perfil" class="skel-layers-ignoreHref"><span class="icon fa-edit">Verifica y edita perfil</span></a></li>
+                                    <li><a href="#cambioContrasenia" id="cambiocontrasena" class="skel-layers-ignoreHref"><span class="icon fa-star">Cambiar contraseña</span></a></li>
                                     <li><a href="#RegistroAves" id="registroaves" class="skel-layers-ignoreHref"><span class="icon fa-camera">Registro de Aves</span></a></li>
                                     <li><a href="#portfolio" id="fotografias" class="skel-layers-ignoreHref"><span class="icon fa-photo">Mis Fotografias</span></a></li>
                                     <li><a href="#Estadisticas" id="estadisticas" class="skel-layers-ignoreHref"><span class="icon fa-line-chart">Estadisticas</span></a></li>
@@ -318,6 +313,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             </ul>
                     </nav>
 
+            <!-- Logo -->
+          
     </div>
 
 <!--    <div class="bottom">
@@ -361,6 +358,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <!-------------------------------------Administracion----------------------------------------------->                   
 
 
+<?php
+if($administrador == 1)
+{
+    echo '
+
+
 <section id="Administracion" class="three">
 <div class="container">
 
@@ -373,13 +376,23 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 </div>
 
-<form action="registro.php" method="post" >
+<form action="agregarEspecie.php" method="post" >
 
 <table style="float: left; margin-left: 35px; margin-top: 50px;" >
 <tr>                                        
 <td width="500">
-<label style="width: 200px; display: inline-block; float: left;" >Nombre Común:</label>
-<input id="campo1" name="nombrecomun" type="text" style="width: 300px; display: block; float: left;" />
+<label style="width: 200px; display: block; float: left;" >Orden:</label>
+<select id="ordenpajaros" name="orden" onChange="getSubOrden(this.value);" style="width: 300px;">
+    <option value="0">Seleccione el Orden</option>
+'   ?>
+   <?php
+    while($fila=mysql_fetch_array($resultadoOrden))
+    {
+        echo "<option value='".$fila['idOrden']."'>".$fila['Orden']."</option>";
+    }
+
+echo '
+</select>
 </td>
 
 <th colspan="1"></th>
@@ -395,43 +408,18 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <tr>                                        
 
 <td width="500">
-<label style="width: 200px; display: block; float: left;" >Orden:</label>
-<select id="ordenpajaros" onChange="getSubOrden(this.value);" style="width: 300px;">
-    <option value="0">Seleccione el Orden</option>
-   <?php
-    while($fila=mysql_fetch_array($resultadoOrden))
-    {
-        echo "<option value='".$fila['idOrden']."'>".$fila['Orden']."</option>";
-    }
-    ?>
-</select>
-</td>
-<th colspan="1"></th>
-<td width="500">
-<label style="width: 200px; display: block; float: left;" >Nombre Inglés:</label>
-<input id="campo1" name="nombreingles" type="text" style="width: 300px; display: block; float: left;" />
-<th colspan="1"></th>
-</td>   
-
-</tr>
-
-<tr><td>&nbsp; </td></tr>
-
-<tr>
-<td width="500">
 <label style="width: 200px; display: block; float: left;" >Suborden:</label>
-<select id="subordenpajaros" onChange="getFamilia(this.value);" style="width: 300px;">
+<select id="subordenpajaros" name="subOrden" onChange="getFamilia(this.value);" style="width: 300px;">
     <option value="0">Seleccione el Sub Orden</option>
 </select>
-<th colspan="1"></th>
 </td>
+<th colspan="1"></th>
 
 <td width="500">
-<label style="width: 200px; display: block; float: left;" >Tipo de Pico:</label>
-<select id="tipopicopajaros" style="width: 300px;">
-   <option value="0">Seleccione el Tipo de Pico</option> 
-</select>
+<label style="width: 200px; display: inline-block; float: left;" >Nombre Común:</label>
+<input id="campo1" name="nombrecomun" type="text" style="width: 300px; display: block; float: left;" />
 </td>
+
 </tr>
 
 <tr><td>&nbsp; </td></tr>
@@ -439,7 +427,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <tr>
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Familia:</label>
-<select id="familiapajaros" onChange="getGenero(this.value);" style="width: 300px;">
+<select id="familiapajaros" name="familia" onChange="getGenero(this.value);" style="width: 300px;">
   <option value="0">Seleccione la Familia</option>
 </select>
 </td>
@@ -447,45 +435,36 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <th colspan="1"></th>
 
 <td width="500">
-<label style="width: 200px; display: block; float: left;" >Cantidad de Huevos:</label>
-<select id="cantidadhuevospajaros" style="width: 300px;">
-      <option value="0">Seleccione el Color</option>
-    <?php
-    while($fila=mysql_fetch_array($resultadoHuevos))
-    {
-        echo "<option value='".$fila['idcantidad_Huevos']."'>".$fila['Cantidad']."</option>";
-    }
-    ?>
-</select>
-</td>
+<label style="width: 200px; display: block; float: left;" >Nombre Inglés:</label>
+<input id="campo1" name="nombreingles" type="text" style="width: 300px; display: block; float: left;" />
+
+</td> 
 </tr>
+
 <tr><td>&nbsp; </td></tr>
 
 <tr>
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Género:</label>
-<select id="generopajaros" onChange="getEspecie(this.value);" style="width: 300px;">
+<select id="generopajaros" name="genero" onChange="getEspecie(this.value);" style="width: 300px;">
   <option value="0">Seleccione el Genero</option>
 </select>
-<th colspan="1"></th>
 </td>
 
-<td width="500">
-<label style="width: 200px; display: block; float: left;" >Zona de Vida:</label>
-<select id="zonavidapajaros" style="width: 300px;">
-      <option value="0">Seleccione la Zona de Vida</option>
-   <?php
-    while($fila=mysql_fetch_array($resultadoZona))
-    {
-        echo "<option value='".$fila['idZona_de_Vida']."'>".$fila['Zona_de_Vida']."</option>";
-    }
-  
-    ?>
-     
-</select>
 <th colspan="1"></th>
+
+<td width="500">
+<label style="width: 200px; display: block; float: left;" >Tipo de Pico:</label>
+<select id="tipopicopajaros" name="pico" style="width: 300px;">
+   <option value="0">Seleccione el Tipo de Pico</option> 
+</select>
 </td>
 </tr>
+
+
+<tr><td>&nbsp; </td></tr>
+
+
 
 
 <tr><td>&nbsp; </td></tr>
@@ -493,21 +472,22 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <tr>
 <td width="500">
 <label style="width: 200px; display: block; float: left;" >Especie:</label>
-<select id="especiepajaros" onChange="getTipoPico(this.value);"  style="width: 300px;">
-      <option value="0">Seleccione la Especie</option>
+<select id="especiepajaros" name="especie" onChange="getTipoPico(this.value);"  style="width: 300px;">
+      <option value="">Seleccione la Especie</option>
 </select>
 </td>                        
 <th colspan="1"></th>
 <td width="500">
-<label style="width: 200px; display: block; float: left;" >Color:</label>
-<select id="colorpajaros" style="width: 300px;">
+<label style="width: 200px; display: block; float: left;" >Cantidad de Huevos:</label>
+<select id="cantidadhuevospajaros" name="cantHuevos" style="width: 300px;">
       <option value="0">Seleccione el Color</option>
-    <?php
-    while($fila=mysql_fetch_array($resultadoColor))
+'   ?>
+   <?php
+    while($fila=mysql_fetch_array($resultadoHuevos))
     {
-        echo "<option value='".$fila['idColor']."'>".$fila['Color']."</option>";
+        echo "<option value='".$fila['idcantidad_Huevos']."'>".$fila['Cantidad']."</option>";
     }
-    ?>
+echo'
 </select>
 </td>
 </tr>
@@ -515,17 +495,18 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 </table>
 
 <div style="clear: both; "></div>
-<input id="campo10" name="boton_registrar" type="submit" value="Registrar" style="margin-left:40px;"/> 
+<input id="campo10" name="boton_agregar_especie" type="submit" value="Agregar Especie" style="margin-left:40px;"/> 
 
 </form>
 
 </section>          
     
-    
-    
-    
-    
-    
+'; 
+
+}
+?>
+
+
 
 <!------------------------------------------------ Perfil -------------------------------------------------->
 <?php
@@ -1222,7 +1203,8 @@ if (isset($_POST['boton_estadistica'])){
     
  if ($ok == true){
 		
-		 echo "<table border = 1>
+		 echo "
+                     <table border = 1>
 		 <tr>
 		 
                  <th>Nombre</th>
@@ -1274,6 +1256,7 @@ if (isset($_POST['boton_estadistica'])){
            else{
                echo 'Problemas';
            }
+                
            
                  }
            ?>
@@ -1298,7 +1281,7 @@ if (isset($_POST['boton_estadistica'])){
 
 
 <!-- Validaciones -->
-<script src="js/misFunciones.js"></script>                
-
+<script src="js/misFunciones.js"></script> 
+<script src="css/misTablas.css"></script> 
 </body>
 </html>
