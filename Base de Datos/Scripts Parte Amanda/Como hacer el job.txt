@@ -1,0 +1,5 @@
+Como hacer el job
+1.Correr el codigo que dice Evento
+2.Correr el script de job
+3. Copiar la carpeta JOB en wamp/www/
+4.Ir a programador de tareas, a una lado dice importar tareas, seleccionar ambas y darle acepta. 
