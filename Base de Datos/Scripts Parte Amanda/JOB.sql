@@ -14,7 +14,7 @@ on p.Usuario_idUsuario=pXp.Persona_idPersona
 and pXp.Especie_idEspecie=27
 inner join correo c
 on c.Persona_idPersona=p.idPersona and p.Usuario_idUsuario=pXp.Persona_idPersona
-INTO outfile 'C:\\wamp\\www\\proyecto2web\\reporte_diario.txt'
+INTO outfile 'C:\\wamp\\www\\JOB\\reporte_diario.txt'
 fields terminated by ';'
 OPTIONALLY ENCLOSED BY '\"'
 LINES TERMINATED BY '\r\n';
