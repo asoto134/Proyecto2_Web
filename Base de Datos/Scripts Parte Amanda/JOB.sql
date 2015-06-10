@@ -1,5 +1,5 @@
---Amanda Solano, JOB--
---Realiza el select y crea un archivo donde van a estar los datos
+-- Amanda Solano, JOB--
+-- Realiza el select y crea un archivo donde van a estar los datos
 USE `proyecto2web`;
 DROP procedure IF EXISTS `Reporte`;
 
